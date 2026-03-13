@@ -126,6 +126,7 @@ mapping = {
     'lista_clientes': trainer_template,
     'planificador_de_manadas': trainer_template,
     'seguimiento_de_paseo_gps': trainer_template,
+    'crear_nuevo_contrato': trainer_template,
     
     # 3. Client Tier
     'portal_del_due_o_updated_style': client_template,

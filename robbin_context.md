@@ -103,5 +103,14 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Generated dynamic state formatting so that the active page receives `text-primary` while inactive icons inherit `text-slate-400`.
   - Pushed UI and file updates to GitHub.
 
+### Phase 10: Trainer Contract Generation Flow
+- **Goal**: Build the Trainer-side UI for the Smart Enrollment Engine to draft new service contracts.
+- **Actions**:
+  - Created a new directory and HTML file `crear_nuevo_contrato/code.html`.
+  - Designed a mobile-first wizard UI with Sections for: Basic Info (Client Name, Dog Name, Program Type), Financials (Number of Sessions Stepper, Total Cost Input, Installment toggles), and Legal Clauses (Standard Waivers, Marketing permissions).
+  - Linked the "Nuevo Doc" quick-action button in the `dashboard_del_entrenador_updated_style` to direct to the new contract flow.
+  - Wrote success modal logic to simulate generating the PDF and "sending" it to the client.
+  - Updated the Python navigation script to inject the Trainer Navigation template into the new HTML screen.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*

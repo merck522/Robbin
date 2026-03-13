@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch - Crear Nuevo Contrato</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#050062",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#100f23"
+                    },
+                    fontFamily: {
+                        display: "Inter"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-slate-950 shadow-xl">
+<!-- Header -->
+<header class="sticky top-0 z-20 flex items-center bg-white dark:bg-slate-950 p-4 border-b border-primary/10 justify-between">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-primary/10 transition-colors text-slate-900 dark:text-slate-100" onclick="window.location.href='../dashboard_del_entrenador_updated_style/code.html'">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Nuevo Contrato</h2>
+<div class="flex w-10 items-center justify-end"></div>
+</header>
+<!-- Main Form Area -->
+<main class="flex-1 p-4 pb-32 overflow-y-auto no-scrollbar">
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Completa los detalles del servicio para generar el PDF que el cliente firmará y rellenará.</p>
+<!-- Section 1: Basic Info -->
+<section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white">Información Básica</h3>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Nombre del Dueño</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Nombre del Perro</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow" placeholder="Ej. Max" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Tipo de Programa</label>
+<div class="relative">
+<select class="w-full appearance-none bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-slate-900 dark:text-slate-100 font-medium">
+<option>Modificación de Conducta (Red/Yellow Flag)</option>
+<option>Socialización para Cachorros</option>
+<option>Obediencia Básica / Modales</option>
+<option>Entrenamiento Deportivo / Agility</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-500">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Financials -->
+<section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-green-100 rounded-lg text-green-600">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white">Facturación y Sesiones</h3>
+</div>
+<div class="space-y-5">
+<!-- Sessions Stepper -->
+<div class="flex items-center justify-between border border-slate-200 dark:border-slate-700 rounded-xl p-3 bg-slate-50 dark:bg-slate-800">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Número de Sesiones</span>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 active:scale-95 transition-transform" onclick="updateSessions(-1)"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="text-lg font-bold w-4 text-center" id="session-count">8</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary active:scale-95 transition-transform" onclick="updateSessions(1)"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+<!-- Cost Input -->
+<div>
+<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Costo Total del Programa</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 font-bold text-slate-400">$</span>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-4 py-3 text-lg font-bold text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow" placeholder="0.00" type="number"/>
+</div>
+</div>
+<!-- Installments Segmented Control -->
+<div>
+<label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">Método de Pago (Cuotas)</label>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+<button class="installment-btn flex-1 text-xs font-bold py-2 rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm transition-all focus:outline-none" onclick="selectInstallment(this)">1 Pago</button>
+<button class="installment-btn flex-1 text-xs font-bold py-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 transition-all focus:outline-none" onclick="selectInstallment(this)">2 Cuotas</button>
+<button class="installment-btn flex-1 text-xs font-bold py-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 transition-all focus:outline-none" onclick="selectInstallment(this)">4 Cuotas</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Legal & Waivers -->
+<section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-amber-100 rounded-lg text-amber-600">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+<h3 class="font-bold text-slate-900 dark:text-white">Cláusulas Legales</h3>
+</div>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center mt-0.5">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-5 h-5 border-2 border-slate-300 dark:border-slate-600 rounded box-border peer-checked:bg-primary peer-checked:border-primary transition-colors"></div>
+<span class="material-symbols-outlined absolute text-white text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Contrato Estándar de Responsabilidad Civil</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Exime al entrenador de accidentes imprevisibles.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center mt-0.5">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-5 h-5 border-2 border-slate-300 dark:border-slate-600 rounded box-border peer-checked:bg-primary peer-checked:border-primary transition-colors"></div>
+<span class="material-symbols-outlined absolute text-white text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Permiso de Uso de Imagen (Marketing)</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Autorización para publicar fotos/videos del perro en redes sociales.</p>
+</div>
+</label>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<div class="fixed bottom-[72px] left-0 right-0 max-w-md mx-auto p-4 bg-gradient-to-t from-white via-white/90 to-transparent dark:from-slate-950 dark:via-slate-950/90 pb-6 z-30 pointer-events-none">
+<button class="pointer-events-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-transform shadow-xl shadow-primary/20 active:scale-[0.98]" onclick="submitContract()">
+<span class="material-symbols-outlined">send</span>
+                GENERAR PDF Y ENVIAR AL CLIENTE
+            </button>
+</div>
+<!-- Success Modal (Hidden by default) -->
+<div class="fixed inset-0 z-[200] hidden" id="success-modal">
+<!-- Overlay -->
+<div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="document.getElementById('success-modal').classList.add('hidden')"></div>
+<!-- Modal Content -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../dashboard_del_entrenador_updated_style/code.html">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../lista_clientes/code.html">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../planificador_de_manadas/code.html">
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../seguimiento_de_paseo_gps/code.html">
+<span class="material-symbols-outlined text-[24px]">navigation</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo Activo</span>
+</a>
+</nav>
+</div>
+<!-- Navigation Placeholder (Injected via script) -->
+<!-- The update_navs script will naturally place the nav here at the bottom of the document body -->
+</div>
+<script>
+        // Session Stepper Logic
+        function updateSessions(change) {
+            const countEl = document.getElementById('session-count');
+            let count = parseInt(countEl.textContent);
+            count = Math.max(1, count + change); // Minimum 1 session
+            countEl.textContent = count;
+        }
+
+        // Installment Selection Logic
+        function selectInstallment(btn) {
+            // Remove active classes
+            document.querySelectorAll('.installment-btn').forEach(b => {
+                b.classList.remove('bg-white', 'dark:bg-slate-700', 'text-primary', 'shadow-sm');
+                b.classList.add('text-slate-500', 'dark:text-slate-400');
+            });
+            // Add active class to clicked
+            btn.classList.add('bg-white', 'dark:bg-slate-700', 'text-primary', 'shadow-sm');
+            btn.classList.remove('text-slate-500', 'dark:text-slate-400');
+        }
+
+        // Submit Contract Logic
+        function submitContract() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('hidden');
+            
+            // Optional: simulate network delay
+            // setTimeout(() => { modal.classList.remove('hidden'); }, 500);
+        }
+    </script>
+</body>
+</html>
