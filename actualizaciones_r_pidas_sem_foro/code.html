@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-md mx-auto bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+<header class="flex items-center p-4 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10 border-b border-primary/10">
+<button class="p-2 hover:bg-primary/10 rounded-xl transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold tracking-tight">Actualizaciones Rápidas</h1>
+<button class="p-2 hover:bg-primary/10 rounded-xl transition-colors relative">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-background-light"></span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto px-4 py-6 space-y-8">
+<section>
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-primary/20 rounded-lg">
+<span class="material-symbols-outlined text-primary">traffic</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Estado del Semáforo</h2>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Green State -->
+<div class="flex items-center gap-4 p-5 rounded-xl border-2 border-primary/20 bg-white dark:bg-slate-800 shadow-sm hover:border-primary transition-all cursor-pointer group" onclick="sendStatus('Comió bien', 'green')">
+<div class="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">check_circle</span>
+</div>
+<div class="flex-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Comió bien</h3>
+<p class="text-primary font-medium text-sm">Estado: Verde</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<!-- Yellow State -->
+<div class="flex items-center gap-4 p-5 rounded-xl border-2 border-yellow-500/20 bg-white dark:bg-slate-800 shadow-sm hover:border-yellow-500 transition-all cursor-pointer group" onclick="sendStatus('Socializó con precaución', 'yellow')">
+<div class="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-500/10 group-hover:bg-yellow-500/20">
+<span class="material-symbols-outlined text-yellow-600 text-3xl">warning</span>
+</div>
+<div class="flex-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Socializó con precaución</h3>
+<p class="text-yellow-600 font-medium text-sm">Estado: Amarillo</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<!-- Poo Icon State -->
+<div class="flex items-center gap-4 p-5 rounded-xl border-2 border-amber-800/20 bg-white dark:bg-slate-800 shadow-sm hover:border-amber-800 transition-all cursor-pointer group" onclick="sendStatus('Hizo sus necesidades', 'amber')">
+<div class="flex h-14 w-14 items-center justify-center rounded-full bg-amber-800/10 group-hover:bg-amber-800/20">
+<span class="material-symbols-outlined text-amber-900 text-3xl">potted_plant</span>
+</div>
+<div class="flex-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Hizo sus necesidades</h3>
+<p class="text-amber-800 font-medium text-sm">Registro completado</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xl font-bold tracking-tight">Notificaciones recientes</h3>
+<button class="text-primary text-sm font-semibold">Ver todo</button>
+</div>
+<div class="space-y-3">
+<div class="flex gap-4 p-4 rounded-xl bg-primary/5 border border-primary/10">
+<div class="h-10 w-10 shrink-0 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">pets</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium leading-relaxed"><strong>Rex</strong> ha terminado su paseo de la tarde con éxito.</p>
+<span class="text-xs text-slate-500 mt-1">Hace 15 minutos</span>
+</div>
+</div>
+<div class="flex gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<div class="h-10 w-10 shrink-0 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium leading-relaxed">Recordatorio: Hora de la cena en 30 minutos.</p>
+<span class="text-xs text-slate-500 mt-1">Hace 2 horas</span>
+</div>
+</div>
+</div>
+</section>
+<section class="pb-10">
+<div class="rounded-xl overflow-hidden bg-primary/10 p-6 flex items-center justify-between">
+<div>
+<h4 class="font-bold text-lg mb-1">¿Cómo va el día?</h4>
+<p class="text-sm opacity-80">Sigue el progreso de tu mascota en tiempo real.</p>
+</div>
+<button class="bg-primary text-white font-bold py-2 px-4 rounded-lg shadow-lg shadow-primary/30 text-sm">
+                        Resumen Diario
+                    </button>
+</div>
+</section>
+</main>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
+    <span id="toast-icon" class="material-symbols-outlined text-green-400">check_circle</span>
+    <span id="toast-message" class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]">Actualizado</span>
+</div>
+
+<script>
+    let toastTimeout;
+    
+    function sendStatus(message, color) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon');
+        
+        // Update variables based on color
+        toastMessage.textContent = 'Actualizado: ' + message;
+        toastIcon.classList.remove('text-green-400', 'text-yellow-400', 'text-amber-500');
+        
+        switch (color) {
+            case 'green':
+                toastIcon.textContent = 'check_circle';
+                toastIcon.classList.add('text-green-400');
+                break;
+            case 'yellow':
+                toastIcon.textContent = 'warning';
+                toastIcon.classList.add('text-yellow-400');
+                break;
+            case 'amber':
+                toastIcon.textContent = 'potted_plant';
+                toastIcon.classList.add('text-amber-500');
+                break;
+        }
+
+        // Show toast
+        clearTimeout(toastTimeout);
+        toast.classList.remove('opacity-0', '-translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        // Hide toast
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', '-translate-y-4');
+        }, 3000);
+    }
+</script>
+
+<nav class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex justify-around items-center px-4 py-3 pb-8">
+<a class="flex flex-col items-center gap-1 group" href="../dashboard_del_entrenador_updated_style/code.html">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">home</span>
+<span class="text-[10px] font-bold text-slate-400 group-hover:text-primary uppercase tracking-wider">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="../actualizaciones_r_pidas_sem_foro/code.html">
+<span class="material-symbols-outlined text-primary transition-colors">traffic</span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">Semáforo</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="../registro_de_actividad_navy_theme/code.html">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">menu_book</span>
+<span class="text-[10px] font-bold text-slate-400 group-hover:text-primary uppercase tracking-wider">Diario</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="../perfil_del_perro_updated_style/code.html">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">person</span>
+<span class="text-[10px] font-bold text-slate-400 group-hover:text-primary uppercase tracking-wider">Perfil</span>
+</a>
+</nav>
+</div>
+</body></html>

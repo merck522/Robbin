@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#050061",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#100f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Client Management List</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col max-w-[430px] mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-x-hidden">
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pt-6 pb-2">
+<div class="flex items-center justify-between mb-4">
+<h1 class="text-2xl font-bold tracking-tight text-primary dark:text-slate-100">Clients</h1>
+<button class="flex items-center justify-center size-10 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-primary/10">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">notifications</span>
+</button>
+</div>
+<div class="flex gap-3 mb-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full h-11 pl-10 pr-4 bg-white dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 shadow-sm" placeholder="Search clients or dogs..." type="text"/>
+</div>
+<button class="flex items-center justify-center size-11 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/10">
+<span class="material-symbols-outlined text-primary dark:text-slate-300">tune</span>
+</button>
+</div>
+<div class="flex gap-2 py-2 overflow-x-auto no-scrollbar">
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-semibold whitespace-nowrap">All Clients</button>
+<button class="px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5">Active Training</button>
+<button class="px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5">Pending</button>
+<button class="px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5">Completed</button>
+</div>
+</header>
+<main class="flex-1 px-4 py-4 space-y-4 pb-24">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a male client" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOemktAwTpI1B207FCRcr9Pg80Z06P5teNJOew4hhKj0nzYWqhYVEku-80LCqF4YvfvvUWD0-wo07HsAoHu4rxNhSCrnerb3dzy1SBvPAiigA58b5ER9GB62moAslizvwfUYW2tPyDqe5SijLeoVFybjD8iItWQcnpqAzexHVpwYdnJItb0ZRDHeJvmcZoVmrGOwXAqjRIrkFwBaVADoa_dTWM1kBRyJJxMGkv3V18Of88SHj-TOuwV0FMAcE0jnA6u-Y3Hq7h-8Om"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Juan Pérez</h3>
+<p class="text-xs text-slate-500">Last session: Oct 24, 2023</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button onclick="showToast('Calling Juan Pérez...', 'call')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">call</span>
+</button>
+<button onclick="showToast('Messaging Juan Pérez...', 'chat_bubble')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">chat_bubble</span>
+</button>
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Pets</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full border-2 border-primary/20 p-0.5">
+<img class="size-full rounded-full object-cover" data-alt="Small brown and white dog looking up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb"/>
+</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Luna</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full border-2 border-primary/20 p-0.5">
+<img class="size-full rounded-full object-cover" data-alt="Golden retriever puppy sitting in grass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeA5uw_w7X5qOwcTOlEnHHqA2DIDR3m0gUiImTYmXo0pWjaPxE9oa3QISPy8kPTATFkQW8_J9jzfswV_LTfZKr9xz6B4myViy86om1fLkg0NzKBCFfAn6AGkZyqxkVimDzO9enZXQIfwrHsck1NSY7_x7N5EL1POycTSskro0wUZtHfd_3gOfQiwFI3pqDOe4vyFH4tdmQJFTP3v5m9w-rFcKfHZ-AofLD_VcPHMesZo0SmxMBtMj3i7yePSnLWtfHp0sL00A3g1SY"/>
+</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Cooper</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
+<img class="w-full h-full object-cover" data-alt="Smiling female client with long hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq-5BJEBUnYKRSF3Ib_kLite41tdUw4SbfSuFa_UQzE8yCWlsO0F8fNiRu20L0QQzjf4GXm5TBBh5Gt-Pir7QxuJnlImoBZ13kLCTRPALjmVf5GLElx9TNGCXkwYB1gzU5JqTW-7UOVy9sSFShysRBFgGB6sUQK_KnFk-brh7s844Um_WkKdPxAYSDc9U8QUOHA9yrSGrPUHqRBoUgvM1kl8iavNwV6MXLaXRSWw0IZEM7dkfKtGav8Eu3jZcnFuxP0kly9ijEMI2s"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Sarah Jenkins</h3>
+<p class="text-xs text-slate-500">Last session: Oct 22, 2023</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button onclick="showToast('Calling Sarah Jenkins...', 'call')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">call</span>
+</button>
+<button onclick="showToast('Messaging Sarah Jenkins...', 'chat_bubble')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">chat_bubble</span>
+</button>
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Pets</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full border-2 border-primary/20 p-0.5">
+<img class="size-full rounded-full object-cover" data-alt="Portrait of a black pug" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZfUxjdZQ4C92jc9uAV73ZIBIfPbafPSfW5xo-QDjNSkJjivudPGdUcD7O6B1FUF53tZlhhMahul8PBG30qimZjvf-sAwOej7EwaDDyMlmI3XmRYlx39kiqw-VOEbgOYtxJhwBYNlpKixz_2nctEmBI_C7ls6Qn4hg3Cch1cnkDIU_H8LS3GnUK0wbd5Enf8PHwOJtnf8ZY10Ia7Hs4bCvliOVAagJaqCCWq71dhsVujEDqkcBiv7yiqUsUkAvlc-c3xvXM-E6BC2M"/>
+</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Buster</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
+<img class="w-full h-full object-cover" data-alt="Male client with glasses and beard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP0tci0jvqAaEl6W8XFVoQhbSxoy3uM6VUwaDp0nh6Cd1UbBGGtFZh5mNxRb0-WEUPQNePAF6JUr6JJFCQyHUkhFInyXO0y5sPfAwU1nDdU3lgxS44JV-wFPTQRgRxeQZtNFC1bERCMSkFWXhHt0chMjqUhh7awMzxFAlWgTshyOEUETSoTkhcptDBH9M0qy8SRKCH2SbTizLF1BHUgesqSlXKueCNtZcpHkKDhicAcfFqOYGBBsS3XHN8kVkFa90nRJgyhbJIfjKF"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Michael Chen</h3>
+<p class="text-xs text-slate-500">Next session: Tomorrow</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200">
+<span class="material-symbols-outlined text-xl">call</span>
+</button>
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200">
+<span class="material-symbols-outlined text-xl">chat_bubble</span>
+</button>
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Pets</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full border-2 border-primary/20 p-0.5">
+<img class="size-full rounded-full object-cover" data-alt="Beagle dog profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzwMjuxvlO8SKm-bhbYJu087NMU2zSiNYGs2rqpzYcW6KOATsZ0w8pGQmxC9s7BVdFiyfadkT3d-JiK0xBozzydQQEzJkavjBIhB44rFg98BeM1-GyNWDg2YnySqnQHzQx6pxPsbpNGzr6_Rrqph3lrjkgzHkU8W4JXxDA7R2gQjXA2C86v2ksRsn6Jz8oUjsJONH1Emwxk3DyghSqgDsSCw1PH2AmR2ZOyCFIFKl_LZKddwuNYA8q6pm1mKqVOucdRuU5CrxxucW1"/>
+</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Snoopy</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full border-2 border-primary/20 p-0.5">
+<img class="size-full rounded-full object-cover" data-alt="French bulldog puppy looking curious" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1P4-5c3q2lCAdEEbczwTHtRw8_25a-3NIvuZ47nNGmLs1pTOftT7bcZIQMGW6S38OWieSSW5DkNl0Y_290qlVXDC1HwmhGAimp48R77mPpEmVxniqRWu3tlVeXG9AtPf0xsYlP1tONS08aO8dcBrINI_RAfrNTFJnhgewO_eb0EMA2ZhZ4LixD6jMEtICHmrY0A6OCq4_ezGcIQblsYfamKwvA3CHR3xyk3417Bvdx0Rb04Liq5lK2_FBtURxHWoip4KBkURwC1c3"/>
+</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Coco</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
+<img class="w-full h-full object-cover" data-alt="Headshot of a smiling woman with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTLLdqCiVoa6HYj_UvMNT5c7W09cBlrOrhZmIJcBJDj0CrYsoTVspbIxazCXPnEm-NrLGytzc5UOCpR0Tm3b0T631ereFhFMl3excic_FGINIhaDuyStsjp6iUG7T4sF4brM5CST95Al0EsEq4u1Y5GLLtADHmivXErBcQ__4cYZBuvyZuPl5Ny5gVLVd3llzTraKVKLqqs2K7G5OPBGak5YOOAF6DT2Id3XoL1PRs71e72kOYX0OBR2YXwBRshKkBbeprbq0dmh6D"/>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Elena Rodriguez</h3>
+<p class="text-xs text-slate-500">Last session: 1 week ago</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200">
+<span class="material-symbols-outlined text-xl">call</span>
+</button>
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200">
+<span class="material-symbols-outlined text-xl">chat_bubble</span>
+</button>
+</div>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Pets</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full border-2 border-primary/20 p-0.5">
+<img class="size-full rounded-full object-cover" data-alt="Border collie running in field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkkGixy07-9W3Amk9lZ6sDnI7_vrFq-3_H2L_8Oy8RIMUp15P_8iqZRsWsdrUQnImQ6DKN0OvEDwXthNVerxaI2HZRaCYgYNtvo-uDhNkPvM1ahyROHWRNS3XUI94TdwCPhdPc3jebtR5tH-DPtmZuS_Bf4RIYwjZCJOiTzpkxP_RUvu21R4Q443NCyuzeCZ7kDCo14Y9ZNoLcXQV67OsMB2bxyiFdJDpbxdjEsEOZpxm7pu0Ym8cR7cj33v2SZKmBocXbPZuaefh2"/>
+</div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Rex</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<button onclick="showToast('New client form opened.', 'add')" class="fixed bottom-24 right-6 size-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-30 ring-4 ring-white dark:ring-slate-900 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<nav class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-primary/10 px-6 py-3 flex justify-between items-center z-40">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">group</span>
+<span class="text-[10px] font-bold">Clients</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../inicio_entrenador/code.html">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home Trainer</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="../perfil_del_perro_updated_style/code.html">
+<span class="material-symbols-outlined">pets</span>
+<span class="text-[10px] font-medium">Dog Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" onclick="showToast('Open Settings', 'settings')" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
+    <span id="toast-icon" class="material-symbols-outlined text-green-400">check_circle</span>
+    <span id="toast-message" class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]">Acción realizada</span>
+</div>
+
+<script>
+    let toastTimeout;
+    
+    function showToast(message, icon) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon');
+        
+        toastMessage.textContent = message;
+        toastIcon.textContent = icon || 'check_circle';
+
+        // Show toast
+        clearTimeout(toastTimeout);
+        toast.classList.remove('opacity-0', '-translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        // Hide toast
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', '-translate-y-4');
+        }, 3000);
+    }
+</script>
+</body></html>

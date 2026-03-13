@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planificador de Manadas - Pack Geometry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="flex items-center p-4 justify-between max-w-2xl mx-auto">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Planificador de Manadas</h1>
+<div class="flex w-10 items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-primary/10 px-4 gap-8 max-w-2xl mx-auto overflow-x-auto no-scrollbar">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold tracking-wide">Compatibles</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold tracking-wide">Cerca de mí</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold tracking-wide">Alertas</span>
+<span class="size-2 bg-red-500 rounded-full"></span>
+</div>
+</a>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-4 py-6 space-y-8">
+<!-- Search -->
+<div class="relative">
+<label class="flex items-center w-full h-12 bg-white dark:bg-slate-800 rounded-xl px-4 shadow-sm border border-primary/5">
+<span class="material-symbols-outlined text-primary mr-3">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-sm" placeholder="Buscar grupos o zonas de paseo" type="text"/>
+</label>
+</div>
+<!-- Alerts Section -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-bold tracking-tight">Alertas de Reactividad</h2>
+<span class="text-xs text-primary font-semibold px-2 py-1 bg-primary/10 rounded-full">En vivo</span>
+</div>
+<div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-4 flex gap-4">
+<div class="size-10 bg-amber-500 rounded-full flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<h3 class="font-bold text-amber-900 dark:text-amber-200 text-sm">Perro reactivo en Parque Central</h3>
+<p class="text-xs text-amber-800 dark:text-amber-300 mt-1">Usuario reportó un Pastor Alemán sin correa hace 15 min. Precaución en la zona norte.</p>
+</div>
+</div>
+</section>
+<!-- Suggested Groups -->
+<section class="space-y-4">
+<h2 class="text-lg font-bold tracking-tight">Sugerencias por Temperamento</h2>
+<!-- Group Card 1 -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-primary/5 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-crop" data-alt="Golden Retriever playing happily" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT1XC2CB9DvRTjch3SIOgHS8mTHcniKxK3KgHwH1W3bdF_jzZZBLbDj8H30aMMUn3DzwbCLNEFcTP4VRzgnOVlr2ye4TzB4w7CN6htjwvQ9SKdpGh9Uq9DQoBSAccA2z-G_Lcf0lBeWY2GnTg93DUm6eRGU9nXbeVwGvW1RLvpgoCOdqwo_Xo_6CKpWekM2TDkTcaZoPDRGF9t_MXHgSQMTIUuRVV__wFsi20K2Znlh49lVa-wVDsVb5ArtdOl8B_YuKDA_eqjvTtk"/>
+</div>
+<div>
+<h3 class="font-bold text-base">Manada Zen (Baja Energía)</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="text-xs font-medium">98% Compatibilidad</span>
+</div>
+</div>
+</div>
+<button onclick="showToast('Solicitud enviada a Manada Zen', 'group_add')" class="text-primary bg-primary/10 rounded-lg px-3 py-1.5 text-xs font-bold active:scale-95 transition-transform">Unirse</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Sumisos</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Senior</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Paseo Lento</span>
+</div>
+<div class="pt-2 border-t border-slate-50 dark:border-slate-700 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile of a small dog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmM8albtrSVGeOggtJi9qf-eKjH4sxr_EMlPlnTKvitz0z1VySwTkjHNj5Ubv8FKMCPm_Yzu5g6Twf8TBMb848VjcsYitt9jaMa52cwJR6K0EUmh0MTzPJSAon9hrXOg3siMbVRO9rJJUdJWDvVW0Fjvde94DM0g9OAt63C8wUpk9wiWuNl7S_ZLgfm6uJCCCxJF98ofDpk6KzOQeAvimUH6WQsCuYtPh2XMFFw2ioMAYadkfPGzoo6yudubJRBfdWX-PFOuQPUwFl"/>
+</div>
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile of a beagle dog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxxC-suugIPN_3qnu5lUtAsHPgXA4O60uGGNRv6elGQgLyDTbhJk7JNYGMvOfW8nhnOUuys81OaRKsvfawrTIpeItIqQ9ZwJWgZPC_8akqLe3sYb_z4-2NImyDv7hVTHbPbE40PCpPZ68tAyvte4ml7hvhP27x7pd71Nzyz2da0UGFWi67c00ARccci5i5wWsCFidWwzLor9NmkNL7rsJsdX82oyq5selzPDz_8bWfxpHj_Mtzn0SzUOZ5ihSwlEdoHIjFL7sV_HBN"/>
+</div>
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300 flex items-center justify-center text-[8px] font-bold">+12</div>
+</div>
+<p class="text-xs text-slate-500"><span class="material-symbols-outlined text-xs align-middle">location_on</span> a 0.5km de ti</p>
+</div>
+</div>
+<!-- Group Card 2 -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-primary/5 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-crop" data-alt="Active Border Collie jumping" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbEA_66xPNtKgkhqkWCPvo2cCDeKdM6PH8dbGjkY5ZkzTGovS9MFgpX9DsAnhPXV9-j0o-BbxuVOcJ1VzhdKh89QWzegkoaVFkPKWWATN4zEzhkCH5GNoZf7cEq9CWrfcdA28_20ixod9YYZkvLst7yzhHrlc-z2uaEy2XzDxJyYGxCDSjYactjinxDiK4p6k4B-nHIh9kbntjdxgK-D6iqJ0_J_Qi0jRpSOk3W0TJk0Hcfi_tYl1v-ysvcUc_XSTfgt680TbnrF1C"/>
+</div>
+<div>
+<h3 class="font-bold text-base">Exploradores (Alta Energía)</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="text-xs font-medium">85% Compatibilidad</span>
+</div>
+</div>
+</div>
+<button onclick="showToast('Solicitud enviada a Exploradores', 'group_add')" class="text-primary bg-primary/10 rounded-lg px-3 py-1.5 text-xs font-bold active:scale-95 transition-transform">Unirse</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Juego rudo</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Cachorros</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Sin correa</span>
+</div>
+<div class="pt-2 border-t border-slate-50 dark:border-slate-700 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Dog running in field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTOUQIAdL3ST4gBhHze7s-ASiXBfR9E4NVujbWjVMYw0SF8gxjEbMrGdHLDxixNpFYFB-yGbIgFQv779TxVLg0AeHt_7VBzeB1WDbgXhISZ9kHol3dR1Tnks4YjB2Nz8BRdLfg-6kpdHvNsQPqzsN_g47DEk0riaSqRCXZQI7hyoIB7GNB-EB3w4_-IIU5Ka5hEkzgBYDGYluHkb3YsxRKsZj6g-p9ol8CoNqor4Vf7vVUulP0jSiaHEVWPtQN1KmX8lLCdYS-Cpco"/>
+</div>
+<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300 flex items-center justify-center text-[8px] font-bold">+8</div>
+</div>
+<p class="text-xs text-slate-500"><span class="material-symbols-outlined text-xs align-middle">location_on</span> a 2.1km de ti</p>
+</div>
+</div>
+</section>
+<!-- Map Quick Access -->
+<section class="space-y-4">
+<h2 class="text-lg font-bold tracking-tight">Geometría de Paseo</h2>
+<div class="relative w-full h-48 rounded-xl overflow-hidden border border-primary/10 shadow-inner">
+<div class="absolute inset-0 bg-slate-200 dark:bg-slate-700 flex items-center justify-center" data-location="Madrid, Spain">
+<!-- Placeholder for Map -->
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-4xl text-primary animate-pulse">location_on</span>
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400 mt-2">Calculando rutas seguras...</span>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-multiply" data-alt="Stylized topographic map for outdoor planning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnEFZeN7GlkM2v-y0oXn6l9FTANpFgSrv91db2ADGFzQj4GV3xdFoOmSMyiFeh8a8Y2pagRKvWKEPt900yQOFeaxr07EmKhbp2NSNequEvl-VnhvBpQYKlvno0RyRnUyjI8Rs49wtpejKAOTZU1T06A_tnKzYU_f6lrqUwS7Q3WXktmOMvYxy79UxREw70A8gvTCt3Bi2oXh0A1ohhc68t9X-9UdAPwhJpEYRHKKzrVBXNdnHSWhS3MnmLq4Rep2fYvpvJRaLO5txs"/>
+</div>
+<div class="absolute bottom-4 right-4 flex flex-col gap-2">
+<button class="size-10 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">layers</span>
+</button>
+<button class="size-10 bg-primary text-white rounded-full shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
+    <span id="toast-icon" class="material-symbols-outlined text-green-400">check_circle</span>
+    <span id="toast-message" class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]">Acción realizada</span>
+</div>
+
+<script>
+    let toastTimeout;
+    
+    function showToast(message, icon) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon');
+        
+        toastMessage.textContent = message;
+        toastIcon.textContent = icon || 'check_circle';
+
+        // Show toast
+        clearTimeout(toastTimeout);
+        toast.classList.remove('opacity-0', '-translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        // Hide toast
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', '-translate-y-4');
+        }, 3000);
+    }
+</script>
+
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-primary/10 px-4 pb-6 pt-2 z-50">
+<div class="flex max-w-2xl mx-auto items-center justify-between">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="../dashboard_del_entrenador_updated_style/code.html">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-bold leading-normal">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="../planificador_de_manadas/code.html">
+<span class="material-symbols-outlined">groups</span>
+<p class="text-[10px] font-bold leading-normal">Manadas</p>
+</a>
+<div class="flex flex-1 flex-col items-center -mt-8">
+<button onclick="showToast('Abriendo planificador de rutas...', 'map')" class="size-14 bg-primary text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center border-4 border-background-light dark:border-background-dark active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<p class="text-[10px] font-bold leading-normal mt-1 text-primary">Planear</p>
+</div>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="../seguimiento_de_paseo_gps/code.html">
+<span class="material-symbols-outlined">map</span>
+<p class="text-[10px] font-bold leading-normal">Mapa</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="../perfil_del_perro_updated_style/code.html">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-bold leading-normal">Perfil</p>
+</a>
+</div>
+</nav>
+</body></html>

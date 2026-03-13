@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark overflow-hidden">
+<!-- Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 justify-between border-b border-primary/10">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Seguimiento de Paseo</h2>
+</div>
+<!-- Live Map Area -->
+<div class="relative flex-1 w-full bg-slate-200 dark:bg-slate-800">
+<!-- Map Placeholder -->
+<div class="absolute inset-0 bg-center bg-no-repeat bg-cover" data-alt="Mapa detallado de ruta de GPS en un parque urbano" data-location="Madrid, Spain" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRHpBT0zE-tiGQvc5woVuczPvkd3sHp3CJkFjkv25lju3i8qiJi3bRHCU0sNuamLTIqd8DC6NsZW5BoikeW6u9aqZipzldVz6hNoBLDnn8kk2zFNV31mRjtxpcfw8tD71c4Q1q6aciBKZjow1mTDBJ8I6z2JH5eqT-NxsOQVZd_KOZDKVw4MO2eS62rk8yLNrhIow_WEXASu1aRmkIeHJmz0fL_ODkYP0NfkB5inct3SaJtunljqS0TFpK4pgztZzr0PLZ5kVQw9tR");'>
+</div>
+<!-- Map Overlay Controls -->
+<div class="absolute top-4 right-4 flex flex-col gap-2">
+<button class="bg-white dark:bg-slate-900 p-2 rounded-lg shadow-md text-primary">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+<button class="bg-white dark:bg-slate-900 p-2 rounded-lg shadow-md text-slate-600">
+<span class="material-symbols-outlined">layers</span>
+</button>
+</div>
+<!-- Active Route Indicator -->
+<div class="absolute top-4 left-4 bg-primary text-white px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg text-sm font-semibold">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+</span>
+                EN VIVO
+            </div>
+</div>
+<!-- Stats Panel -->
+<div class="bg-white dark:bg-slate-900 rounded-t-xl shadow-[0_-8px_30px_rgb(0,0,0,0.08)] px-4 pt-6 pb-8 -mt-4 z-10">
+<!-- Pet Status -->
+<div class="flex items-center gap-4 mb-6">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 ring-2 ring-primary ring-offset-2" data-alt="Primer plano de un perro Beagle feliz" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAtMe3GntMwEBLkoCBnVU2O1GZYbsjiUhOL4dP3AR4ZETD93sQnFErDVERm0m3sN_q3dwD8gq03OOtFpVLMp2PAXAgSS846Vj4PZL6R9RQSvM3yF-lj2MqefxH6HTPkbTXTbWKWOYGhG_qXcwO4m0_KTwruE5jNtKlvUHTgqB_zd1sdgsf9gmEDOer1DiehLUSPfgKQkn6jW-sQ4uJtH4hX6vFIJoYsyq4OBD4nvgFTqtLr3goJzv5l1tzvWa1Wqi9_TtvPcYXBPuie");'></div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white p-1 rounded-full border-2 border-white dark:border-slate-900">
+<span class="material-symbols-outlined text-[12px] block">pets</span>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Milo está de paseo</p>
+<p class="text-primary text-sm font-medium leading-normal">Paseador: Carlos G.</p>
+</div>
+<div class="ml-auto flex gap-2">
+<div onclick="showToast('Llamando a Carlos G...', 'call')" class="bg-primary/10 p-2 rounded-full text-primary cursor-pointer hover:bg-primary/20 transition-colors active:scale-95">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div onclick="showToast('Abriendo chat con Carlos G...', 'chat')" class="bg-primary/10 p-2 rounded-full text-primary cursor-pointer hover:bg-primary/20 transition-colors active:scale-95">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+</div>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-3 gap-3 mb-6">
+<div class="flex flex-col gap-1 rounded-lg p-4 bg-background-light dark:bg-slate-800/50 border border-primary/5">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Tiempo</p>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">24:15</p>
+<div class="flex items-center gap-1 text-primary text-xs font-medium">
+<span class="material-symbols-outlined text-xs">timer</span>
+                        En curso
+                    </div>
+</div>
+<div class="flex flex-col gap-1 rounded-lg p-4 bg-background-light dark:bg-slate-800/50 border border-primary/5">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Distancia</p>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">1.8 km</p>
+<div class="flex items-center gap-1 text-primary text-xs font-medium">
+<span class="material-symbols-outlined text-xs">straighten</span>
+                        +0.2 km
+                    </div>
+</div>
+<div class="flex flex-col gap-1 rounded-lg p-4 bg-background-light dark:bg-slate-800/50 border border-primary/5">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Peces</p>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">2</p>
+<div class="flex items-center gap-1 text-primary text-xs font-medium">
+<span class="material-symbols-outlined text-xs">potted_plant</span>
+                        Logrado
+                    </div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 p-3 bg-primary/5 rounded-lg border border-primary/20">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<p class="text-slate-700 dark:text-slate-300 text-sm">Ubicación: <span class="font-semibold text-slate-900 dark:text-slate-100">Calle 85 con Carrera 15</span></p>
+</div>
+<button onclick="showToast('Paseo finalizado. Resumen enviado.', 'check_circle')" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-transform shadow-md shadow-primary/20 active:scale-[0.98]">
+<span class="material-symbols-outlined">check_circle</span>
+                    FINALIZAR Y ENVIAR RESUMEN
+                </button>
+</div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
+    <span id="toast-icon" class="material-symbols-outlined text-green-400">check_circle</span>
+    <span id="toast-message" class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]">Acción realizada</span>
+</div>
+
+<script>
+    let toastTimeout;
+    
+    function showToast(message, icon) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon');
+        
+        toastMessage.textContent = message;
+        toastIcon.textContent = icon || 'check_circle';
+
+        // Show toast
+        clearTimeout(toastTimeout);
+        toast.classList.remove('opacity-0', '-translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        // Hide toast
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', '-translate-y-4');
+        }, 3000);
+    }
+</script>
+
+<!-- Navigation Bar -->
+<div class="flex gap-2 border-t border-primary/10 bg-white dark:bg-slate-900 px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="../planificador_de_manadas/code.html">
+<span class="material-symbols-outlined">explore</span>
+<p class="text-[10px] font-medium leading-normal uppercase">Explorar</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="../seguimiento_de_paseo_gps/code.html">
+<span class="material-symbols-outlined fill-icon">navigation</span>
+<p class="text-[10px] font-medium leading-normal uppercase">Paseo</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="../perfil_del_perro_updated_style/code.html">
+<span class="material-symbols-outlined">pets</span>
+<p class="text-[10px] font-medium leading-normal uppercase">Mascotas</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="../dashboard_del_entrenador_updated_style/code.html">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-medium leading-normal uppercase">Perfil</p>
+</a>
+</div>
+</div>
+</body></html>

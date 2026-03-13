@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#050062",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#100f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full max-w-md mx-auto flex-col bg-white dark:bg-slate-900 overflow-x-hidden shadow-2xl">
+<!-- Top Navigation -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-100 dark:border-slate-800 sticky top-0 z-10">
+<button class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Añadir Perro</h2>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Photo Upload Area -->
+<div class="flex flex-col p-6">
+<div class="flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 px-6 py-10 transition-all hover:border-primary/50">
+<div class="bg-primary/10 p-4 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">add_a_photo</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold text-center">Foto de tu mascota</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal text-center">Sube una foto clara de frente</p>
+</div>
+<button class="mt-2 flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-semibold transition-opacity hover:opacity-90">
+<span class="truncate">Subir Foto</span>
+</button>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="px-6 space-y-5 pb-24">
+<!-- Name -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold px-1">Nombre</label>
+<input class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm" placeholder="Ej. Max, Luna, Toby" type="text"/>
+</div>
+<!-- Breed -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold px-1">Raza</label>
+<div class="relative">
+<select class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4 text-sm">
+<option disabled="" selected="" value="">Selecciona una raza</option>
+<option value="labrador">Labrador Retriever</option>
+<option value="pastor">Pastor Alemán</option>
+<option value="golden">Golden Retriever</option>
+<option value="bulldog">Bulldog Francés</option>
+<option value="poodle">Poodle</option>
+<option value="mixed">Mestizo / Otra</option>
+</select>
+</div>
+</div>
+<!-- Age and Weight Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold px-1">Edad</label>
+<div class="relative">
+<input class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm" placeholder="Ej. 2 años" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold px-1">Peso</label>
+<div class="relative">
+<input class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm" placeholder="Ej. 12 kg" type="text"/>
+</div>
+</div>
+</div>
+<!-- Gender Selection -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold px-1">Género</label>
+<div class="flex gap-4">
+<label class="flex-1 cursor-pointer group">
+<input class="peer hidden" name="gender" type="radio"/>
+<div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/20 transition-all">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 peer-checked:text-primary">Macho</span>
+</div>
+</label>
+<label class="flex-1 cursor-pointer group">
+<input class="peer hidden" name="gender" type="radio"/>
+<div class="flex items-center justify-center h-12 rounded-xl border border-slate-200 dark:border-slate-700 peer-checked:border-primary peer-checked:bg-primary/5 dark:peer-checked:bg-primary/20 transition-all">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 peer-checked:text-primary">Hembra</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Button -->
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+<button class="w-full bg-primary text-white h-14 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow active:scale-[0.98]">
+                Guardar Mascota
+            </button>
+</div>
+</div>
+</body></html>

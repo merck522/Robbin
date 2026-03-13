@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#050062",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#100f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: inherit;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full max-w-md mx-auto flex-col bg-white dark:bg-background-dark overflow-hidden shadow-2xl">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-background-dark p-4 border-b border-slate-100 dark:border-slate-800 justify-between">
+<div class="text-primary dark:text-slate-100 flex size-10 items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-primary dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Notificaciones</h2>
+<div class="flex size-10 items-center justify-end">
+<button class="text-primary dark:text-slate-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Notification List -->
+<div class="flex-1 overflow-y-auto">
+<div class="px-4 pt-6 pb-2">
+<h3 class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Recientes</h3>
+</div>
+<!-- Notification Item: Max -->
+<div class="flex items-start gap-4 bg-white dark:bg-background-dark px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-center justify-center rounded-xl bg-primary/10 dark:bg-primary/30 shrink-0 size-12 text-primary dark:text-primary-light">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">pets</span>
+</div>
+<div class="flex flex-col flex-1 gap-0.5">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-tight">Max completó su paseo</p>
+<span class="text-slate-400 text-xs font-medium">Ahora</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">El paseo de 30 min por el parque ha finalizado con éxito.</p>
+</div>
+</div>
+<!-- Notification Item: Payment -->
+<div class="flex items-start gap-4 bg-white dark:bg-background-dark px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-center justify-center rounded-xl bg-emerald-100 dark:bg-emerald-900/30 shrink-0 size-12 text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">payments</span>
+</div>
+<div class="flex flex-col flex-1 gap-0.5">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-tight">Nuevo pago recibido</p>
+<span class="text-slate-400 text-xs font-medium">2h</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">Se ha confirmado el pago de la sesión de entrenamiento semanal.</p>
+</div>
+</div>
+<!-- Notification Item: Cooper -->
+<div class="flex items-start gap-4 bg-white dark:bg-background-dark px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer border-b border-slate-50 dark:border-slate-800/50">
+<div class="flex items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-900/30 shrink-0 size-12 text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">draw</span>
+</div>
+<div class="flex flex-col flex-1 gap-0.5">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-tight">Firma pendiente para Cooper</p>
+<span class="text-slate-400 text-xs font-medium">5h</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">El formulario de consentimiento para Cooper requiere tu firma digital.</p>
+<div class="mt-2">
+<button class="bg-primary text-white text-xs font-bold py-2 px-4 rounded-lg">Firmar Ahora</button>
+</div>
+</div>
+</div>
+<div class="px-4 pt-8 pb-2">
+<h3 class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Ayer</h3>
+</div>
+<!-- Notification Item: Yesterday 1 -->
+<div class="flex items-start gap-4 bg-white dark:bg-background-dark px-4 py-4 opacity-75">
+<div class="flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 shrink-0 size-12 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<div class="flex flex-col flex-1 gap-0.5">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-tight">Cita confirmada</p>
+<span class="text-slate-400 text-xs font-medium">Ayer</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-normal">Tu sesión con Luna para mañana a las 10:00 AM ha sido confirmada.</p>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="flex gap-2 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-background-dark px-4 pb-6 pt-3">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Inicio</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">school</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Entrenar</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-slate-100" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">notifications</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Avisos</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Perfil</p>
+</a>
+</div>
+</div>
+</body></html>

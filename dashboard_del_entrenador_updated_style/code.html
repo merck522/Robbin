@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<title>Entrenador Principal - Dashboard</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark">
+<header class="flex items-center justify-between p-4 bg-white dark:bg-background-dark sticky top-0 z-10 border-b border-primary/5 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="Profile picture of a professional dog trainer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3tbAXOkNA8C3KawEve3ZTUAW5mBe8Vxg04wGQMrw_8P6e5oQMmpUJK-xQecgruy_9w1Hb7gYFiuIKFOO4HVf983kAodFhHMX0pkKBaECPk6-Xb_2FetIr_q-pwawcwxDbewT7GcXR1AJcp0n1kIqlyxL41mmnquiLQfGUdi30RTwU7Q0Vtjc_FTr7avZ-g6Z0aMPW7MTvyxgPPZ36g6qMUURQ7gJkYtim2InoSKUDZq8TquNTdw-Ty6VKWHjCP2W3X1BDkoNNrTHz"/>
+</div>
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">¡Hola!</p>
+<h1 class="text-lg font-bold leading-tight">Entrenador Principal</h1>
+</div>
+</div>
+<button class="relative p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-200">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2">
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</button>
+</header>
+<main class="flex-1 pb-24">
+<section class="px-4 pt-6">
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-xl font-bold tracking-tight">Acciones Rápidas</h2>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<button onclick="showToast('Añadir Perro', 'add_circle')" class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+</div>
+<span class="text-[10px] font-bold text-center leading-tight uppercase tracking-wider">Añadir Perro</span>
+</button>
+<button onclick="showToast('Nuevo Doc', 'description')" class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="text-[10px] font-bold text-center leading-tight uppercase tracking-wider">Nuevo Doc</span>
+</button>
+<button onclick="showToast('Registrar Actividad', 'history_edu')" class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<span class="text-[10px] font-bold text-center leading-tight uppercase tracking-wider">Registrar</span>
+</button>
+</div>
+</section>
+<section class="px-4 pt-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold tracking-tight">Resumen Diario</h2>
+<span class="text-sm font-medium text-primary">Hoy, 24 Mayo</span>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-3">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                En 15 minutos
+                            </div>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Sesión con Toby</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">10:00 AM - Parque Central</p>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary/90 transition-all">
+                            Ver detalles
+                        </button>
+</div>
+<div class="w-32 bg-center bg-no-repeat aspect-square bg-cover rounded-lg" data-alt="A playful golden retriever puppy in a park" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAKbZADSI0Z5HxbX84jPlRowBd_coxi3Zikb_Qh2pDE3am1jOgb-GXhsWs_0Mfol4JqGPhRXAoplIVC6GWybpk6l2Ho80xoE9Xnd_VewLwbVPVbIRuo2unENbCfzy_UqxUukbvBV0kTtyEpZEVN1jZiwEHP_8Pn-cX6dkeqR-KVgbCO_8kRFYFovr7CBtHZHrsre90mlp7nfHeApzMbL8oM7Y9tM-lQFgPE3z3o2N24MwxJkMpPl9Z-zlUEiAqVLF6USAEyrVDcXLJI");'></div>
+</div>
+</section>
+<section class="px-4 pt-8">
+<h2 class="text-xl font-bold tracking-tight mb-4">Alertas Urgentes</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-red-700 dark:text-red-300">Luna: Reactividad detectada</p>
+<p class="text-xs text-red-600 dark:text-red-400/80">Incidente reportado en el paseo de mañana.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 pt-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold tracking-tight">Clientes Activos</h2>
+<button class="text-sm font-bold text-primary">Ver todos</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small French Bulldog profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNjDbetg8qwUR9VALAoHg77aVrRhiCJD98L5Lz10-_4mVy0jZHCoRZWvEkGs1VZLbxobwjY6UuSLXPIbSZf8Uh-MIiCzdgXu9LRCwK0GS3Oai7t2n50TUVV-DXGOj2ptu1oraDKcoCM5WYC4fCWr7OIAMAeEeeFR5B2jYNwVOks83xnR4nOsKV0A7go-vwLnYVA6scfMoZ0QHsoUkFiHhHXb8sUeGyHphZ9M2cjygKMggfBB5QhiO58x1sXbpfxgedYh8BG_AH7iR6"/>
+</div>
+<div>
+<h3 class="text-sm font-bold">Max &amp; Roberto</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Bulldog Francés • Nivel 2</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a Border Collie" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGT_waihVl03Gbca2Egovt5hfBc4ZmkVsu2HjS8GKJ_uPWHbsAWJ1uLrO7fN-c577BFZfDmQhrv8IH_rHk5BR__hW18wuSTxlm8k0Vqq1_bKax4u5ZnMeVnmSRV1y01PiB7QUmR9ftv3IOf6GP5zSdtqmMugULvpqhnYG4kPqjeMkMlKlSVzrdk9oNYyhRlw1Oum8FP4AFw0KgXZZwfc6kIbYZaTGg3PnaeE8uP_RFcbI27eihrU0wbH6T8VopG94v7GtJFc47HV6N"/>
+</div>
+<div>
+<h3 class="text-sm font-bold">Bella &amp; Ana</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Border Collie • Nivel 4</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="German Shepherd standing alert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPF5BKl-O5xWiqWLg-axp0q463eptmlrOhQcDwjHvIsAJPy4FqLle8jjYYLE-JrtS-2pGgsFrmRoJrN6rLqknYQb_l6Gtswvikmf_eFyVUDNTFAW07yHYJeILO4ENLMsqjMm879oDzTLMfjiR6FJLaaIdPF0hY56tsSqsLcD1Ng9e2Kptwu4vJ5xTkbGoEBxN9BNzEa9iBvB5ZrE7V-htYlAxxURmE-k0H77jHqp-a83yYOwyDyvQbZnZ-TYbg3RjR5usJHQY7XUXZ"/>
+</div>
+<div>
+<h3 class="text-sm font-bold">Rocky &amp; Carlos</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">Pastor Alemán • Nivel 1</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
+    <span id="toast-icon" class="material-symbols-outlined text-green-400">check_circle</span>
+    <span id="toast-message" class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]">Acción realizada</span>
+</div>
+
+<script>
+    let toastTimeout;
+    
+    function showToast(message, icon) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon');
+        
+        toastMessage.textContent = message;
+        toastIcon.textContent = icon || 'check_circle';
+
+        // Show toast
+        clearTimeout(toastTimeout);
+        toast.classList.remove('opacity-0', '-translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        // Hide toast
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', '-translate-y-4');
+        }, 3000);
+    }
+</script>
+
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-4 pb-6 pt-3 z-50">
+<div class="flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-primary" href="../index.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">home</span>
+<span class="text-[10px] font-bold tracking-wider">Inicio</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="../perfil_del_perro_updated_style/code.html">
+<span class="material-symbols-outlined text-[26px]">group</span>
+<p class="text-[10px] font-bold leading-normal uppercase tracking-wider">Clientes</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="../planificador_de_manadas/code.html">
+<span class="material-symbols-outlined text-[26px]">calendar_today</span>
+<p class="text-[10px] font-bold leading-normal uppercase tracking-wider">Calendario</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="../index.html">
+<span class="material-symbols-outlined text-[26px]">settings</span>
+<p class="text-[10px] font-bold leading-normal uppercase tracking-wider">Ajustes</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>
