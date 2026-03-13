@@ -208,23 +208,21 @@
 </div>
 <!-- Sticky Footer Actions -->
 <div class="fixed bottom-16 left-0 right-0 max-w-md mx-auto p-4 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md flex gap-3 border-t border-slate-100 dark:border-slate-800">
-<button onclick=\"window.open('../sample_document.pdf', '_blank')\" class="flex-1 flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold transition-all active:scale-95">
+<button '_blank')\"="" class="flex-1 flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-3 rounded-xl font-bold transition-all active:scale-95" onclick="\&quot;window.open('../sample_document.pdf',">
 <span class="material-symbols-outlined">picture_as_pdf</span>
                 Descargar PDF
             </button>
-<button onclick="showToast('Opciones de compartición abiertas', 'share')" class="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/20 transition-all active:scale-95" style="background-color: #050062; box-shadow: 0 10px 15px -3px rgba(5, 0, 98, 0.3);">
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/20 transition-all active:scale-95" onclick="showToast('Opciones de compartición abiertas', 'share')" style="background-color: #050062; box-shadow: 0 10px 15px -3px rgba(5, 0, 98, 0.3);">
 <span class="material-symbols-outlined">share</span>
                 Compartir
             </button>
 </div>
 </div>
-
 <!-- Toast Notification -->
-<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
-    <span id="toast-icon" class="material-symbols-outlined text-green-400">check_circle</span>
-    <span id="toast-message" class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]">Acción realizada</span>
+<div class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast">
+<span class="material-symbols-outlined text-green-400" id="toast-icon">check_circle</span>
+<span class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]" id="toast-message">Acción realizada</span>
 </div>
-
 <script>
     let toastTimeout;
     
@@ -248,27 +246,24 @@
         }, 3000);
     }
 </script>
-
 <!-- Navigation Bar -->
-
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
 <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../portal_del_due_o_updated_style/code.html">
-    <span class="material-symbols-outlined text-[24px]">home</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
-</a>
-<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../planificador_de_manadas/code.html">
-    <span class="material-symbols-outlined text-[24px]">track_changes</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">track_changes</span>
-</a>
-<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../selector.html">
-    <span class="material-symbols-outlined text-[24px]">bar_chart</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Reportes</span>
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
 </a>
 <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../perfil_del_perro_updated_style/code.html">
-    <span class="material-symbols-outlined text-[24px]">person</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Perfil</span>
+<span class="material-symbols-outlined text-[24px]">pets</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Mascotas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../documentos_legales_updated_style/code.html">
+<span class="material-symbols-outlined text-[24px]">description</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Docs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../registro_de_actividad_navy_theme/code.html">
+<span class="material-symbols-outlined text-[24px]">ecg_heart</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Salud</span>
 </a>
 </nav>
 
-</div>
 </body></html>

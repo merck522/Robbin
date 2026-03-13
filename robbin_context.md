@@ -91,5 +91,17 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - **Onboarding (`onboarding_y_consentimiento_legal`)**: Formatted the legal PDF flow to explicitly capture matching schema fields, inserting sections for Medical Ceiling (max emergency spend limits), Behavioral Quirks (reactivity, prey drive, bite history), and Home Access details.
   - Committed and pushed all updates to GitHub.
 
+### Phase 9: Role-Based Navigation Standardization
+- **Goal**: Lock in the bottom `<nav>` bar across all dashboard screens based strictly on the 3-Tier user role.
+- **Actions**:
+  - Audited 13 distinct HTML screens and categorized them into Admin, Trainer, or Client groups.
+  - Defined 3 specific navigation templates using the unified HTML/Tailwind styling from Phase 7.
+    - **Owner/Admin Flow**: Home, Trainers, Add (FAB), Dogs, Analytics.
+    - **Trainer/Walker Flow**: Home, Clients, Calendar, Active Ride.
+    - **Client Flow**: Home, Dogs, Legal Docs, Health/Activity Logs.
+  - Ran a `beautifulsoup4` python script to programmatically swap the hardcoded HTML `<nav>` block in all 13 screens with the precise Role Template.
+  - Generated dynamic state formatting so that the active page receives `text-primary` while inactive icons inherit `text-slate-400`.
+  - Pushed UI and file updates to GitHub.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*

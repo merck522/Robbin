@@ -19,7 +19,7 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  </head>
+</head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
 <div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark">
 <header class="flex items-center justify-between p-4 bg-white dark:bg-background-dark sticky top-0 z-10 border-b border-primary/5 shadow-sm">
@@ -45,19 +45,19 @@
 <h2 class="text-xl font-bold tracking-tight">Acciones Rápidas</h2>
 </div>
 <div class="grid grid-cols-3 gap-3">
-<button onclick="showToast('Añadir Perro', 'add_circle')" class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform">
+<button class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform" onclick="showToast('Añadir Perro', 'add_circle')">
 <div class="p-2 bg-primary/10 rounded-lg text-primary">
 <span class="material-symbols-outlined">add_circle</span>
 </div>
 <span class="text-[10px] font-bold text-center leading-tight uppercase tracking-wider">Añadir Perro</span>
 </button>
-<button onclick="showToast('Nuevo Doc', 'description')" class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform">
+<button class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform" onclick="showToast('Nuevo Doc', 'description')">
 <div class="p-2 bg-primary/10 rounded-lg text-primary">
 <span class="material-symbols-outlined">description</span>
 </div>
 <span class="text-[10px] font-bold text-center leading-tight uppercase tracking-wider">Nuevo Doc</span>
 </button>
-<button onclick="showToast('Registrar Actividad', 'history_edu')" class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform">
+<button class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/5 active:scale-95 transition-transform" onclick="showToast('Registrar Actividad', 'history_edu')">
 <div class="p-2 bg-primary/10 rounded-lg text-primary">
 <span class="material-symbols-outlined">history_edu</span>
 </div>
@@ -146,13 +146,11 @@
 </div>
 </section>
 </main>
-
 <!-- Toast Notification -->
-<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
-    <span id="toast-icon" class="material-symbols-outlined text-green-400">check_circle</span>
-    <span id="toast-message" class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]">Acción realizada</span>
+<div class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast">
+<span class="material-symbols-outlined text-green-400" id="toast-icon">check_circle</span>
+<span class="text-sm font-semibold truncate max-w-[200px] sm:max-w-[300px]" id="toast-message">Acción realizada</span>
 </div>
-
 <script>
     let toastTimeout;
     
@@ -176,26 +174,23 @@
         }, 3000);
     }
 </script>
-
-
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
-<a class="flex flex-col items-center gap-1 text-primary w-16" href="../selector.html">
-    <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">home</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
+<a class="flex flex-col items-center gap-1 text-primary w-16" href="../dashboard_del_entrenador_updated_style/code.html">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">home</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../perfil_del_perro_updated_style/code.html">
-    <span class="material-symbols-outlined text-[24px]">group</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../lista_clientes/code.html">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
 </a>
 <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../planificador_de_manadas/code.html">
-    <span class="material-symbols-outlined text-[24px]">calendar_today</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../selector.html">
-    <span class="material-symbols-outlined text-[24px]">settings</span>
-    <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Ajustes</span>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../seguimiento_de_paseo_gps/code.html">
+<span class="material-symbols-outlined text-[24px]">navigation</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo Activo</span>
 </a>
 </nav>
-
 </div>
 </body></html>
