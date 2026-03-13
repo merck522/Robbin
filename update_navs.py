@@ -37,7 +37,9 @@ def update_nav(html_file, role_template):
 
 # --- Templates ---
 
-# TRAINER Navigation (4 items)
+# TRAINER/WALKER share the same 4 nav items: Inicio, Clientes, Calendario, Paseo
+# Only difference: "Inicio" links to trainer dashboard vs walker dashboard.
+
 trainer_template = """
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
     <a href="../dashboard_del_entrenador_updated_style/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
@@ -52,31 +54,30 @@ trainer_template = """
         <span class="material-symbols-outlined text-[24px]">calendar_today</span>
         <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
     </a>
-    <a href="../crear_nuevo_contrato/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">description</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Contrato</span>
+    <a href="../seguimiento_de_paseo_gps/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+        <span class="material-symbols-outlined text-[24px]">navigation</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo</span>
     </a>
 </nav>
 """
 
-# WALKER Navigation (4 items)
 walker_template = """
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
     <a href="../dashboard_del_paseador/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">home</span>
         <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
     </a>
+    <a href="../lista_clientes/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+        <span class="material-symbols-outlined text-[24px]">group</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
+    </a>
     <a href="../planificador_de_manadas/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">calendar_today</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Horario</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
     </a>
     <a href="../seguimiento_de_paseo_gps/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">navigation</span>
         <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo</span>
-    </a>
-    <a href="../lista_clientes/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">group</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
     </a>
 </nav>
 """
@@ -105,17 +106,19 @@ client_template = """
 
 # --- Mapping: Screen Directory -> Nav Template ---
 mapping = {
-    # Trainer Tier
+    # Trainer Tier (Inicio links to Trainer Dashboard)
     'dashboard_del_entrenador_updated_style': trainer_template,
     'inicio_entrenador': trainer_template,
-    'lista_clientes': trainer_template,
     'crear_nuevo_contrato': trainer_template,
-    'planificador_de_manadas': trainer_template,
     
-    # Walker Tier
+    # Walker Tier (Inicio links to Walker Dashboard)
     'dashboard_del_paseador': walker_template,
-    'seguimiento_de_paseo_gps': walker_template,
     'contrato_paseo': walker_template,
+
+    # Shared screens (use trainer template — Inicio links to Trainer Dashboard)
+    'lista_clientes': trainer_template,
+    'planificador_de_manadas': trainer_template,
+    'seguimiento_de_paseo_gps': walker_template,
     
     # Client Tier
     'portal_del_due_o_updated_style': client_template,
