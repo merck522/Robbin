@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pet Training App - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center">
+<div class="relative flex h-full min-h-screen w-full max-w-[430px] flex-col bg-white dark:bg-background-dark shadow-2xl overflow-hidden md:rounded-xl">
+<!-- Header / Close Icon -->
+<div class="flex items-center bg-transparent p-4 justify-between">
+<div onclick="window.location.href='../splash/code.html'" class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Login</h2>
+</div>
+<!-- Illustration Hero -->
+<div class="px-6 py-4 flex justify-center">
+<div class="w-full max-w-[280px] aspect-square rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center relative" data-alt="Cute happy golden retriever dog playing with a training ball" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcjKz8nmpUkmaeWoVZAXa4vB-3n8fEEPyT_SlIKbkmV9D1_lHRYFWr4oz3Ol3-VEnAHUfMXlnyQFoVp5Zq0on-NSXp6Y1Amio_C2urN9UbYdDeMBGiQj4xWvbLKjAkAz9NLXP4J5lbsgee25EMu2UQFg4Bq_jhzun_FZHx0Or30LgKQDJEG91O6jDepZ0StxvFlA9xEk2Ri5TOKehj63csHBxOmjCp0Tps3QCTZ_Tg8xj5UMylfjJtQZ3Wc4bx0ge4EkwU_QW7xmA'); background-size: cover; background-position: center;">
+<!-- Overlay for better contrast if needed -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+</div>
+</div>
+<!-- Welcome Text -->
+<div class="px-6 pt-4 text-center">
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold leading-tight mb-2">Welcome Back!</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">Ready to continue your pet's training journey today?</p>
+</div>
+<!-- Form Fields -->
+<div class="px-6 pt-8 space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold px-1">Email</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-12 pr-4 h-14 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary focus:ring-0 rounded-full text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all duration-200" placeholder="example@email.com" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Password</label>
+<button class="text-primary text-sm font-semibold hover:underline">Forgot?</button>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-12 h-14 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary focus:ring-0 rounded-full text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all duration-200" placeholder="••••••••" type="password"/>
+<button class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">visibility</button>
+</div>
+</div>
+</div>
+<!-- Login Button -->
+<div class="px-6 pt-8">
+<button onclick="window.location.href='../selector.html'" class="w-full h-14 bg-primary hover:opacity-90 text-slate-900 font-bold text-lg rounded-full shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                Login
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Divider -->
+<div class="px-6 py-8 flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-slate-200 dark:bg-slate-800"></div>
+<span class="text-slate-400 text-sm font-medium">OR CONTINUE WITH</span>
+<div class="h-[1px] flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<!-- Social Buttons -->
+<div class="px-6 flex gap-4">
+<button class="flex-1 h-14 border-2 border-slate-100 dark:border-slate-800 rounded-full flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">Google</span>
+</button>
+<button class="flex-1 h-14 border-2 border-slate-100 dark:border-slate-800 rounded-full flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white" style="font-variation-settings: 'FILL' 1">ios</span>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">Apple</span>
+</button>
+</div>
+<!-- Footer -->
+<div class="mt-auto px-6 py-8 text-center">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                Don't have an account? 
+                <button onclick="window.location.href='../signup/code.html'" class="text-primary font-bold hover:underline ml-1">Join the pack</button>
+</p>
+</div>
+<!-- iOS Safe Area Spacer -->
+<div class="h-8 w-full"></div>
+</div>
+</body></html>

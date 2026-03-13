@@ -56,5 +56,15 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Converted unassigned tabs and settings to link to the master role selector as a fallback.
   - Automatically committed and pushed all updates to GitHub.
 
+### Phase 5: Authentication Flow
+- **Goal**: Introduce a Splash -> Login/SignUp sequence before entering the main Role Selector.
+- **Actions**:
+  - Downloaded the Splash, Login, and Sign-Up templates from the `Pawsitive Splash Screen` Stitch project.
+  - Renamed the existing `index.html` (Role Selector) to `selector.html`.
+  - Created a new redirecting `index.html` root file to immediately boot to `splash/code.html`.
+  - Wired up the Splash buttons to point to Login/Signup, and linked the successful Login/Signup forms to land on `selector.html`.
+  - Updated *all* fallback `<a href="../index.html">` breadcrumbs across the 18 main dashboard screens to redirect to `../selector.html`.
+  - Committed and pushed the new entry flow to GitHub.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*

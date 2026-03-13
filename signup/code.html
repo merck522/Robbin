@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#ed13e4", "background-light": "#f8f6f8", "background-dark": "#221021"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "1rem", lg: "2rem", xl: "3rem", full: "9999px"}}}};</script>
+<title>Sign Up - Pet Training App</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-[480px] mx-auto bg-white dark:bg-background-dark shadow-xl">
+<!-- Header Section -->
+<div class="flex items-center p-4 pt-6">
+<button onclick="window.location.href='../splash/code.html'" class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+</div>
+<!-- Hero Content -->
+<div class="px-6 pt-4 pb-2">
+<div class="flex items-center gap-2 mb-2">
+<div class="bg-primary/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">pets</span>
+</div>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-[36px] font-bold leading-tight tracking-[-0.02em]">
+                Join the Pack
+            </h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg font-medium leading-relaxed mt-2">
+                Start your journey to a happier, better-trained pup today.
+            </p>
+</div>
+<!-- Form Section -->
+<div class="flex flex-col gap-5 px-6 py-6">
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-bold px-1">Full Name</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-slate-400">person</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Enter your name" type="text"/>
+</div>
+</div>
+<!-- Email Address -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-bold px-1">Email Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-slate-400">mail</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="email@example.com" type="email"/>
+</div>
+</div>
+<!-- Create Password -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-bold px-1">Create Password</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-slate-400">lock</span>
+<input class="w-full h-14 pl-12 pr-12 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Min. 8 characters" type="password"/>
+<button class="absolute right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<button onclick="window.location.href='../selector.html'" class="w-full h-14 bg-primary text-slate-900 font-bold text-lg rounded-full shadow-lg shadow-primary/30 hover:brightness-105 active:scale-[0.98] transition-all mt-4">
+                Create Account
+            </button>
+<!-- Legal Disclaimer -->
+<p class="text-slate-400 dark:text-slate-500 text-xs text-center px-4 leading-relaxed">
+                By signing up, you agree to our 
+                <a class="text-slate-600 dark:text-slate-300 font-semibold underline" href="#">Terms of Service</a> 
+                and 
+                <a class="text-slate-600 dark:text-slate-300 font-semibold underline" href="#">Privacy Policy</a>.
+            </p>
+</div>
+<!-- Social Auth Divider -->
+<div class="flex items-center px-6 py-4">
+<div class="flex-1 h-px bg-slate-100 dark:bg-slate-800"></div>
+<span class="px-4 text-slate-400 text-sm font-medium">Or join with</span>
+<div class="flex-1 h-px bg-slate-100 dark:bg-slate-800"></div>
+</div>
+<!-- Social Buttons -->
+<div class="flex justify-center gap-4 px-6 pb-8">
+<button class="flex items-center justify-center size-14 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<svg class="w-6 h-6" viewbox="0 0 24 24">
+<path d="M12.48 10.92v3.28h7.84c-.24 1.84-.908 3.152-1.928 4.176-1.024 1.024-2.584 2.072-5.912 2.072-5.112 0-9.216-4.144-9.216-9.256s4.104-9.256 9.216-9.256c2.768 0 4.816 1.08 6.288 2.472l2.312-2.312C19.064 1.2 16.272 0 12.48 0 5.864 0 0 5.368 0 12s5.864 12 12.48 12c3.56 0 6.288-1.168 8.416-3.392 2.184-2.184 2.872-5.32 2.872-7.808 0-.632-.056-1.24-.16-1.88h-11.128z" fill="currentColor"></path>
+</svg>
+</button>
+<button class="flex items-center justify-center size-14 rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<svg class="w-6 h-6" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.98.95-2.05 1.78-3.32 1.78-1.25 0-1.68-.78-3.19-.78-1.52 0-2 .76-3.19.78-1.25.02-2.42-.93-3.41-1.78-2.02-1.73-3.56-4.89-3.56-7.85 0-2.95 1.55-6.11 3.56-7.85 1.02-.88 2.25-1.52 3.48-1.52 1.27 0 1.63.78 3.19.78 1.55 0 2.03-.78 3.22-.78 1.2 0 2.4.63 3.39 1.52.4.35.73.74 1.02 1.15-2.3.93-2.72 4.19-.34 5.39-.73 1.1-1.63 2.1-2.84 3.11zM11.95 5.56c.02-2.31 1.93-4.15 4.15-4.12.02 2.31-1.93 4.15-4.15 4.12z" fill="currentColor"></path>
+</svg>
+</button>
+</div>
+<!-- Sticky Footer -->
+<div class="mt-auto pb-10 px-6">
+<p class="text-center text-slate-500 dark:text-slate-400 font-medium">
+                Already have an account? 
+                <a class="text-primary font-bold ml-1" href="../login/code.html">Log In</a>
+</p>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+</div>
+</body></html>

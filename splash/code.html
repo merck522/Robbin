@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pawsitive - Pet Training App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark antialiased overflow-hidden">
+<!-- Main Splash Container -->
+<div class="relative flex h-screen w-full flex-col group/design-root">
+<!-- Background Image Container -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="Happy golden retriever dog training with owner outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvUqYu30kqc4FvUlpXFAeMm34VWRSTeP6R-GlRzNG6XFcAz8oyJlCJhDpwDKT6f-5JLqBOWdS4aAXlqbYTZuRBmTVq114D2SZiMYfGTWDLqXnkCoKkLQpX2r7Ex3ya3ng2Bf4EbJAltL2wUoNIIsTagzQFU5i_Xrs72asQ20sRmoV338-hIiBsKv_QX2mrXeS-XHb5VNlXeqmsMWUrbemcQAKYGtumPH539kxTQaUzmIo3GBw2R9xh7NQsMLxDyDKMBSBuxhdET_c");'>
+</div>
+<!-- Gradient Overlays for Readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-background-light dark:to-background-dark"></div>
+</div>
+<!-- Content Layout -->
+<div class="relative z-10 flex flex-col h-full justify-between p-6">
+<!-- iOS Style Status Bar Placeholder -->
+<div class="flex justify-between items-center w-full px-4 pt-2 text-white/90">
+<span class="text-sm font-bold">9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="material-symbols-outlined text-sm">battery_full</span>
+</div>
+</div>
+<!-- Brand Logo & Tagline -->
+<div class="flex flex-col items-center mt-12">
+<div class="bg-primary/20 backdrop-blur-md p-4 rounded-full mb-4 border border-white/20">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1">pets</span>
+</div>
+<h1 class="text-white tracking-tight text-5xl font-extrabold leading-tight text-center drop-shadow-md">
+                    Pawsitive
+                </h1>
+<div class="h-1 w-12 bg-primary rounded-full mt-2"></div>
+</div>
+<!-- Bottom Content Area -->
+<div class="safe-area-bottom flex flex-col gap-6">
+<div class="space-y-3">
+<h2 class="text-slate-900 dark:text-slate-100 text-3xl font-bold text-center leading-tight">
+                        Better Training,<br/><span class="text-primary">Happier Tails.</span>
+</h2>
+<p class="text-slate-600 dark:text-slate-400 text-base font-medium leading-relaxed px-8 text-center">
+                        The all-in-one companion for tracking growth, learning new tricks, and bonding with your best friend.
+                    </p>
+</div>
+<!-- CTA Buttons -->
+<div class="flex flex-col gap-3 w-full max-w-sm mx-auto">
+<button onclick="window.location.href='../signup/code.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-5 bg-primary text-slate-900 text-lg font-bold leading-normal tracking-wide shadow-lg shadow-primary/30 active:scale-95 transition-transform">
+<span class="truncate">Get Started</span>
+</button>
+<button onclick="window.location.href='../login/code.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-5 bg-primary/10 dark:bg-primary/5 text-primary text-base font-bold leading-normal border border-primary/20 backdrop-blur-sm active:scale-95 transition-transform">
+<span class="truncate">Sign In</span>
+</button>
+</div>
+<!-- Footer Accents -->
+<div class="flex justify-center items-center gap-2 pb-2">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-background-light bg-slate-200 overflow-hidden" data-alt="User avatar thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAENhJ0gTwSqTs0kWa19xGHmqWOaYo-6xAyt-byfSK4-Va0vF8iKmVi8M2QQDLfbK8fioLHfzNQ6Uihhxj3rJv-Ui52lOEUfQP-Q25ht53ezyT-4fkma4nyXrmlpsPEcKf4RE2tf-Rbo6YXMV3h1ne6tasyZb8Pyu1lTdVNkH5ZCX4-8iDjyo1r99u_NbpOxFjejyWVRbw4DnF9njdGjk6ce6bj-yWixurIOOdSLgZBcCA3Pue0qcr_lHMZUEfjwznYdf1z8i8Bbhw')"></div>
+<div class="w-8 h-8 rounded-full border-2 border-background-light bg-slate-200 overflow-hidden" data-alt="User avatar thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArBP7xWjsLvKqLu4aQVu_H_XQZirahwQytdRgCjJ1scfknMY7rHsiC8pSK6psnPrnJmrVLBY1Pc8yAoKM2FwfYKnhmwEW8PcKY3WlrQjWqK_n6D_e7gMHz9_Ag73kAXKuVC1GpFs8s2gQl-kg-yWBMS7OlEre0Jf2J3bFTGa0EuMSVoO8YjAR1xcrNyTcM17MEJ7a902lARs-WXuYJFwO6Cbu7EMkcJhvE6t5ySaI3gshDStjZBdZDaqrRJEnM5kqWXelViEmmA7w')"></div>
+<div class="w-8 h-8 rounded-full border-2 border-background-light bg-slate-200 overflow-hidden" data-alt="User avatar thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuXIgmhHKdp6tPDk2xlLEf4zJgfpe7hw94sz9Af5K9u4we8GJOkgncUsfEU1BepkwqHEXDdoe9zrfGHvWIzPm82TDpA2YbRE4GU2zzRkEhI0BIVQJIew1AArjk27VKo3f7xC8xR3YMzkOYgrhtusOKQeFziUMQE9vkn8U1WVLEQniuJDRjYtQnrAJNYenKXD_c-5cAIkDVxAIcpJZ02NmpFztH4IZjCs6YMBKm388o9rWYHlaPmk7869L8LMd29YgKXmDx85qylN4')"></div>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold">
+                        Joined by 50k+ dog owners
+                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Decorative Circles -->
+<div class="fixed top-[-10%] right-[-10%] w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="fixed bottom-[-5%] left-[-5%] w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+</body></html>
