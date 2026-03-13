@@ -43,7 +43,7 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
 - **Goal**: Maintain version control via GitHub and update context continuously.
 - **Actions**:
   - Initialized git and pushed all project files to `https://github.com/merck522/Robbin`.
-  - Set requirement to push all future changes to this repository and to update this file to maintain a continuous log of app state.
+  - **CRITICAL RULE**: Set requirement to *always* update this file (`robbin_context.md`) and automatically commit and push to GitHub (`git add . && git commit -m "..." && git push origin main`) after *any* changes or additions are made to the project.
 
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
