@@ -29,16 +29,17 @@
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
-<div class="relative flex h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark overflow-hidden">
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark">
 <!-- Header -->
-<div class="flex items-center bg-background-light dark:bg-background-dark p-4 justify-between border-b border-primary/10">
-<div class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer">
+<div class="sticky top-0 z-20 flex items-center bg-background-light dark:bg-background-dark p-4 justify-between border-b border-primary/10">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer" onclick="window.location.href='../dashboard_del_paseador/code.html'">
 <span class="material-symbols-outlined">arrow_back</span>
 </div>
-<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Seguimiento de Paseo</h2>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Seguimiento de Paseo</h2>
+<div class="w-10"></div>
 </div>
 <!-- Live Map Area -->
-<div class="relative flex-1 w-full bg-slate-200 dark:bg-slate-800">
+<div class="relative w-full bg-slate-200 dark:bg-slate-800" style="min-height: 280px;">
 <!-- Map Placeholder -->
 <div class="absolute inset-0 bg-center bg-no-repeat bg-cover" data-alt="Mapa detallado de ruta de GPS en un parque urbano" data-location="Madrid, Spain" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRHpBT0zE-tiGQvc5woVuczPvkd3sHp3CJkFjkv25lju3i8qiJi3bRHCU0sNuamLTIqd8DC6NsZW5BoikeW6u9aqZipzldVz6hNoBLDnn8kk2zFNV31mRjtxpcfw8tD71c4Q1q6aciBKZjow1mTDBJ8I6z2JH5eqT-NxsOQVZd_KOZDKVw4MO2eS62rk8yLNrhIow_WEXASu1aRmkIeHJmz0fL_ODkYP0NfkB5inct3SaJtunljqS0TFpK4pgztZzr0PLZ5kVQw9tR");'>
 </div>
