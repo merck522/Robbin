@@ -66,5 +66,12 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Updated *all* fallback `<a href="../index.html">` breadcrumbs across the 18 main dashboard screens to redirect to `../selector.html`.
   - Committed and pushed the new entry flow to GitHub.
 
+### Phase 6: Authentication Style Matching
+- **Goal**: Standardize the primary colors of the Authentication screens to match the existing Stitch theme.
+- **Actions**:
+  - Replaced the bright green/pink `#13ec80`/`#ed13e4` Tailwind configurations with Navy Blue `#050062` across `splash`, `login`, and `signup`.
+  - Corrected button text contrast by swapping `text-slate-900` to `text-white`.
+  - Pushed styling updates to GitHub.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
