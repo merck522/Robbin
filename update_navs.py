@@ -110,12 +110,12 @@ mapping = {
     'inicio_entrenador': trainer_template,
     'lista_clientes': trainer_template,
     'crear_nuevo_contrato': trainer_template,
+    'planificador_de_manadas': trainer_template,
     
     # Walker Tier
     'dashboard_del_paseador': walker_template,
     'seguimiento_de_paseo_gps': walker_template,
     'contrato_paseo': walker_template,
-    'planificador_de_manadas': walker_template,
     
     # Client Tier
     'portal_del_due_o_updated_style': client_template,
