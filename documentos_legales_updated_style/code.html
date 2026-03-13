@@ -43,13 +43,13 @@
 <!-- Navigation Tabs -->
 <div class="bg-background-light dark:bg-background-dark">
 <div class="flex border-b border-primary/10 px-4 gap-8">
-<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-4" href="#">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-4" href="../index.html">
 <p class="text-sm font-bold tracking-wide">Editor</p>
 </a>
-<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="../index.html">
 <p class="text-sm font-bold tracking-wide">Firmas</p>
 </a>
-<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="../index.html">
 <p class="text-sm font-bold tracking-wide">Historial</p>
 </a>
 </div>
@@ -131,7 +131,7 @@
 </div>
 <!-- Floating Action Button / Bottom Bar Area -->
 <div class="fixed bottom-20 left-4 right-4 flex flex-col gap-3">
-<button onclick="showToast('Enviando documento para firma...', 'send')" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<button onclick=\"window.location.href='mailto:owner@example.com?subject=Documentos%20Stitch'\" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
 <span class="material-symbols-outlined">send</span>
                 Enviar para Firma
             </button>

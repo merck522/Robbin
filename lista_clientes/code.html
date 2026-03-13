@@ -37,8 +37,7 @@
 <header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pt-6 pb-2">
 <div class="flex items-center justify-between mb-4">
 <h1 class="text-2xl font-bold tracking-tight text-primary dark:text-slate-100">Clients</h1>
-<button class="flex items-center justify-center size-10 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-primary/10">
-<span class="material-symbols-outlined text-primary dark:text-slate-300">notifications</span>
+<button class="flex items-center justify-center size-10 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-primary/10" onclick="window.location.href='../notificaciones/code.html'" style="cursor: pointer;"><span class="material-symbols-outlined text-primary dark:text-slate-300">notifications</span>
 </button>
 </div>
 <div class="flex gap-3 mb-2">
@@ -70,10 +69,10 @@
 </div>
 </div>
 <div class="flex gap-2">
-<button onclick="showToast('Calling Juan Pérez...', 'call')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<button onclick=\"window.location.href='tel:+1234567890'\" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
 <span class="material-symbols-outlined text-xl">call</span>
 </button>
-<button onclick="showToast('Messaging Juan Pérez...', 'chat_bubble')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<button onclick=\"window.open('https://wa.me/1234567890?text=Hola,%20te%20escribo%20desde%20Stitch', '_blank')\" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
 <span class="material-symbols-outlined text-xl">chat_bubble</span>
 </button>
 </div>
@@ -108,10 +107,10 @@
 </div>
 </div>
 <div class="flex gap-2">
-<button onclick="showToast('Calling Sarah Jenkins...', 'call')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<button onclick=\"window.location.href='tel:+1234567890'\" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
 <span class="material-symbols-outlined text-xl">call</span>
 </button>
-<button onclick="showToast('Messaging Sarah Jenkins...', 'chat_bubble')" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
+<button onclick=\"window.open('https://wa.me/1234567890?text=Hola,%20te%20escribo%20desde%20Stitch', '_blank')\" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform">
 <span class="material-symbols-outlined text-xl">chat_bubble</span>
 </button>
 </div>
@@ -203,7 +202,7 @@
 <span class="material-symbols-outlined text-3xl">add</span>
 </button>
 <nav class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-primary/10 px-6 py-3 flex justify-between items-center z-40">
-<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<a class="flex flex-col items-center gap-1 text-primary" href="../index.html">
 <span class="material-symbols-outlined fill-1">group</span>
 <span class="text-[10px] font-bold">Clients</span>
 </a>
@@ -215,7 +214,7 @@
 <span class="material-symbols-outlined">pets</span>
 <span class="text-[10px] font-medium">Dog Profile</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" onclick="showToast('Open Settings', 'settings')" href="#">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" onclick="showToast('Open Settings', 'settings')" href="../index.html">
 <span class="material-symbols-outlined">settings</span>
 <span class="text-[10px] font-medium">Settings</span>
 </a>
