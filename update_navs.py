@@ -1,36 +1,27 @@
 import os
-import glob
 from bs4 import BeautifulSoup
 
 def update_nav(html_file, role_template):
     with open(html_file, 'r', encoding='utf-8') as f:
         soup = BeautifulSoup(f.read(), 'html.parser')
 
-    # Find existing bottom navigation (could be a nav or div acting as a nav)
-    # The previous standardization phase wrapped everything in <nav class="fixed bottom-0 ...">
     nav_element = soup.find('nav', class_=lambda c: c and 'bottom-0' in c)
     if not nav_element:
-        # Fallback in case a file nested navigation differently
         nav_element = soup.find(lambda tag: tag.name in ['nav', 'div'] and tag.get('class') and 'bottom-0' in tag.get('class'))
 
     if nav_element:
-        # Replace the entire element with the parsed role template
         template_soup = BeautifulSoup(role_template, 'html.parser')
         new_nav = template_soup.find('nav')
-        
-        # Inject active styles if the URL matches
-        current_filename = os.path.basename(os.path.dirname(html_file)) # e.g. 'owner_dashboard'
+        current_filename = os.path.basename(os.path.dirname(html_file))
         
         for a_tag in new_nav.find_all('a'):
             href = a_tag.get('href', '')
             if current_filename in href:
-                # Set Active State classes
                 a_tag['class'] = "flex flex-col items-center gap-1 text-primary w-16"
                 icon_span = a_tag.find('span', class_='material-symbols-outlined')
                 if icon_span:
                     icon_span['style'] = "font-variation-settings: 'FILL' 1"
             else:
-                # Ensure Inactive State classes
                 a_tag['class'] = "flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16"
                 icon_span = a_tag.find('span', class_='material-symbols-outlined')
                 if icon_span and icon_span.has_attr('style'):
@@ -46,32 +37,7 @@ def update_nav(html_file, role_template):
 
 # --- Templates ---
 
-owner_template = """
-<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
-    <a href="../owner_dashboard/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">home</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
-    </a>
-    <a href="../inicio_entrenador/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">badge</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Entrenadores</span>
-    </a>
-    <!-- Central Action Button Placeholder (No href) -->
-    <a href="#" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">add</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Nueva</span>
-    </a>
-    <a href="../hoja_de_vida_canina/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">pets</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Perros</span>
-    </a>
-    <a href="../reporte_detallado_navy_theme/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">bar_chart</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Analítica</span>
-    </a>
-</nav>
-"""
-
+# TRAINER Navigation (4 items)
 trainer_template = """
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
     <a href="../dashboard_del_entrenador_updated_style/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
@@ -86,13 +52,36 @@ trainer_template = """
         <span class="material-symbols-outlined text-[24px]">calendar_today</span>
         <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
     </a>
-    <a href="../seguimiento_de_paseo_gps/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
-        <span class="material-symbols-outlined text-[24px]">navigation</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo Activo</span>
+    <a href="../crear_nuevo_contrato/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+        <span class="material-symbols-outlined text-[24px]">description</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Contrato</span>
     </a>
 </nav>
 """
 
+# WALKER Navigation (4 items)
+walker_template = """
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
+    <a href="../dashboard_del_paseador/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+        <span class="material-symbols-outlined text-[24px]">home</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
+    </a>
+    <a href="../planificador_de_manadas/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+        <span class="material-symbols-outlined text-[24px]">calendar_today</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Horario</span>
+    </a>
+    <a href="../seguimiento_de_paseo_gps/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+        <span class="material-symbols-outlined text-[24px]">navigation</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo</span>
+    </a>
+    <a href="../lista_clientes/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+        <span class="material-symbols-outlined text-[24px]">group</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
+    </a>
+</nav>
+"""
+
+# CLIENT Navigation (4 items)
 client_template = """
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
     <a href="../portal_del_due_o_updated_style/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
@@ -114,28 +103,28 @@ client_template = """
 </nav>
 """
 
-# --- Mapping Roles to Directories ---
-
+# --- Mapping: Screen Directory -> Nav Template ---
 mapping = {
-    # 1. Admin/Owner Tier
-    'owner_dashboard': owner_template,
-    
-    # 2. Trainer/Walker Tier
+    # Trainer Tier
     'dashboard_del_entrenador_updated_style': trainer_template,
-    'inicio_entrenador': trainer_template, # Belongs to trainer/admin crossover
+    'inicio_entrenador': trainer_template,
     'lista_clientes': trainer_template,
-    'planificador_de_manadas': trainer_template,
-    'seguimiento_de_paseo_gps': trainer_template,
     'crear_nuevo_contrato': trainer_template,
     
-    # 3. Client Tier
+    # Walker Tier
+    'dashboard_del_paseador': walker_template,
+    'seguimiento_de_paseo_gps': walker_template,
+    'contrato_paseo': walker_template,
+    'planificador_de_manadas': walker_template,
+    
+    # Client Tier
     'portal_del_due_o_updated_style': client_template,
     'perfil_del_perro_updated_style': client_template,
-    'hoja_de_vida_canina': client_template, # Shared dog profile
+    'hoja_de_vida_canina': client_template,
     'documentos_legales_updated_style': client_template,
     'registro_de_actividad_navy_theme': client_template,
     'reporte_detallado_navy_theme': client_template,
-    'actualizaciones_r_pidas_sem_foro': client_template
+    'actualizaciones_r_pidas_sem_foro': client_template,
 }
 
 if __name__ == "__main__":

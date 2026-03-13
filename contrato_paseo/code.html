@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch - Contrato de Paseo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23" },
+                    fontFamily: { display: "Inter" },
+                    borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }
+                }
+            }
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; min-height: max(884px, 100dvh); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-slate-950 shadow-xl">
+<!-- Header -->
+<header class="sticky top-0 z-20 flex items-center bg-white dark:bg-slate-950 p-4 border-b border-primary/10 justify-between">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-primary/10 transition-colors" onclick="window.location.href='../dashboard_del_paseador/code.html'">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">Contrato de Paseo</h2>
+<div class="flex w-10 items-center justify-end"></div>
+</header>
+<!-- Main Form -->
+<main class="flex-1 p-4 pb-36 overflow-y-auto no-scrollbar">
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Define los detalles del servicio de paseo. El cliente completará sus datos médicos y de acceso al hogar.</p>
+<!-- Section 1: Basics -->
+<section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-primary/10 rounded-lg text-primary"><span class="material-symbols-outlined text-[20px]">person</span></div>
+<h3 class="font-bold">Información del Cliente</h3>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-semibold text-slate-500 mb-1">Nombre del Dueño</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Ej. Ana García" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 mb-1">Nombre del Perro</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Ej. Bella" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 mb-1">Tipo de Servicio</label>
+<div class="relative">
+<select class="w-full appearance-none bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 font-medium">
+<option>Paseo Individual (Solo Walk)</option>
+<option>Pack Walk (Grupo)</option>
+<option>Visita Express (Drop-In)</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-500">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Scheduling -->
+<section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-blue-100 rounded-lg text-blue-600"><span class="material-symbols-outlined text-[20px]">calendar_today</span></div>
+<h3 class="font-bold">Horario y Frecuencia</h3>
+</div>
+<div class="space-y-5">
+<!-- Frequency -->
+<div>
+<label class="block text-xs font-semibold text-slate-500 mb-2">Frecuencia</label>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+<button class="freq-btn flex-1 text-xs font-bold py-2.5 rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm transition-all" onclick="selectFreq(this)">Diario</button>
+<button class="freq-btn flex-1 text-xs font-bold py-2.5 rounded-lg text-slate-500 transition-all" onclick="selectFreq(this)">3x/Sem</button>
+<button class="freq-btn flex-1 text-xs font-bold py-2.5 rounded-lg text-slate-500 transition-all" onclick="selectFreq(this)">Fines de Sem</button>
+</div>
+</div>
+<!-- Time Slot -->
+<div>
+<label class="block text-xs font-semibold text-slate-500 mb-1">Horario Preferido</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-bold text-primary focus:outline-none focus:ring-2 focus:ring-primary/50" type="time" value="09:30"/>
+</div>
+<!-- Duration -->
+<div class="flex items-center justify-between border border-slate-200 dark:border-slate-700 rounded-xl p-3 bg-slate-50 dark:bg-slate-800">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Duración (min)</span>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 active:scale-95 transition-transform" onclick="updateDuration(-15)"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="text-lg font-bold w-6 text-center" id="duration-count">45</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary active:scale-95 transition-transform" onclick="updateDuration(15)"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Billing -->
+<section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-green-100 rounded-lg text-green-600"><span class="material-symbols-outlined text-[20px]">payments</span></div>
+<h3 class="font-bold">Tarifa y Facturación</h3>
+</div>
+<div class="space-y-5">
+<div>
+<label class="block text-xs font-semibold text-slate-500 mb-1">Tarifa por Paseo</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 font-bold text-slate-400">$</span>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-4 py-3 text-lg font-bold text-primary focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-500 mb-2">Ciclo de Facturación</label>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+<button class="billing-btn flex-1 text-xs font-bold py-2.5 rounded-lg bg-white dark:bg-slate-700 text-primary shadow-sm transition-all" onclick="selectBilling(this)">Semanal</button>
+<button class="billing-btn flex-1 text-xs font-bold py-2.5 rounded-lg text-slate-500 transition-all" onclick="selectBilling(this)">Quincenal</button>
+<button class="billing-btn flex-1 text-xs font-bold py-2.5 rounded-lg text-slate-500 transition-all" onclick="selectBilling(this)">Mensual</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Home Access Request -->
+<section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-4">
+<div class="p-1.5 bg-amber-100 rounded-lg text-amber-600"><span class="material-symbols-outlined text-[20px]">lock_open</span></div>
+<h3 class="font-bold">Acceso al Hogar</h3>
+</div>
+<p class="text-xs text-slate-500 mb-4">Solicitar al cliente que incluya estos datos al completar el contrato.</p>
+<div class="space-y-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-5 h-5 border-2 border-slate-300 rounded peer-checked:bg-primary peer-checked:border-primary transition-colors"></div>
+<span class="material-symbols-outlined absolute text-white text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<span class="text-sm font-semibold group-hover:text-primary transition-colors">Código de Lockbox / Caja de Seguridad</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-5 h-5 border-2 border-slate-300 rounded peer-checked:bg-primary peer-checked:border-primary transition-colors"></div>
+<span class="material-symbols-outlined absolute text-white text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<span class="text-sm font-semibold group-hover:text-primary transition-colors">Instrucciones de Alarma</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-5 h-5 border-2 border-slate-300 rounded peer-checked:bg-primary peer-checked:border-primary transition-colors"></div>
+<span class="material-symbols-outlined absolute text-white text-[16px] opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<span class="text-sm font-semibold group-hover:text-primary transition-colors">Notas Especiales de Entrada</span>
+</label>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom CTA -->
+<div class="fixed bottom-[72px] left-0 right-0 max-w-md mx-auto p-4 bg-gradient-to-t from-white via-white/90 to-transparent dark:from-slate-950 dark:via-slate-950/90 pb-6 z-30 pointer-events-none">
+<button class="pointer-events-auto w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-primary/20 active:scale-[0.98] transition-transform" onclick="submitContract()">
+<span class="material-symbols-outlined">send</span>
+            GENERAR ACUERDO Y ENVIAR
+        </button>
+</div>
+<!-- Success Modal -->
+<div class="fixed inset-0 z-[200] hidden" id="success-modal">
+<div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="document.getElementById('success-modal').classList.add('hidden')"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white dark:bg-slate-900 rounded-t-3xl shadow-2xl">
+<div class="p-6">
+<div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-6"></div>
+<div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 mb-4 mx-auto">
+<span class="material-symbols-outlined text-[32px]">mark_email_read</span>
+</div>
+<h3 class="text-xl font-bold text-center mb-2">¡Acuerdo de Paseo Enviado!</h3>
+<p class="text-slate-500 text-center text-sm mb-6">
+                    El cliente recibirá un enlace para agregar los códigos de acceso al hogar, datos del veterinario y firmar el acuerdo digitalmente.
+                </p>
+<button class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 font-bold py-4 rounded-xl transition-colors" onclick="window.location.href='../dashboard_del_paseador/code.html'">
+                    VOLVER AL INICIO
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Nav placeholder (injected by script) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../dashboard_del_paseador/code.html">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../planificador_de_manadas/code.html">
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Horario</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../seguimiento_de_paseo_gps/code.html">
+<span class="material-symbols-outlined text-[24px]">navigation</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../lista_clientes/code.html">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
+</a>
+</nav>
+</div>
+<script>
+    function selectFreq(btn) {
+        document.querySelectorAll('.freq-btn').forEach(b => { b.classList.remove('bg-white','dark:bg-slate-700','text-primary','shadow-sm'); b.classList.add('text-slate-500'); });
+        btn.classList.add('bg-white','dark:bg-slate-700','text-primary','shadow-sm'); btn.classList.remove('text-slate-500');
+    }
+    function selectBilling(btn) {
+        document.querySelectorAll('.billing-btn').forEach(b => { b.classList.remove('bg-white','dark:bg-slate-700','text-primary','shadow-sm'); b.classList.add('text-slate-500'); });
+        btn.classList.add('bg-white','dark:bg-slate-700','text-primary','shadow-sm'); btn.classList.remove('text-slate-500');
+    }
+    function updateDuration(change) {
+        const el = document.getElementById('duration-count');
+        let v = parseInt(el.textContent);
+        v = Math.max(15, Math.min(120, v + change));
+        el.textContent = v;
+    }
+    function submitContract() {
+        document.getElementById('success-modal').classList.remove('hidden');
+    }
+</script>
+</body>
+</html>

@@ -112,5 +112,18 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Wrote success modal logic to simulate generating the PDF and "sending" it to the client.
   - Updated the Python navigation script to inject the Trainer Navigation template into the new HTML screen.
 
+### Phase 11: 3-Role Architecture Restructure
+- **Goal**: Remove the Daycare Owner tier and restructure the app around Trainer, Walker, and Client only, matching the revised Smart Enrollment flowchart.
+- **Actions**:
+  - **Deleted** `owner_dashboard/` directory entirely.
+  - **Created** `dashboard_del_paseador/code.html` — a Walker Home Dashboard with quick stats (dogs today, walks completed, km walked), next walk card with Red Flag chips, safety alerts, and quick actions (Start Walk, New Contract, Schedule).
+  - **Created** `contrato_paseo/code.html` — a Walker-specific contract wizard with Service Type (Solo/Pack/Drop-In), Frequency/Schedule (Daily, 3x/week, Weekends), Duration stepper, Rate per Walk billing, and Home Access request toggles (Lockbox, Alarm, Special Entry Notes).
+  - **Updated** `selector.html` to show 3 roles: Dog Trainer, Dog Walker, Pet Parent. Removed Business Owner card. Updated hierarchy subtitle to "A 3-Role Platform".
+  - **Rewrote** `update_navs.py` to maintain 3 separate navigation templates:
+    - **Trainer**: Home, Clients, Calendar, Contract.
+    - **Walker**: Home, Schedule, Active Walk, Clients.
+    - **Client**: Home, Pets, Docs, Health.
+  - Ran the script to inject the correct nav into all 15 active screens.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
