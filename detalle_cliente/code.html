@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch - Detalle del Cliente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}}}};</script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.fill-icon { font-variation-settings: 'FILL' 1; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<div class="sticky top-0 z-20 flex items-center bg-white dark:bg-slate-900 px-4 py-3 justify-between border-b border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer" onclick="window.location.href='../lista_clientes/code.html'"><span class="material-symbols-outlined">arrow_back</span></div>
+<h2 class="text-base font-bold leading-tight tracking-tight">Detalle del Cliente</h2>
+<div class="flex gap-1">
+<button class="size-9 rounded-full hover:bg-primary/10 flex items-center justify-center" onclick="showToast('Editando cliente…', 'edit')"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="size-9 rounded-full hover:bg-primary/10 flex items-center justify-center" onclick="showToast('Más opciones', 'more_vert')"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 overflow-y-auto pb-8">
+<div class="px-4 pt-6 space-y-5">
+
+<!-- Client Profile Card -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOemktAwTpI1B207FCRcr9Pg80Z06P5teNJOew4hhKj0nzYWqhYVEku-80LCqF4YvfvvUWD0-wo07HsAoHu4rxNhSCrnerb3dzy1SBvPAiigA58b5ER9GB62moAslizvwfUYW2tPyDqe5SijLeoVFybjD8iItWQcnpqAzexHVpwYdnJItb0ZRDHeJvmcZoVmrGOwXAqjRIrkFwBaVADoa_dTWM1kBRyJJxMGkv3V18Of88SHj-TOuwV0FMAcE0jnA6u-Y3Hq7h-8Om" alt="Juan Pérez"/>
+</div>
+<div class="flex-1">
+<h3 class="text-lg font-black text-slate-900 dark:text-white">Juan Pérez</h3>
+<p class="text-xs text-slate-500">Cliente desde Oct 2023</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">ACTIVO</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">ENTRENAMIENTO</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2 mt-4">
+<button class="flex-1 py-2.5 rounded-xl bg-emerald-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:bg-emerald-600 transition-all active:scale-[0.98]" onclick="showToast('Abriendo WhatsApp…', 'chat')"><span class="material-symbols-outlined text-[16px]">chat</span> WhatsApp</button>
+<button class="flex-1 py-2.5 rounded-xl bg-blue-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:bg-blue-600 transition-all active:scale-[0.98]" onclick="showToast('Llamando…', 'call')"><span class="material-symbols-outlined text-[16px]">call</span> Llamar</button>
+<button class="flex-1 py-2.5 rounded-xl bg-primary text-white text-xs font-bold flex items-center justify-center gap-1.5 hover:bg-primary/90 transition-all active:scale-[0.98]" onclick="showToast('Enviando correo…', 'mail')"><span class="material-symbols-outlined text-[16px]">mail</span> Correo</button>
+</div>
+</div>
+
+<!-- Document Status -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">description</span> Documentos y Contrato</h3>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">3/6 COMPLETOS</span>
+</div>
+
+<div class="space-y-2">
+<!-- Completed documents -->
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+<span class="material-symbols-outlined text-emerald-600 text-[18px] fill-icon">check_circle</span>
+<div class="flex-1"><p class="text-xs font-bold text-emerald-700">Información del Dueño</p><p class="text-[10px] text-emerald-600">Completado · 15 Oct 2023</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+<span class="material-symbols-outlined text-emerald-600 text-[18px] fill-icon">check_circle</span>
+<div class="flex-1"><p class="text-xs font-bold text-emerald-700">Cláusulas Firmadas (5-8)</p><p class="text-[10px] text-emerald-600">Firmado · 15 Oct 2023</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+<span class="material-symbols-outlined text-emerald-600 text-[18px] fill-icon">check_circle</span>
+<div class="flex-1"><p class="text-xs font-bold text-emerald-700">Consentimiento de Medios</p><p class="text-[10px] text-emerald-600">Autorizó fotos/videos · 15 Oct 2023</p></div>
+</div>
+<!-- Pending documents -->
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-amber-50 border border-amber-100">
+<span class="material-symbols-outlined text-amber-500 text-[18px]">hourglass_top</span>
+<div class="flex-1"><p class="text-xs font-bold text-amber-700">Historial de Salud</p><p class="text-[10px] text-amber-600">Faltan vacunas: Bordetella</p></div>
+<button class="px-2 py-1 rounded-lg bg-amber-200 text-amber-800 text-[10px] font-bold hover:bg-amber-300 transition-all" onclick="showToast('Recordatorio enviado', 'send')">Recordar</button>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-rose-50 border border-rose-100">
+<span class="material-symbols-outlined text-rose-500 text-[18px]">error</span>
+<div class="flex-1"><p class="text-xs font-bold text-rose-700">Perfil de Comportamiento</p><p class="text-[10px] text-rose-600">No completado por el dueño</p></div>
+<button class="px-2 py-1 rounded-lg bg-rose-200 text-rose-800 text-[10px] font-bold hover:bg-rose-300 transition-all" onclick="showToast('Enlace enviado', 'send')">Enviar</button>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-rose-50 border border-rose-100">
+<span class="material-symbols-outlined text-rose-500 text-[18px]">error</span>
+<div class="flex-1"><p class="text-xs font-bold text-rose-700">Techo de Gasto Médico</p><p class="text-[10px] text-rose-600">Sin definir — Crítico</p></div>
+<button class="px-2 py-1 rounded-lg bg-rose-200 text-rose-800 text-[10px] font-bold hover:bg-rose-300 transition-all" onclick="showToast('Enlace enviado', 'send')">Enviar</button>
+</div>
+</div>
+
+<div class="w-full bg-slate-200 rounded-full h-2 mt-1">
+<div class="bg-emerald-500 h-2 rounded-full transition-all" style="width: 50%"></div>
+</div>
+</div>
+
+<!-- Datos del Dueño -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">badge</span> Datos Personales</h3>
+<div class="grid grid-cols-1 gap-2">
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">call</span>
+<div><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Teléfono de Emergencia</p><p class="text-sm font-semibold">+52 55 4123 9087</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">home</span>
+<div><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Dirección</p><p class="text-sm font-semibold">Av. Revolución 234, Col. Mixcoac, CDMX</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">key</span>
+<div><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Acceso a la Casa</p><p class="text-sm font-semibold">Código de teclado: 4589#</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">local_hospital</span>
+<div><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Veterinario</p><p class="text-sm font-semibold">Clínica PetVet · +52 55 6789 1234</p></div>
+</div>
+</div>
+</div>
+
+<!-- Mascotas -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-amber-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">pets</span> Mascotas</h3>
+
+<!-- Pet 1 -->
+<div class="p-3 rounded-xl bg-amber-50/50 border border-amber-100 space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full border-2 border-amber-200 overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb" alt="Luna"/>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-black">Luna</h4>
+<p class="text-[10px] text-slate-500">Border Collie · 3 años · Hembra · Esterilizada</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="text-center p-2 rounded-lg bg-white border border-amber-100">
+<span class="text-lg">🟢</span>
+<p class="text-[9px] font-bold text-slate-500 uppercase mt-0.5">Energía</p>
+<p class="text-[10px] font-bold text-slate-700">Alto</p>
+</div>
+<div class="text-center p-2 rounded-lg bg-white border border-amber-100">
+<span class="text-lg">⚡</span>
+<p class="text-[9px] font-bold text-slate-500 uppercase mt-0.5">Reactividad</p>
+<p class="text-[10px] font-bold text-slate-700">Alerta</p>
+</div>
+<div class="text-center p-2 rounded-lg bg-white border border-amber-100">
+<span class="text-lg">🦴</span>
+<p class="text-[9px] font-bold text-slate-500 uppercase mt-0.5">Motivación</p>
+<p class="text-[10px] font-bold text-slate-700">Comida</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Rabia</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Distemper</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Parvo</span>
+<span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[9px] font-bold">❌ Bordetella</span>
+</div>
+<div class="flex items-center gap-1.5 p-2 rounded-lg bg-rose-50 border border-rose-100">
+<span class="material-symbols-outlined text-rose-500 text-[14px]">warning</span>
+<p class="text-[10px] text-rose-600 font-semibold">Alergia al pollo · No dar treats de pollo</p>
+</div>
+</div>
+
+<!-- Pet 2 -->
+<div class="p-3 rounded-xl bg-amber-50/50 border border-amber-100 space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full border-2 border-amber-200 overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeA5uw_w7X5qOwcTOlEnHHqA2DIDR3m0gUiImTYmXo0pWjaPxE9oa3QISPy8kPTATFkQW8_J9jzfswV_LTfZKr9xz6B4myViy86om1fLkg0NzKBCFfAn6AGkZyqxkVimDzO9enZXQIfwrHsck1NSY7_x7N5EL1POycTSskro0wUZtHfd_3gOfQiwFI3pqDOe4vyFH4tdmQJFTP3v5m9w-rFcKfHZ-AofLD_VcPHMesZo0SmxMBtMj3i7yePSnLWtfHp0sL00A3g1SY" alt="Cooper"/>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-black">Cooper</h4>
+<p class="text-[10px] text-slate-500">Golden Retriever · 1 año · Macho · No esterilizado</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="text-center p-2 rounded-lg bg-white border border-amber-100">
+<span class="text-lg">🟡</span>
+<p class="text-[9px] font-bold text-slate-500 uppercase mt-0.5">Energía</p>
+<p class="text-[10px] font-bold text-slate-700">Medio</p>
+</div>
+<div class="text-center p-2 rounded-lg bg-white border border-amber-100">
+<span class="text-lg">😌</span>
+<p class="text-[9px] font-bold text-slate-500 uppercase mt-0.5">Reactividad</p>
+<p class="text-[10px] font-bold text-slate-700">Sin reacción</p>
+</div>
+<div class="text-center p-2 rounded-lg bg-white border border-amber-100">
+<span class="text-lg">🧸</span>
+<p class="text-[9px] font-bold text-slate-500 uppercase mt-0.5">Motivación</p>
+<p class="text-[10px] font-bold text-slate-700">Juguetes</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Rabia</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Distemper</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Parvo</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Bordetella</span>
+</div>
+</div>
+</div>
+
+<!-- Session History -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">history</span> Historial de Sesiones</h3>
+<span class="text-[10px] font-bold text-slate-400">8 sesiones totales</span>
+</div>
+
+<div class="space-y-2">
+<div class="flex items-start gap-3 p-3 rounded-xl bg-violet-50/50 border border-violet-100">
+<div class="w-9 h-9 rounded-lg bg-violet-100 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-violet-600 text-[18px]">fitness_center</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between"><p class="text-xs font-bold">Entrenamiento - Obediencia</p><span class="text-[10px] text-slate-400 font-medium">24 Oct</span></div>
+<p class="text-[10px] text-slate-500 mt-0.5">Luna & Cooper · 60 min · $800 MXN</p>
+<p class="text-[10px] text-violet-600 font-medium mt-1">Progreso: Sentado y quieto aprendidos ✓</p>
+</div>
+</div>
+
+<div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+<div class="w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-emerald-600 text-[18px]">directions_walk</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between"><p class="text-xs font-bold">Paseo - Socialización</p><span class="text-[10px] text-slate-400 font-medium">22 Oct</span></div>
+<p class="text-[10px] text-slate-500 mt-0.5">Luna · 45 min · $600 MXN</p>
+<p class="text-[10px] text-emerald-600 font-medium mt-1">Sin incidentes. Reaccionó bien con 2 perros ✓</p>
+</div>
+</div>
+
+<div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+<div class="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-blue-600 text-[18px]">fitness_center</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between"><p class="text-xs font-bold">Entrenamiento - Puerta</p><span class="text-[10px] text-slate-400 font-medium">18 Oct</span></div>
+<p class="text-[10px] text-slate-500 mt-0.5">Cooper · 60 min · $800 MXN</p>
+<p class="text-[10px] text-blue-600 font-medium mt-1">Trabaja en no saltar al abrir la puerta</p>
+</div>
+</div>
+
+<button class="w-full py-2.5 rounded-xl border-2 border-slate-200 text-slate-500 text-xs font-bold hover:bg-slate-50 transition-all active:scale-[0.98]">Ver todas las sesiones →</button>
+</div>
+</div>
+
+<!-- Pagos -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-wider text-emerald-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">payments</span> Pagos</h3>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">AL DÍA</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 rounded-xl bg-emerald-50 border border-emerald-100 text-center">
+<p class="text-[10px] text-emerald-600 font-bold uppercase">Total Pagado</p>
+<p class="text-lg font-black text-emerald-700">$5,400</p>
+<p class="text-[10px] text-emerald-500">MXN</p>
+</div>
+<div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center">
+<p class="text-[10px] text-slate-500 font-bold uppercase">Saldo Pendiente</p>
+<p class="text-lg font-black text-slate-700">$0</p>
+<p class="text-[10px] text-slate-400">MXN</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-[16px] fill-icon">check_circle</span><p class="text-xs font-semibold">Sesión 24 Oct</p></div>
+<p class="text-xs font-bold text-emerald-600">$800</p>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-[16px] fill-icon">check_circle</span><p class="text-xs font-semibold">Sesión 22 Oct</p></div>
+<p class="text-xs font-bold text-emerald-600">$600</p>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-500 text-[16px] fill-icon">check_circle</span><p class="text-xs font-semibold">Paquete 4 sesiones</p></div>
+<p class="text-xs font-bold text-emerald-600">$2,880</p>
+</div>
+</div>
+</div>
+
+<!-- Notas del Entrenador -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-wider text-blue-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">edit_note</span> Notas del Entrenador</h3>
+<button class="text-[10px] font-bold text-primary hover:underline" onclick="showToast('Nueva nota añadida', 'add')">+ Añadir</button>
+</div>
+<div class="space-y-2">
+<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
+<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">24 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #8</span></div>
+<p class="text-xs text-slate-600 leading-relaxed">Luna progresa rápido con "sentado" y "quieto". Cooper necesita más trabajo en no saltar cuando llegan visitas. El dueño reporta mejora en casa. Siguiente sesión: reforzar "ven" en exteriores con distracciones.</p>
+</div>
+<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
+<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">18 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #7</span></div>
+<p class="text-xs text-slate-600 leading-relaxed">Importante: Luna se asusta con bicicletas en la calle. Usar desensibilización progresiva. Cooper responde bien a juguetes como motivador, mejor que comida.</p>
+</div>
+</div>
+</div>
+
+<!-- Quick Actions -->
+<div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-4 space-y-3 border border-primary/20">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">bolt</span> Acciones Rápidas</h3>
+<div class="grid grid-cols-2 gap-2">
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Agendando sesión', 'calendar_month')">
+<span class="material-symbols-outlined text-primary text-[22px]">calendar_add_on</span>
+<p class="text-[10px] font-bold text-primary mt-1">Agendar Sesión</p>
+</button>
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Enviando formularios pendientes', 'send')">
+<span class="material-symbols-outlined text-primary text-[22px]">send</span>
+<p class="text-[10px] font-bold text-primary mt-1">Enviar Pendientes</p>
+</button>
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Generando reporte', 'summarize')">
+<span class="material-symbols-outlined text-primary text-[22px]">summarize</span>
+<p class="text-[10px] font-bold text-primary mt-1">Generar Reporte</p>
+</button>
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Generando factura', 'receipt_long')">
+<span class="material-symbols-outlined text-primary text-[22px]">receipt_long</span>
+<p class="text-[10px] font-bold text-primary mt-1">Generar Factura</p>
+</button>
+</div>
+</div>
+
+</div></div>
+<!-- Toast -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast"><span class="material-symbols-outlined text-emerald-400 text-[18px]" id="toast-icon">check_circle</span><span class="text-sm font-semibold truncate max-w-[220px]" id="toast-message">OK</span></div>
+</div>
+<script>
+let toastTimeout;
+function showToast(m,i){const t=document.getElementById('toast');document.getElementById('toast-message').textContent=m;document.getElementById('toast-icon').textContent=i||'check_circle';clearTimeout(toastTimeout);t.classList.remove('opacity-0','-translate-y-4');t.classList.add('opacity-100','translate-y-0');toastTimeout=setTimeout(()=>{t.classList.remove('opacity-100','translate-y-0');t.classList.add('opacity-0','-translate-y-4');},3000);}
+</script>
+</body></html>
