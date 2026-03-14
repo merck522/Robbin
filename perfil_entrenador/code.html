@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch - Mi Perfil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}}}};</script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .fill-icon { font-variation-settings: 'FILL' 1; }
+    input:focus, select:focus, textarea:focus { border-color: #050062 !important; box-shadow: 0 0 0 3px rgba(5,0,98,0.1); }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark">
+
+<!-- Header -->
+<div class="sticky top-0 z-20 flex items-center bg-white dark:bg-slate-900 px-4 py-3 justify-between border-b border-slate-100 dark:border-slate-800 shadow-sm">
+    <div class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer" onclick="window.location.href='../dashboard_del_entrenador_updated_style/code.html'">
+        <span class="material-symbols-outlined">arrow_back</span>
+    </div>
+    <h2 class="text-base font-bold leading-tight tracking-tight">Mi Perfil</h2>
+    <div class="w-10"></div>
+</div>
+
+<!-- Content -->
+<div class="flex-1 overflow-y-auto pb-8">
+
+    <!-- Profile Photo Section -->
+    <div class="flex flex-col items-center pt-8 pb-6 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+        <div class="relative">
+            <div class="size-24 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border-2 border-primary/30 shadow-lg">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3tbAXOkNA8C3KawEve3ZTUAW5mBe8Vxg04wGQMrw_8P6e5oQMmpUJK-xQecgruy_9w1Hb7gYFiuIKFOO4HVf983kAodFhHMX0pkKBaECPk6-Xb_2FetIr_q-pwawcwxDbewT7GcXR1AJcp0n1kIqlyxL41mmnquiLQfGUdi30RTwU7Q0Vtjc_FTr7avZ-g6Z0aMPW7MTvyxgPPZ36g6qMUURQ7gJkYtim2InoSKUDZq8TquNTdw-Ty6VKWHjCP2W3X1BDkoNNrTHz"/>
+            </div>
+            <button class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-md hover:bg-primary/90 transition-all active:scale-90" onclick="showToast('Cambiar foto de perfil', 'photo_camera')">
+                <span class="material-symbols-outlined text-[16px]">photo_camera</span>
+            </button>
+        </div>
+        <h2 class="mt-4 text-xl font-black">Entrenador Principal</h2>
+        <p class="text-sm text-slate-500 mt-0.5">Entrenador Profesional</p>
+        <div class="flex items-center gap-1.5 mt-2 px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full">
+            <span class="material-symbols-outlined text-[14px] fill-icon">verified</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider">Verificado</span>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-3 gap-0 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+        <div class="text-center py-4 border-r border-slate-100 dark:border-slate-800">
+            <p class="text-xl font-black text-primary">12</p>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Clientes</p>
+        </div>
+        <div class="text-center py-4 border-r border-slate-100 dark:border-slate-800">
+            <p class="text-xl font-black text-primary">87</p>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sesiones</p>
+        </div>
+        <div class="text-center py-4">
+            <p class="text-xl font-black text-primary">4.9</p>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Rating</p>
+        </div>
+    </div>
+
+    <!-- Personal Info -->
+    <div class="px-4 pt-6 space-y-5">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+            <h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">person</span> Información Personal
+            </h3>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Nombre Completo</label>
+                <input type="text" value="Carlos Martínez López" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Correo Electrónico</label>
+                <input type="email" value="carlos@stitch.pet" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Teléfono</label>
+                <input type="tel" value="+52 55 1234 5678" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+            </div>
+        </div>
+
+        <!-- Professional Info -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+            <h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">school</span> Información Profesional
+            </h3>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Especialidad</label>
+                <select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none appearance-none">
+                    <option selected>Obediencia y Comportamiento</option>
+                    <option>Agilidad</option>
+                    <option>Protección</option>
+                    <option>Terapia Asistida</option>
+                    <option>Rehabilitación Conductual</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Años de Experiencia</label>
+                <input type="number" value="8" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Certificaciones</label>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold">CPDT-KA</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold">AKC CGC</span>
+                    <button class="px-3 py-1.5 rounded-lg border-2 border-dashed border-slate-300 text-slate-400 text-xs font-bold hover:border-primary hover:text-primary transition-all" onclick="showToast('Añadir certificación', 'add')">+ Añadir</button>
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Biografía</label>
+                <textarea rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none">Entrenador canino profesional certificado con más de 8 años de experiencia. Especializado en modificación de conducta y obediencia avanzada.</textarea>
+            </div>
+        </div>
+
+        <!-- Business Info -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+            <h3 class="text-sm font-black uppercase tracking-wider text-emerald-600 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">storefront</span> Información del Negocio
+            </h3>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Nombre del Negocio</label>
+                <input type="text" value="K9 Academy CDMX" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Dirección</label>
+                <input type="text" value="Col. Condesa, CDMX" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Zona de Servicio</label>
+                <input type="text" value="Roma, Condesa, Polanco, Del Valle" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm">
+            <h3 class="text-sm font-black uppercase tracking-wider text-slate-600 flex items-center gap-2 px-4 pt-4 pb-2">
+                <span class="material-symbols-outlined text-[18px]">settings</span> Ajustes
+            </h3>
+
+            <button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border-t border-slate-50 dark:border-slate-800" onclick="showToast('Notificaciones configuradas', 'notifications')">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-blue-600 text-[18px]">notifications</span>
+                    </div>
+                    <span class="text-sm font-semibold">Notificaciones</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-400 text-[20px]">chevron_right</span>
+            </button>
+
+            <button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border-t border-slate-50 dark:border-slate-800" onclick="showToast('Privacidad actualizada', 'shield')">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-emerald-600 text-[18px]">shield</span>
+                    </div>
+                    <span class="text-sm font-semibold">Privacidad y Seguridad</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-400 text-[20px]">chevron_right</span>
+            </button>
+
+            <button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border-t border-slate-50 dark:border-slate-800" onclick="showToast('Métodos de pago', 'account_balance_wallet')">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-amber-100 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-amber-600 text-[18px]">account_balance_wallet</span>
+                    </div>
+                    <span class="text-sm font-semibold">Métodos de Pago</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-400 text-[20px]">chevron_right</span>
+            </button>
+
+            <button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border-t border-slate-50 dark:border-slate-800" onclick="showToast('Soporte', 'help')">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-violet-100 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-violet-600 text-[18px]">help</span>
+                    </div>
+                    <span class="text-sm font-semibold">Ayuda y Soporte</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-400 text-[20px]">chevron_right</span>
+            </button>
+        </div>
+
+        <!-- Save Button -->
+        <button class="w-full py-3.5 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-all active:scale-[0.98] shadow-lg shadow-primary/20 flex items-center justify-center gap-2" onclick="showToast('Perfil guardado exitosamente', 'check_circle')">
+            <span class="material-symbols-outlined text-[18px]">save</span>
+            Guardar Cambios
+        </button>
+
+        <!-- Logout -->
+        <button class="w-full py-3.5 rounded-xl border-2 border-rose-200 text-rose-600 font-bold text-sm hover:bg-rose-50 transition-all active:scale-[0.98] flex items-center justify-center gap-2 mb-4" onclick="window.location.href='../selector.html'">
+            <span class="material-symbols-outlined text-[18px]">logout</span>
+            Cerrar Sesión
+        </button>
+
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast">
+    <span class="material-symbols-outlined text-emerald-400 text-[18px]" id="toast-icon">check_circle</span>
+    <span class="text-sm font-semibold truncate max-w-[220px]" id="toast-message">Acción realizada</span>
+</div>
+
+</div>
+
+<script>
+    let toastTimeout;
+    function showToast(message, icon) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toast-message').textContent = message;
+        document.getElementById('toast-icon').textContent = icon || 'check_circle';
+        clearTimeout(toastTimeout);
+        toast.classList.remove('opacity-0', '-translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', '-translate-y-4');
+        }, 3000);
+    }
+</script>
+
+</body>
+</html>
