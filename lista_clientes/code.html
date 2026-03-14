@@ -155,10 +155,10 @@
 </div>
 </div>
 <div class="flex gap-2">
-<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="\&quot;window.location.href='tel:+1234567890'\&quot;">
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="window.location.href='tel:+1234567890'">
 <span class="material-symbols-outlined text-xl">call</span>
 </button>
-<button '_blank')\"="" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="\&quot;window.open('https://wa.me/1234567890?text=Hola,%20te%20escribo%20desde%20Stitch',">
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="window.open('https://wa.me/1234567890?text=Hola,%20te%20escribo%20desde%20Stitch', '_blank')">
 <span class="material-symbols-outlined text-xl">chat_bubble</span>
 </button>
 </div>
@@ -329,14 +329,14 @@
     }
 
     function setFilter(filter, btn) {
-
-            if (currentFilter === 'dogs') {
-                document.getElementById('clients-container').classList.add('dogs-view');
-            } else {
-                document.getElementById('clients-container').classList.remove('dogs-view');
-            }
-
         currentFilter = filter;
+        
+        if (currentFilter === 'dogs') {
+            document.getElementById('clients-container').classList.add('dogs-view');
+        } else {
+            document.getElementById('clients-container').classList.remove('dogs-view');
+        }
+
         // Update button styles
         document.querySelectorAll('.filter-btn').forEach(b => {
             b.classList.remove('bg-primary', 'text-white', 'font-semibold');
