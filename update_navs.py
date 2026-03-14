@@ -37,7 +37,7 @@ def update_nav(html_file, role_template):
 
 # --- Templates ---
 
-# TRAINER/WALKER share the same 4 nav items: Inicio, Clientes, Calendario, Paseo
+# TRAINER/WALKER share the same 4 nav items: Inicio, Clientes, Explorar, Paseo
 # Only difference: "Inicio" links to trainer dashboard vs walker dashboard.
 
 trainer_template = """
@@ -50,9 +50,9 @@ trainer_template = """
         <span class="material-symbols-outlined text-[24px]">group</span>
         <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
     </a>
-    <a href="../planificador_de_manadas/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+    <a href="../buscador_de_manadas/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">calendar_today</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Explorar</span>
     </a>
     <a href="../seguimiento_de_paseo_gps/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">navigation</span>
@@ -71,9 +71,9 @@ walker_template = """
         <span class="material-symbols-outlined text-[24px]">group</span>
         <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
     </a>
-    <a href="../planificador_de_manadas/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+    <a href="../buscador_de_manadas/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">calendar_today</span>
-        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Explorar</span>
     </a>
     <a href="../seguimiento_de_paseo_gps/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">navigation</span>

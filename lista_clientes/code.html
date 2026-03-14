@@ -31,8 +31,7 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-
-  <style>
+<style>
     .dogs-view .client-card {
         display: flex;
         flex-direction: column-reverse;
@@ -79,17 +78,17 @@
 <div class="flex gap-3 mb-2">
 <div class="relative flex-1">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-<input id="search-input" class="w-full h-11 pl-10 pr-4 bg-white dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 shadow-sm" placeholder="Search clients or dogs..." type="text" oninput="filterClients()"/>
+<input class="w-full h-11 pl-10 pr-4 bg-white dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 shadow-sm" id="search-input" oninput="filterClients()" placeholder="Search clients or dogs..." type="text"/>
 </div>
 <div class="relative">
-<button id="sortMenuBtn" onclick="toggleSortMenu()" class="flex items-center justify-center size-11 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/10 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700">
+<button class="flex items-center justify-center size-11 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/10 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700" id="sortMenuBtn" onclick="toggleSortMenu()">
 <span class="material-symbols-outlined text-primary dark:text-slate-300">tune</span>
 </button>
-<div id="sortMenu" class="hidden absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 py-2 z-50">
-<button onclick="sortClients('az')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Alfabético (A-Z)</button>
-<button onclick="sortClients('za')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Alfabético (Z-A)</button>
-<button onclick="sortClients('newest')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Recientemente agregados</button>
-<button onclick="sortClients('oldest')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Más antiguos</button>
+<div class="hidden absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 py-2 z-50" id="sortMenu">
+<button class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50" onclick="sortClients('az')">Alfabético (A-Z)</button>
+<button class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50" onclick="sortClients('za')">Alfabético (Z-A)</button>
+<button class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50" onclick="sortClients('newest')">Recientemente agregados</button>
+<button class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50" onclick="sortClients('oldest')">Más antiguos</button>
 </div>
 </div>
 </div>
@@ -105,7 +104,7 @@
 <div class="flex items-center justify-between mb-1" id="results-bar">
 <p class="text-xs text-slate-400 font-semibold"><span id="results-count">4</span> clientes</p>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Juan Pérez" data-pets="Luna Cooper" data-status="active" data-has-dogs="true" data-date="2023-10-24" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-date="2023-10-24" data-has-dogs="true" data-name="Juan Pérez" data-pets="Luna Cooper" data-status="active" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4 owner-section">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -143,7 +142,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Sarah Jenkins" data-pets="Buster" data-status="active" data-has-dogs="true" data-date="2023-10-22" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-date="2023-10-22" data-has-dogs="true" data-name="Sarah Jenkins" data-pets="Buster" data-status="active" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4 owner-section">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -175,7 +174,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Michael Chen" data-pets="Snoopy Coco" data-status="pending" data-has-dogs="true" data-date="2023-10-30" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-date="2023-10-30" data-has-dogs="true" data-name="Michael Chen" data-pets="Snoopy Coco" data-status="pending" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4 owner-section">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -213,7 +212,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Elena Rodriguez" data-pets="Rex" data-status="completed" data-has-dogs="true" data-date="2023-10-15" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-date="2023-10-15" data-has-dogs="true" data-name="Elena Rodriguez" data-pets="Rex" data-status="completed" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4 owner-section">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -246,7 +245,7 @@
 </div>
 </div>
 <!-- Empty State -->
-<div id="empty-state" class="hidden flex flex-col items-center justify-center py-16 text-center">
+<div class="hidden flex flex-col items-center justify-center py-16 text-center" id="empty-state">
 <span class="material-symbols-outlined text-[48px] text-slate-300 mb-3">search_off</span>
 <h3 class="text-base font-bold text-slate-500">Sin resultados</h3>
 <p class="text-xs text-slate-400 mt-1 max-w-[240px]">No se encontraron clientes o mascotas con ese nombre. Intenta con otro término.</p>
@@ -264,9 +263,9 @@
 <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">group</span>
 <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../planificador_de_manadas/code.html">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../buscador_de_manadas/code.html">
 <span class="material-symbols-outlined text-[24px]">calendar_today</span>
-<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Explorar</span>
 </a>
 <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../seguimiento_de_paseo_gps/code.html">
 <span class="material-symbols-outlined text-[24px]">navigation</span>
