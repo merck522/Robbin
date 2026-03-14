@@ -122,8 +122,8 @@ body { font-family: 'Inter', sans-serif; }
 <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
 <h3 class="text-sm font-black uppercase tracking-wider text-amber-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">pets</span> Mascotas</h3>
 
-<!-- Pet 1 -->
-<div class="p-3 rounded-xl bg-amber-50/50 border border-amber-100 space-y-3">
+<!-- Pet 1: Luna -->
+<div class="p-3 rounded-xl bg-amber-50/50 border border-amber-100 space-y-3 cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='../detalle_mascota/code.html'">
 <div class="flex items-center gap-3">
 <div class="w-12 h-12 rounded-full border-2 border-amber-200 overflow-hidden">
 <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb" alt="Luna"/>
@@ -132,6 +132,7 @@ body { font-family: 'Inter', sans-serif; }
 <h4 class="text-sm font-black">Luna</h4>
 <p class="text-[10px] text-slate-500">Border Collie · 3 años · Hembra · Esterilizada</p>
 </div>
+<span class="material-symbols-outlined text-slate-300 text-[20px]">chevron_right</span>
 </div>
 <div class="grid grid-cols-3 gap-2">
 <div class="text-center p-2 rounded-lg bg-white border border-amber-100">
@@ -160,10 +161,15 @@ body { font-family: 'Inter', sans-serif; }
 <span class="material-symbols-outlined text-rose-500 text-[14px]">warning</span>
 <p class="text-[10px] text-rose-600 font-semibold">Alergia al pollo · No dar treats de pollo</p>
 </div>
+<!-- Notas de Luna -->
+<div class="border-t border-amber-200 pt-2 mt-1 space-y-1.5">
+<p class="text-[10px] font-black text-blue-600 uppercase tracking-wider flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">edit_note</span> Última nota · 24 Oct</p>
+<p class="text-[10px] text-slate-600 leading-relaxed">Progresa rápido con "sentado" y "quieto". Siguiente: reforzar "ven" en exteriores con distracciones.</p>
+</div>
 </div>
 
-<!-- Pet 2 -->
-<div class="p-3 rounded-xl bg-amber-50/50 border border-amber-100 space-y-3">
+<!-- Pet 2: Cooper -->
+<div class="p-3 rounded-xl bg-amber-50/50 border border-amber-100 space-y-3 cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='../detalle_mascota/code.html'">
 <div class="flex items-center gap-3">
 <div class="w-12 h-12 rounded-full border-2 border-amber-200 overflow-hidden">
 <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeA5uw_w7X5qOwcTOlEnHHqA2DIDR3m0gUiImTYmXo0pWjaPxE9oa3QISPy8kPTATFkQW8_J9jzfswV_LTfZKr9xz6B4myViy86om1fLkg0NzKBCFfAn6AGkZyqxkVimDzO9enZXQIfwrHsck1NSY7_x7N5EL1POycTSskro0wUZtHfd_3gOfQiwFI3pqDOe4vyFH4tdmQJFTP3v5m9w-rFcKfHZ-AofLD_VcPHMesZo0SmxMBtMj3i7yePSnLWtfHp0sL00A3g1SY" alt="Cooper"/>
@@ -172,6 +178,7 @@ body { font-family: 'Inter', sans-serif; }
 <h4 class="text-sm font-black">Cooper</h4>
 <p class="text-[10px] text-slate-500">Golden Retriever · 1 año · Macho · No esterilizado</p>
 </div>
+<span class="material-symbols-outlined text-slate-300 text-[20px]">chevron_right</span>
 </div>
 <div class="grid grid-cols-3 gap-2">
 <div class="text-center p-2 rounded-lg bg-white border border-amber-100">
@@ -195,6 +202,11 @@ body { font-family: 'Inter', sans-serif; }
 <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Distemper</span>
 <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Parvo</span>
 <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[9px] font-bold">✅ Bordetella</span>
+</div>
+<!-- Notas de Cooper -->
+<div class="border-t border-amber-200 pt-2 mt-1 space-y-1.5">
+<p class="text-[10px] font-black text-blue-600 uppercase tracking-wider flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">edit_note</span> Última nota · 18 Oct</p>
+<p class="text-[10px] text-slate-600 leading-relaxed">Necesita más trabajo en no saltar cuando llegan visitas. Responde bien a juguetes como motivador, mejor que comida.</p>
 </div>
 </div>
 </div>
@@ -272,23 +284,7 @@ body { font-family: 'Inter', sans-serif; }
 </div>
 </div>
 
-<!-- Notas del Entrenador -->
-<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
-<div class="flex items-center justify-between">
-<h3 class="text-sm font-black uppercase tracking-wider text-blue-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">edit_note</span> Notas del Entrenador</h3>
-<button class="text-[10px] font-bold text-primary hover:underline" onclick="showToast('Nueva nota añadida', 'add')">+ Añadir</button>
-</div>
-<div class="space-y-2">
-<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
-<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">24 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #8</span></div>
-<p class="text-xs text-slate-600 leading-relaxed">Luna progresa rápido con "sentado" y "quieto". Cooper necesita más trabajo en no saltar cuando llegan visitas. El dueño reporta mejora en casa. Siguiente sesión: reforzar "ven" en exteriores con distracciones.</p>
-</div>
-<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
-<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">18 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #7</span></div>
-<p class="text-xs text-slate-600 leading-relaxed">Importante: Luna se asusta con bicicletas en la calle. Usar desensibilización progresiva. Cooper responde bien a juguetes como motivador, mejor que comida.</p>
-</div>
-</div>
-</div>
+
 
 <!-- Quick Actions -->
 <div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-4 space-y-3 border border-primary/20">

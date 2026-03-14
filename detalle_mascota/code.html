@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch - Perfil de Mascota</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}}}};</script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.fill-icon { font-variation-settings: 'FILL' 1; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<div class="sticky top-0 z-20 flex items-center bg-white dark:bg-slate-900 px-4 py-3 justify-between border-b border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer" onclick="window.location.href='../detalle_cliente/code.html'"><span class="material-symbols-outlined">arrow_back</span></div>
+<h2 class="text-base font-bold leading-tight tracking-tight">Perfil de Mascota</h2>
+<div class="flex gap-1">
+<button class="size-9 rounded-full hover:bg-primary/10 flex items-center justify-center" onclick="showToast('Editando perfil…', 'edit')"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 overflow-y-auto pb-8">
+<div class="px-4 pt-6 space-y-5">
+
+<!-- Pet Hero Card -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm text-center">
+<div class="w-24 h-24 rounded-full mx-auto border-4 border-amber-200 overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb" alt="Luna"/>
+</div>
+<h3 class="text-xl font-black mt-3">Luna</h3>
+<p class="text-sm text-slate-500">Border Collie · Hembra</p>
+<div class="flex items-center justify-center gap-2 mt-2">
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">ESTERILIZADA</span>
+<span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">3 AÑOS</span>
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">18 KG</span>
+</div>
+<div class="flex items-center justify-center gap-2 mt-3 text-xs text-slate-500">
+<span class="material-symbols-outlined text-[16px]">person</span>
+<span class="font-semibold">Dueño: Juan Pérez</span>
+</div>
+</div>
+
+<!-- Quick Stats -->
+<div class="grid grid-cols-3 gap-3">
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-3 border border-slate-100 dark:border-slate-800 shadow-sm text-center">
+<span class="text-2xl">🟢</span>
+<p class="text-[9px] font-bold text-slate-400 uppercase mt-1">Energía</p>
+<p class="text-sm font-black text-slate-700">Alto</p>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-3 border border-slate-100 dark:border-slate-800 shadow-sm text-center">
+<span class="text-2xl">⚡</span>
+<p class="text-[9px] font-bold text-slate-400 uppercase mt-1">Reactividad</p>
+<p class="text-sm font-black text-slate-700">Alerta</p>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-3 border border-slate-100 dark:border-slate-800 shadow-sm text-center">
+<span class="text-2xl">🦴</span>
+<p class="text-[9px] font-bold text-slate-400 uppercase mt-1">Motivación</p>
+<p class="text-sm font-black text-slate-700">Comida</p>
+</div>
+</div>
+
+<!-- Vaccination Status -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-wider text-emerald-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">vaccines</span> Vacunación</h3>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">3/4</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600 text-[16px] fill-icon">check_circle</span><p class="text-xs font-bold text-emerald-700">Rabia</p></div>
+<p class="text-[10px] text-emerald-600 font-medium">Vence: Mar 2025</p>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600 text-[16px] fill-icon">check_circle</span><p class="text-xs font-bold text-emerald-700">Distemper</p></div>
+<p class="text-[10px] text-emerald-600 font-medium">Vence: Ene 2025</p>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600 text-[16px] fill-icon">check_circle</span><p class="text-xs font-bold text-emerald-700">Parvo</p></div>
+<p class="text-[10px] text-emerald-600 font-medium">Vence: Ene 2025</p>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-rose-50 border border-rose-100">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-rose-500 text-[16px]">cancel</span><p class="text-xs font-bold text-rose-700">Bordetella</p></div>
+<button class="px-2 py-1 rounded-lg bg-rose-200 text-rose-800 text-[10px] font-bold hover:bg-rose-300 transition-all" onclick="showToast('Recordatorio enviado al dueño', 'send')">Solicitar</button>
+</div>
+</div>
+</div>
+
+<!-- Health & Allergies -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-rose-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">medical_information</span> Salud y Alergias</h3>
+<div class="p-3 rounded-xl bg-rose-50 border border-rose-100 space-y-2">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-rose-500 text-[16px]">warning</span><p class="text-xs font-bold text-rose-700">Alergias Alimentarias</p></div>
+<p class="text-xs text-rose-600">Alergia al pollo. <strong>NO dar treats/premios de pollo.</strong> Usar res o hígado como alternativa.</p>
+</div>
+<div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-slate-500 text-[16px]">monitor_heart</span><p class="text-xs font-bold text-slate-700">Condiciones Físicas</p></div>
+<p class="text-xs text-slate-500">Sin condiciones reportadas. Articulaciones sanas.</p>
+</div>
+</div>
+
+<!-- Reactivity Profile -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-amber-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">psychology</span> Perfil de Reactividad</h3>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50">
+<span class="text-xs font-semibold">🐕 Otros perros</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">ALERTA</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50">
+<span class="text-xs font-semibold">👤 Personas desconocidas</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">SIN REACCIÓN</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50">
+<span class="text-xs font-semibold">🚲 Bicicletas / Patinetas</span>
+<span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold">REACTIVA</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50">
+<span class="text-xs font-semibold">👶 Niños</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">SIN REACCIÓN</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-1.5">
+<p class="text-[10px] font-bold text-amber-700 uppercase tracking-wider">⛈️ Miedos y Fobias</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-800 text-[10px] font-bold">⛈️ Truenos</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-800 text-[10px] font-bold">🎆 Cohetes</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-800 text-[10px] font-bold">🚲 Bicicletas</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+<p class="text-[10px] font-bold text-orange-700 uppercase tracking-wider">🎯 Instinto de Caza</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold">🐱 Gatos</span>
+<span class="px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold">🐿️ Ardillas</span>
+</div>
+</div>
+</div>
+
+<!-- Diet & Lifestyle -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-blue-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">restaurant</span> Dieta y Rutina</h3>
+<div class="grid grid-cols-2 gap-2">
+<div class="p-3 rounded-xl bg-blue-50 border border-blue-100">
+<p class="text-[10px] font-bold text-blue-500 uppercase">Alimento</p>
+<p class="text-xs font-bold text-blue-800">Royal Canin Medium</p>
+</div>
+<div class="p-3 rounded-xl bg-blue-50 border border-blue-100">
+<p class="text-[10px] font-bold text-blue-500 uppercase">Cantidad</p>
+<p class="text-xs font-bold text-blue-800">2 tazas/día</p>
+</div>
+<div class="p-3 rounded-xl bg-blue-50 border border-blue-100">
+<p class="text-[10px] font-bold text-blue-500 uppercase">Horarios</p>
+<p class="text-xs font-bold text-blue-800">8:00 AM y 6:00 PM</p>
+</div>
+<div class="p-3 rounded-xl bg-blue-50 border border-blue-100">
+<p class="text-[10px] font-bold text-blue-500 uppercase">Premios</p>
+<p class="text-xs font-bold text-blue-800">Hígado deshidratado</p>
+</div>
+</div>
+</div>
+
+<!-- Known Commands -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">record_voice_over</span> Comandos Conocidos</h3>
+<p class="text-xs text-slate-500 -mt-1">Palabras que usa el dueño (para no confundir al perro)</p>
+<div class="grid grid-cols-2 gap-2">
+<div class="p-2.5 rounded-xl bg-primary/5 border border-primary/10 text-center">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Sentado</p>
+<p class="text-sm font-black text-primary">"Sit"</p>
+</div>
+<div class="p-2.5 rounded-xl bg-primary/5 border border-primary/10 text-center">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Quieto</p>
+<p class="text-sm font-black text-primary">"Stay"</p>
+</div>
+<div class="p-2.5 rounded-xl bg-primary/5 border border-primary/10 text-center">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Ven</p>
+<p class="text-sm font-black text-primary">"Come"</p>
+</div>
+<div class="p-2.5 rounded-xl bg-primary/5 border border-primary/10 text-center">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Suelta</p>
+<p class="text-sm font-black text-primary">"Drop it"</p>
+</div>
+</div>
+</div>
+
+<!-- Training Goals -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">flag</span> Objetivos de Entrenamiento</h3>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+<span class="material-symbols-outlined text-emerald-600 text-[16px] fill-icon">check_circle</span>
+<div><p class="text-xs font-bold text-emerald-700">Obediencia básica</p><p class="text-[10px] text-emerald-600">Sentado y quieto aprendidos</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-amber-50 border border-amber-100">
+<span class="material-symbols-outlined text-amber-500 text-[16px]">hourglass_top</span>
+<div><p class="text-xs font-bold text-amber-700">Caminar sin tirar</p><p class="text-[10px] text-amber-600">En progreso — 60% logrado</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+<span class="material-symbols-outlined text-slate-400 text-[16px]">radio_button_unchecked</span>
+<div><p class="text-xs font-bold text-slate-600">Desensibilización a bicicletas</p><p class="text-[10px] text-slate-400">Pendiente</p></div>
+</div>
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+<span class="material-symbols-outlined text-slate-400 text-[16px]">radio_button_unchecked</span>
+<div><p class="text-xs font-bold text-slate-600">"Ven" en exteriores con distracciones</p><p class="text-[10px] text-slate-400">Pendiente</p></div>
+</div>
+</div>
+</div>
+
+<!-- Trainer Notes for this pet -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-wider text-blue-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">edit_note</span> Notas sobre Luna</h3>
+<button class="text-[10px] font-bold text-primary hover:underline" onclick="showToast('Nueva nota añadida', 'add')">+ Añadir</button>
+</div>
+<div class="space-y-2">
+<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
+<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">24 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #8</span></div>
+<p class="text-xs text-slate-600 leading-relaxed">Progresa rápido con "sentado" y "quieto". Próxima sesión: reforzar "ven" en exteriores con distracciones. Usar hígado deshidratado como motivador.</p>
+</div>
+<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
+<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">22 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #7</span></div>
+<p class="text-xs text-slate-600 leading-relaxed">Socialización exitosa con 2 perros en el parque. Se mantuvo alerta pero no reaccionó. Siguió "sit" incluso con distracciones.</p>
+</div>
+<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
+<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">18 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #6</span></div>
+<p class="text-xs text-slate-600 leading-relaxed">⚠️ Se asusta con bicicletas en la calle. Iniciar desensibilización progresiva: primero bici estática a distancia, luego acercar gradualmente.</p>
+</div>
+<div class="p-3 rounded-xl bg-blue-50/50 border border-blue-100">
+<div class="flex items-center justify-between mb-1"><p class="text-[10px] font-bold text-blue-600">15 Oct 2023</p><span class="text-[10px] text-slate-400">Sesión #5</span></div>
+<p class="text-xs text-slate-600 leading-relaxed">Primera sesión. Evaluación inicial: energía alta, buena disposición, responde bien a comida. Empezamos con obediencia básica.</p>
+</div>
+</div>
+</div>
+
+<!-- Session History for this pet -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">history</span> Sesiones de Luna</h3>
+<span class="text-[10px] font-bold text-slate-400">4 sesiones</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-start gap-3 p-3 rounded-xl bg-violet-50/50 border border-violet-100">
+<div class="w-9 h-9 rounded-lg bg-violet-100 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-violet-600 text-[18px]">fitness_center</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between"><p class="text-xs font-bold">Obediencia Básica</p><span class="text-[10px] text-slate-400">24 Oct</span></div>
+<p class="text-[10px] text-slate-500 mt-0.5">60 min · $800 MXN</p>
+<p class="text-[10px] text-violet-600 font-medium mt-1">Sentado y quieto aprendidos ✓</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+<div class="w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-emerald-600 text-[18px]">directions_walk</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between"><p class="text-xs font-bold">Socialización</p><span class="text-[10px] text-slate-400">22 Oct</span></div>
+<p class="text-[10px] text-slate-500 mt-0.5">45 min · $600 MXN</p>
+<p class="text-[10px] text-emerald-600 font-medium mt-1">Reaccionó bien con 2 perros ✓</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+<div class="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-blue-600 text-[18px]">directions_walk</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between"><p class="text-xs font-bold">Paseo + Evaluación</p><span class="text-[10px] text-slate-400">18 Oct</span></div>
+<p class="text-[10px] text-slate-500 mt-0.5">60 min · $800 MXN</p>
+<p class="text-[10px] text-blue-600 font-medium mt-1">Detectamos fobia a bicicletas</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+<div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-primary text-[18px]">assignment</span></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between"><p class="text-xs font-bold">Evaluación Inicial</p><span class="text-[10px] text-slate-400">15 Oct</span></div>
+<p class="text-[10px] text-slate-500 mt-0.5">45 min · $600 MXN</p>
+<p class="text-[10px] text-primary font-medium mt-1">Perfil de comportamiento completado</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Quick Actions -->
+<div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-4 space-y-3 border border-primary/20">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">bolt</span> Acciones Rápidas</h3>
+<div class="grid grid-cols-2 gap-2">
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Agendando sesión para Luna', 'calendar_month')">
+<span class="material-symbols-outlined text-primary text-[22px]">calendar_add_on</span>
+<p class="text-[10px] font-bold text-primary mt-1">Agendar Sesión</p>
+</button>
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Solicitar vacuna Bordetella', 'vaccines')">
+<span class="material-symbols-outlined text-primary text-[22px]">vaccines</span>
+<p class="text-[10px] font-bold text-primary mt-1">Pedir Vacuna</p>
+</button>
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Generando reporte de Luna', 'summarize')">
+<span class="material-symbols-outlined text-primary text-[22px]">summarize</span>
+<p class="text-[10px] font-bold text-primary mt-1">Reporte Progreso</p>
+</button>
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Iniciando paseo con Luna', 'directions_walk')">
+<span class="material-symbols-outlined text-primary text-[22px]">directions_walk</span>
+<p class="text-[10px] font-bold text-primary mt-1">Iniciar Paseo</p>
+</button>
+</div>
+</div>
+
+</div></div>
+<!-- Toast -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast"><span class="material-symbols-outlined text-emerald-400 text-[18px]" id="toast-icon">check_circle</span><span class="text-sm font-semibold truncate max-w-[220px]" id="toast-message">OK</span></div>
+</div>
+<script>
+let toastTimeout;
+function showToast(m,i){const t=document.getElementById('toast');document.getElementById('toast-message').textContent=m;document.getElementById('toast-icon').textContent=i||'check_circle';clearTimeout(toastTimeout);t.classList.remove('opacity-0','-translate-y-4');t.classList.add('opacity-100','translate-y-0');toastTimeout=setTimeout(()=>{t.classList.remove('opacity-100','translate-y-0');t.classList.add('opacity-0','-translate-y-4');},3000);}
+</script>
+</body></html>
