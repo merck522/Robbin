@@ -45,12 +45,21 @@
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
 <input id="search-input" class="w-full h-11 pl-10 pr-4 bg-white dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 shadow-sm" placeholder="Search clients or dogs..." type="text" oninput="filterClients()"/>
 </div>
-<button class="flex items-center justify-center size-11 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/10">
+<div class="relative">
+<button id="sortMenuBtn" onclick="toggleSortMenu()" class="flex items-center justify-center size-11 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/10 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700">
 <span class="material-symbols-outlined text-primary dark:text-slate-300">tune</span>
 </button>
+<div id="sortMenu" class="hidden absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 py-2 z-50">
+<button onclick="sortClients('az')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Alfabético (A-Z)</button>
+<button onclick="sortClients('za')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Alfabético (Z-A)</button>
+<button onclick="sortClients('newest')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Recientemente agregados</button>
+<button onclick="sortClients('oldest')" class="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Más antiguos</button>
+</div>
+</div>
 </div>
 <div class="flex gap-2 py-2 overflow-x-auto no-scrollbar">
 <button class="filter-btn px-4 py-1.5 bg-primary text-white rounded-full text-xs font-semibold whitespace-nowrap" data-filter="all" onclick="setFilter('all', this)">All Clients</button>
+<button class="filter-btn px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5" data-filter="dogs" onclick="setFilter('dogs', this)">Con Perros</button>
 <button class="filter-btn px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5" data-filter="active" onclick="setFilter('active', this)">Active Training</button>
 <button class="filter-btn px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5" data-filter="pending" onclick="setFilter('pending', this)">Pending</button>
 <button class="filter-btn px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5" data-filter="completed" onclick="setFilter('completed', this)">Completed</button>
@@ -60,7 +69,7 @@
 <div class="flex items-center justify-between mb-1" id="results-bar">
 <p class="text-xs text-slate-400 font-semibold"><span id="results-count">4</span> clientes</p>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Juan Pérez" data-pets="Luna Cooper" data-status="active" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Juan Pérez" data-pets="Luna Cooper" data-status="active" data-has-dogs="true" data-date="2023-10-24" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -72,10 +81,10 @@
 </div>
 </div>
 <div class="flex gap-2">
-<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="\&quot;window.location.href='tel:+1234567890'\&quot;">
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="window.location.href='tel:+1234567890'">
 <span class="material-symbols-outlined text-xl">call</span>
 </button>
-<button '_blank')\"="" class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="\&quot;window.open('https://wa.me/1234567890?text=Hola,%20te%20escribo%20desde%20Stitch',">
+<button class="size-9 rounded-full bg-background-light dark:bg-slate-700 flex items-center justify-center text-primary dark:text-slate-200 active:scale-95 transition-transform" onclick="window.open('https://wa.me/1234567890?text=Hola,%20te%20escribo%20desde%20Stitch', '_blank')">
 <span class="material-symbols-outlined text-xl">chat_bubble</span>
 </button>
 </div>
@@ -98,7 +107,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Sarah Jenkins" data-pets="Buster" data-status="active" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Sarah Jenkins" data-pets="Buster" data-status="active" data-has-dogs="true" data-date="2023-10-22" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -130,7 +139,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Michael Chen" data-pets="Snoopy Coco" data-status="pending" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Michael Chen" data-pets="Snoopy Coco" data-status="pending" data-has-dogs="true" data-date="2023-10-30" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -168,7 +177,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Elena Rodriguez" data-pets="Rex" data-status="completed" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Elena Rodriguez" data-pets="Rex" data-status="completed" data-has-dogs="true" data-date="2023-10-15" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -294,5 +303,75 @@
         btn.classList.add('bg-primary', 'text-white', 'font-semibold');
         filterClients();
     }
+
+    function toggleSortMenu() {
+        document.getElementById('sortMenu').classList.toggle('hidden');
+    }
+
+    function sortClients(type) {
+        const list = document.getElementById('clients-container');
+        const cards = Array.from(list.querySelectorAll('.client-card'));
+        const emptyState = document.getElementById('empty-state');
+        
+        cards.sort((a, b) => {
+            const nameA = a.dataset.name.toLowerCase();
+            const nameB = b.dataset.name.toLowerCase();
+            const dateA = new Date(a.dataset.date).getTime();
+            const dateB = new Date(b.dataset.date).getTime();
+            
+            if (type === 'az') return nameA.localeCompare(nameB);
+            if (type === 'za') return nameB.localeCompare(nameA);
+            if (type === 'newest') return dateB - dateA;
+            if (type === 'oldest') return dateA - dateB;
+            return 0;
+        });
+        
+        // Re-insert cards in sorted order before the empty state
+        cards.forEach(card => list.insertBefore(card, emptyState));
+        
+        toggleSortMenu();
+        showToast('Lista ordenada correctamente', 'sort');
+    }
+
+    // Close sort menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('sortMenu');
+        const btn = document.getElementById('sortMenuBtn');
+        if (menu && btn && !btn.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add('hidden');
+        }
+    });
+
+    // Handle initial custom filter logic
+    const originalFilterClients = filterClients;
+    filterClients = function() {
+        const query = document.getElementById('search-input').value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.client-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const name = (card.dataset.name || '').toLowerCase();
+            const pets = (card.dataset.pets || '').toLowerCase();
+            const status = card.dataset.status || '';
+            const hasDogs = card.dataset.hasDogs || '';
+
+            const matchesSearch = !query || name.includes(query) || pets.includes(query);
+            
+            let matchesFilter = false;
+            if (currentFilter === 'all') matchesFilter = true;
+            else if (currentFilter === 'dogs') matchesFilter = hasDogs === 'true';
+            else matchesFilter = status === currentFilter;
+
+            if (matchesSearch && matchesFilter) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        document.getElementById('results-count').textContent = visibleCount;
+        document.getElementById('empty-state').classList.toggle('hidden', visibleCount > 0);
+    };
 </script>
 </body></html>
