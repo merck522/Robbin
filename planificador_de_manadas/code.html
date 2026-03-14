@@ -41,9 +41,9 @@
 <!-- Calendar Controls -->
 <div class="flex items-center justify-between border-b mx-[-16px] px-4 border-slate-100 dark:border-slate-800 pb-3 mb-4">
 <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
-    <button id="tab-day" onclick="switchView('day')" class="bg-white dark:bg-slate-700 shadow-sm text-primary dark:text-white px-3 py-1.5 rounded-md text-sm font-semibold transition-all">Día</button>
-    <button id="tab-week" onclick="switchView('week')" class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-3 py-1.5 rounded-md text-sm font-medium transition-all">Semana</button>
-    <button id="tab-month" onclick="switchView('month')" class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-3 py-1.5 rounded-md text-sm font-medium transition-all">Mes</button>
+<button class="bg-white dark:bg-slate-700 shadow-sm text-primary dark:text-white px-3 py-1.5 rounded-md text-sm font-semibold transition-all" id="tab-day" onclick="switchView('day')">Día</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-3 py-1.5 rounded-md text-sm font-medium transition-all" id="tab-week" onclick="switchView('week')">Semana</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-3 py-1.5 rounded-md text-sm font-medium transition-all" id="tab-month" onclick="switchView('month')">Mes</button>
 </div>
 <div class="flex items-center gap-3">
 <button class="size-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors">
@@ -59,7 +59,6 @@
 <main class="max-w-md mx-auto px-4 py-6 space-y-8">
 <!-- Calendar Timeline Grid -->
 <div id="view-day">
-
 <div class="relative mt-2" style="height: 800px; min-height: 800px;">
 <!-- Time slots (Background Grid) -->
 <div class="absolute inset-0 flex flex-col">
@@ -216,145 +215,136 @@
 </div>
 </div> <!-- closes relative mt-2 -->
 </div> <!-- closes view-day -->
-
 <!-- Week View -->
-<div id="view-week" class="hidden mt-2">
-    <div class="grid grid-cols-7 gap-1 text-center mb-2">
-        <div class="text-[10px] font-bold text-slate-400 uppercase">L</div>
-        <div class="text-[10px] font-bold text-slate-400 uppercase">M</div>
-        <div class="text-[10px] font-bold text-slate-400 uppercase">M</div>
-        <div class="text-[10px] font-bold text-primary uppercase">J</div>
-        <div class="text-[10px] font-bold text-slate-400 uppercase">V</div>
-        <div class="text-[10px] font-bold text-slate-400 uppercase">S</div>
-        <div class="text-[10px] font-bold text-slate-400 uppercase">D</div>
-        
-        <div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">21</div>
-        <div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">22</div>
-        <div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">23</div>
-        <div class="text-sm font-bold bg-primary text-white rounded-full size-7 flex items-center justify-center mx-auto">24</div>
-        <div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">25</div>
-        <div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">26</div>
-        <div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">27</div>
-    </div>
-    
-    <!-- Week Grid Body -->
-    <div class="relative mt-2 border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden flex" style="height: 600px;">
-        <!-- Time vertical axis -->
-        <div class="w-10 shrink-0 border-r border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col justify-between py-2">
-            <span class="text-[10px] text-slate-400 text-center">8a</span>
-            <span class="text-[10px] text-slate-400 text-center">10a</span>
-            <span class="text-[10px] text-slate-400 text-center">12p</span>
-            <span class="text-[10px] text-slate-400 text-center">2p</span>
-            <span class="text-[10px] text-slate-400 text-center">4p</span>
-        </div>
-        <!-- Days Columns -->
-        <div class="grid grid-cols-7 flex-1 divide-x divide-slate-100 dark:divide-slate-800/50 relative">
-            <div class="relative"></div> <!-- Monday -->
-            <div class="relative">
-                <div class="absolute left-1 right-1 top-[10%] h-[15%] bg-indigo-100 dark:bg-indigo-900/40 rounded border border-indigo-200 dark:border-indigo-800 border-l-2 border-l-indigo-500"></div>
-                <div class="absolute left-1 right-1 top-[40%] h-[20%] bg-emerald-100 dark:bg-emerald-900/40 rounded border border-emerald-200 dark:border-emerald-800 border-l-2 border-l-emerald-500"></div>
-            </div> <!-- Tuesday -->
-            <div class="relative">
-                <div class="absolute left-1 right-1 top-[20%] h-[10%] bg-blue-100 dark:bg-blue-900/40 rounded border border-blue-200 dark:border-blue-800 border-l-2 border-l-blue-500"></div>
-            </div> <!-- Wednesday -->
-            <div class="relative bg-primary/5 dark:bg-primary/10"> <!-- Today (Thursday) -->
-                <!-- Sarah Jenkins Event mock -->
-                <div class="absolute left-1 right-1 top-[5%] h-[10%] bg-blue-100 dark:bg-blue-900/30 rounded border border-blue-200 dark:border-blue-800/50 border-l-2 border-l-blue-500 overflow-hidden text-[9px] leading-tight p-0.5 text-blue-900 dark:text-blue-100 font-medium">Básico</div>
-                <!-- Juan Perez Event mock -->
-                <div class="absolute left-1 right-1 top-[40%] h-[15%] bg-emerald-100 dark:bg-emerald-900/30 rounded border border-emerald-200 dark:border-emerald-800/50 border-l-2 border-l-emerald-500 overflow-hidden text-[9px] leading-tight p-0.5 text-emerald-900 dark:text-emerald-100 font-medium">Mod. Cond</div>
-                <!-- Elena Rodriguez Event mock -->
-                <div class="absolute left-1 right-1 top-[75%] h-[10%] bg-purple-100 dark:bg-purple-900/30 rounded border border-purple-200 dark:border-purple-800/50 border-l-2 border-l-purple-500 overflow-hidden text-[9px] leading-tight p-0.5 text-purple-900 dark:text-purple-100 font-medium">Rex</div>
-            </div>
-            <div class="relative">
-                 <div class="absolute left-1 right-1 top-[15%] h-[20%] bg-amber-100 dark:bg-amber-900/40 rounded border border-amber-200 dark:border-amber-800 border-l-2 border-l-amber-500"></div>
-            </div> <!-- Friday -->
-            <div class="relative"></div> <!-- Saturday -->
-            <div class="relative"></div> <!-- Sunday -->
-            
-            <!-- Horizontal grid lines -->
-            <div class="absolute inset-x-0 top-[25%] border-b border-slate-100 dark:border-slate-800/50 pointer-events-none"></div>
-            <div class="absolute inset-x-0 top-[50%] border-b border-slate-100 dark:border-slate-800/50 pointer-events-none"></div>
-            <div class="absolute inset-x-0 top-[75%] border-b border-slate-100 dark:border-slate-800/50 pointer-events-none"></div>
-        </div>
-    </div>
+<div class="hidden mt-2" id="view-week">
+<div class="grid grid-cols-7 gap-1 text-center mb-2">
+<div class="text-[10px] font-bold text-slate-400 uppercase">L</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase">M</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase">M</div>
+<div class="text-[10px] font-bold text-primary uppercase">J</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase">V</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase">S</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase">D</div>
+<div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">21</div>
+<div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">22</div>
+<div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">23</div>
+<div class="text-sm font-bold bg-primary text-white rounded-full size-7 flex items-center justify-center mx-auto">24</div>
+<div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">25</div>
+<div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">26</div>
+<div class="text-sm font-medium text-slate-600 dark:text-slate-300 py-1">27</div>
 </div>
-
-
+<!-- Week Grid Body -->
+<div class="relative mt-2 border border-slate-100 dark:border-slate-800 rounded-lg overflow-hidden flex" style="height: 600px;">
+<!-- Time vertical axis -->
+<div class="w-10 shrink-0 border-r border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col justify-between py-2">
+<span class="text-[10px] text-slate-400 text-center">8a</span>
+<span class="text-[10px] text-slate-400 text-center">10a</span>
+<span class="text-[10px] text-slate-400 text-center">12p</span>
+<span class="text-[10px] text-slate-400 text-center">2p</span>
+<span class="text-[10px] text-slate-400 text-center">4p</span>
+</div>
+<!-- Days Columns -->
+<div class="grid grid-cols-7 flex-1 divide-x divide-slate-100 dark:divide-slate-800/50 relative">
+<div class="relative"></div> <!-- Monday -->
+<div class="relative">
+<div class="absolute left-1 right-1 top-[10%] h-[15%] bg-indigo-100 dark:bg-indigo-900/40 rounded border border-indigo-200 dark:border-indigo-800 border-l-2 border-l-indigo-500"></div>
+<div class="absolute left-1 right-1 top-[40%] h-[20%] bg-emerald-100 dark:bg-emerald-900/40 rounded border border-emerald-200 dark:border-emerald-800 border-l-2 border-l-emerald-500"></div>
+</div> <!-- Tuesday -->
+<div class="relative">
+<div class="absolute left-1 right-1 top-[20%] h-[10%] bg-blue-100 dark:bg-blue-900/40 rounded border border-blue-200 dark:border-blue-800 border-l-2 border-l-blue-500"></div>
+</div> <!-- Wednesday -->
+<div class="relative bg-primary/5 dark:bg-primary/10"> <!-- Today (Thursday) -->
+<!-- Sarah Jenkins Event mock -->
+<div class="absolute left-1 right-1 top-[5%] h-[10%] bg-blue-100 dark:bg-blue-900/30 rounded border border-blue-200 dark:border-blue-800/50 border-l-2 border-l-blue-500 overflow-hidden text-[9px] leading-tight p-0.5 text-blue-900 dark:text-blue-100 font-medium">Básico</div>
+<!-- Juan Perez Event mock -->
+<div class="absolute left-1 right-1 top-[40%] h-[15%] bg-emerald-100 dark:bg-emerald-900/30 rounded border border-emerald-200 dark:border-emerald-800/50 border-l-2 border-l-emerald-500 overflow-hidden text-[9px] leading-tight p-0.5 text-emerald-900 dark:text-emerald-100 font-medium">Mod. Cond</div>
+<!-- Elena Rodriguez Event mock -->
+<div class="absolute left-1 right-1 top-[75%] h-[10%] bg-purple-100 dark:bg-purple-900/30 rounded border border-purple-200 dark:border-purple-800/50 border-l-2 border-l-purple-500 overflow-hidden text-[9px] leading-tight p-0.5 text-purple-900 dark:text-purple-100 font-medium">Rex</div>
+</div>
+<div class="relative">
+<div class="absolute left-1 right-1 top-[15%] h-[20%] bg-amber-100 dark:bg-amber-900/40 rounded border border-amber-200 dark:border-amber-800 border-l-2 border-l-amber-500"></div>
+</div> <!-- Friday -->
+<div class="relative"></div> <!-- Saturday -->
+<div class="relative"></div> <!-- Sunday -->
+<!-- Horizontal grid lines -->
+<div class="absolute inset-x-0 top-[25%] border-b border-slate-100 dark:border-slate-800/50 pointer-events-none"></div>
+<div class="absolute inset-x-0 top-[50%] border-b border-slate-100 dark:border-slate-800/50 pointer-events-none"></div>
+<div class="absolute inset-x-0 top-[75%] border-b border-slate-100 dark:border-slate-800/50 pointer-events-none"></div>
+</div>
+</div>
+</div>
 <!-- Month View -->
-<div id="view-month" class="hidden mt-2 bg-white dark:bg-slate-800 rounded-xl border border-primary/5 p-4 shadow-sm">
-    <div class="grid grid-cols-7 gap-1 text-center mb-4">
-        <div class="text-xs font-bold text-slate-400 uppercase">L</div>
-        <div class="text-xs font-bold text-slate-400 uppercase">M</div>
-        <div class="text-xs font-bold text-slate-400 uppercase">M</div>
-        <div class="text-xs font-bold text-slate-400 uppercase">J</div>
-        <div class="text-xs font-bold text-slate-400 uppercase">V</div>
-        <div class="text-xs font-bold text-slate-400 uppercase">S</div>
-        <div class="text-xs font-bold text-slate-400 uppercase">D</div>
-    </div>
-    <div class="grid grid-cols-7 gap-y-4 gap-x-1 text-center items-start">
-        <!-- Week 1 -->
-        <div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">28</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">29</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">30</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">1</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">2</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">3</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">4</span></div>
-        <!-- Week 2 -->
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">5</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">6</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">7</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">8</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">9</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">10</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">11</span></div>
-        <!-- Week 3 -->
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">12</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">13</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">14</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-amber-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">15</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">16</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">17</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">18</span></div>
-        <!-- Week 4 -->
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">19</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">20</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">21</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">22</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">23</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="flex items-center justify-center size-7 bg-primary text-white rounded-full font-bold">24</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div><div class="size-1.5 rounded-full bg-emerald-400"></div><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">25</span></div>
-        <!-- Week 5 -->
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">26</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-amber-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">27</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">28</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">29</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">30</span></div>
-        <div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">31</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
-        <div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">1</span></div>
-    </div>
-    
-    <div class="mt-6 border-t border-slate-100 dark:border-slate-700 pt-4 space-y-2">
-        <h4 class="text-xs font-bold text-slate-500 uppercase">Jueves 24 (Hoy)</h4>
-        <div class="space-y-2">
-            <div class="flex items-center gap-2">
-                <div class="size-2 rounded-full bg-blue-500"></div>
-                <span class="text-xs font-medium text-slate-700 dark:text-slate-200">08:30am - Sarah J.</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <div class="size-2 rounded-full bg-emerald-500"></div>
-                <span class="text-xs font-medium text-slate-700 dark:text-slate-200">12:00pm - Juan P.</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <div class="size-2 rounded-full bg-purple-500"></div>
-                <span class="text-xs font-medium text-slate-700 dark:text-slate-200">03:30pm - Elena R.</span>
-            </div>
-        </div>
-    </div>
+<div class="hidden mt-2 bg-white dark:bg-slate-800 rounded-xl border border-primary/5 p-4 shadow-sm" id="view-month">
+<div class="grid grid-cols-7 gap-1 text-center mb-4">
+<div class="text-xs font-bold text-slate-400 uppercase">L</div>
+<div class="text-xs font-bold text-slate-400 uppercase">M</div>
+<div class="text-xs font-bold text-slate-400 uppercase">M</div>
+<div class="text-xs font-bold text-slate-400 uppercase">J</div>
+<div class="text-xs font-bold text-slate-400 uppercase">V</div>
+<div class="text-xs font-bold text-slate-400 uppercase">S</div>
+<div class="text-xs font-bold text-slate-400 uppercase">D</div>
 </div>
-
+<div class="grid grid-cols-7 gap-y-4 gap-x-1 text-center items-start">
+<!-- Week 1 -->
+<div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">28</span></div>
+<div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">29</span></div>
+<div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">30</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">1</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">2</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">3</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">4</span></div>
+<!-- Week 2 -->
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">5</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">6</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">7</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">8</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">9</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">10</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">11</span></div>
+<!-- Week 3 -->
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">12</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">13</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">14</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-amber-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">15</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">16</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">17</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">18</span></div>
+<!-- Week 4 -->
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">19</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">20</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">21</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">22</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">23</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="flex items-center justify-center size-7 bg-primary text-white rounded-full font-bold">24</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-blue-400"></div><div class="size-1.5 rounded-full bg-emerald-400"></div><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">25</span></div>
+<!-- Week 5 -->
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">26</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-amber-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">27</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">28</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-purple-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">29</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">30</span></div>
+<div class="aspect-square flex flex-col items-center gap-1"><span class="text-sm font-medium text-slate-700 dark:text-slate-200">31</span><div class="flex gap-0.5"><div class="size-1.5 rounded-full bg-emerald-400"></div></div></div>
+<div class="aspect-square flex flex-col items-center gap-1 opacity-40"><span class="text-sm font-medium">1</span></div>
+</div>
+<div class="mt-6 border-t border-slate-100 dark:border-slate-700 pt-4 space-y-2">
+<h4 class="text-xs font-bold text-slate-500 uppercase">Jueves 24 (Hoy)</h4>
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-blue-500"></div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-200">08:30am - Sarah J.</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-200">12:00pm - Juan P.</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-purple-500"></div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-200">03:30pm - Elena R.</span>
+</div>
+</div>
+</div>
+</div>
 </main>
-
 <!-- Toast Notification -->
 <div class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast">
 <span class="material-symbols-outlined text-green-400" id="toast-icon">check_circle</span>
@@ -405,7 +395,6 @@
         });
     }
 </script>
-
 <!-- Bottom Navigation Bar -->
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
 <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../dashboard_del_entrenador_updated_style/code.html">
@@ -416,9 +405,9 @@
 <span class="material-symbols-outlined text-[24px]">group</span>
 <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../buscador_de_manadas/code.html">
-<span class="material-symbols-outlined text-[24px]">calendar_today</span>
-<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Explorar</span>
+<a class="flex flex-col items-center gap-1 text-primary w-16" href="../planificador_de_manadas/code.html">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">calendar_today</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
 </a>
 <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../seguimiento_de_paseo_gps/code.html">
 <span class="material-symbols-outlined text-[24px]">navigation</span>
