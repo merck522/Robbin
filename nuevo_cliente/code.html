@@ -400,6 +400,72 @@
             </button>
 </div>
 </div>
+<!-- Legal Clauses -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-slate-700 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">gavel</span> Cláusulas del Contrato
+</h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">El cliente debe leer y aceptar las siguientes cláusulas antes de firmar.</p>
+
+<!-- Clause 5: Responsabilidad Animal -->
+<div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800 space-y-2">
+<h4 class="text-xs font-black text-emerald-700 uppercase tracking-wider flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">pets</span> 5. Responsabilidad Animal</h4>
+<div class="text-[11px] text-slate-600 leading-relaxed space-y-1">
+<p>El Profesional acepta cumplir con las normas de bienestar animal vigentes y tratar a todas las mascotas con cuidado y respeto.</p>
+<p>En caso de emergencia médica, el Profesional debe actuar dentro del <strong>"Techo de Gasto Médico"</strong> autorizado por el Cliente en este contrato.</p>
+<p>Cualquier incidente (mordida, lesión, fuga) debe reportarse inmediatamente a través de la plataforma y al Cliente.</p>
+</div>
+<label class="flex items-start gap-2 pt-1 cursor-pointer">
+<input type="checkbox" class="mt-0.5 rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500" onchange="checkAllClauses()"/>
+<span class="text-[11px] font-semibold text-emerald-700">He leído y acepto esta cláusula</span>
+</label>
+</div>
+
+<!-- Clause 6: Cancelaciones -->
+<div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800 space-y-2">
+<h4 class="text-xs font-black text-amber-700 uppercase tracking-wider flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">cancel</span> 6. Cancelaciones</h4>
+<div class="text-[11px] text-slate-600 leading-relaxed space-y-1">
+<p>Las cancelaciones con más de <strong>24 horas</strong> de anticipación no generan cargo.</p>
+<p>Cancelaciones con menos de 24 horas pueden estar sujetas a un cargo del <strong>50%</strong> del valor del servicio.</p>
+<p>Las inasistencias sin aviso previo ("no-shows") podrán resultar en el cargo completo del servicio contratado.</p>
+</div>
+<label class="flex items-start gap-2 pt-1 cursor-pointer">
+<input type="checkbox" class="mt-0.5 rounded border-amber-300 text-amber-600 focus:ring-amber-500" onchange="checkAllClauses()"/>
+<span class="text-[11px] font-semibold text-amber-700">He leído y acepto esta cláusula</span>
+</label>
+</div>
+
+<!-- Clause 7: Limitación de Responsabilidad -->
+<div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-900/10 border border-rose-200 dark:border-rose-800 space-y-2">
+<h4 class="text-xs font-black text-rose-700 uppercase tracking-wider flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">block</span> 7. Limitación de Responsabilidad</h4>
+<div class="text-[11px] text-slate-600 leading-relaxed space-y-1">
+<p>Stitch no se hace responsable por daños directos o indirectos derivados de la prestación de servicios entre Profesionales y Clientes.</p>
+<p>La plataforma se proporciona "tal cual" y Stitch no garantiza la disponibilidad ininterrumpida del servicio.</p>
+</div>
+<label class="flex items-start gap-2 pt-1 cursor-pointer">
+<input type="checkbox" class="mt-0.5 rounded border-rose-300 text-rose-600 focus:ring-rose-500" onchange="checkAllClauses()"/>
+<span class="text-[11px] font-semibold text-rose-700">He leído y acepto esta cláusula</span>
+</label>
+</div>
+
+<!-- Clause 8: Contacto -->
+<div class="p-3 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800 space-y-2">
+<h4 class="text-xs font-black text-blue-700 uppercase tracking-wider flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">contact_mail</span> 8. Contacto</h4>
+<div class="text-[11px] text-slate-600 leading-relaxed space-y-1">
+<p>Para cualquier consulta sobre este contrato, comuníquese a <strong>legal@stitch.pet</strong> o a través de la sección de Ayuda y Soporte en la aplicación.</p>
+</div>
+<label class="flex items-start gap-2 pt-1 cursor-pointer">
+<input type="checkbox" class="mt-0.5 rounded border-blue-300 text-blue-600 focus:ring-blue-500" onchange="checkAllClauses()"/>
+<span class="text-[11px] font-semibold text-blue-700">He leído y acepto esta cláusula</span>
+</label>
+</div>
+
+<!-- All clauses accepted indicator -->
+<div class="flex items-center gap-2 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200" id="clauses-status">
+<span class="material-symbols-outlined text-slate-400 text-[18px]" id="clauses-icon">pending</span>
+<span class="text-xs font-bold text-slate-400" id="clauses-text">Faltan cláusulas por aceptar</span>
+</div>
+</div>
 <!-- Summary / Send to Owner -->
 <div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-5 border border-primary/20 space-y-4">
 <div class="flex items-center gap-3">
@@ -543,6 +609,33 @@
             toast.classList.remove('opacity-100', 'translate-y-0');
             toast.classList.add('opacity-0', '-translate-y-4');
         }, 3000);
+    }
+
+    function checkAllClauses() {
+        const checkboxes = document.querySelectorAll('#section-4 input[type="checkbox"]');
+        const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+        const status = document.getElementById('clauses-status');
+        const icon = document.getElementById('clauses-icon');
+        const text = document.getElementById('clauses-text');
+        if (allChecked) {
+            status.classList.remove('bg-slate-50', 'border-slate-200');
+            status.classList.add('bg-emerald-50', 'border-emerald-200');
+            icon.textContent = 'check_circle';
+            icon.classList.remove('text-slate-400');
+            icon.classList.add('text-emerald-600');
+            text.textContent = 'Todas las cláusulas aceptadas ✓';
+            text.classList.remove('text-slate-400');
+            text.classList.add('text-emerald-700');
+        } else {
+            status.classList.remove('bg-emerald-50', 'border-emerald-200');
+            status.classList.add('bg-slate-50', 'border-slate-200');
+            icon.textContent = 'pending';
+            icon.classList.remove('text-emerald-600');
+            icon.classList.add('text-slate-400');
+            text.textContent = 'Faltan cláusulas por aceptar';
+            text.classList.remove('text-emerald-700');
+            text.classList.add('text-slate-400');
+        }
     }
 </script>
 </body>
