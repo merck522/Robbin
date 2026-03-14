@@ -43,21 +43,24 @@
 <div class="flex gap-3 mb-2">
 <div class="relative flex-1">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-<input class="w-full h-11 pl-10 pr-4 bg-white dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 shadow-sm" placeholder="Search clients or dogs..." type="text"/>
+<input id="search-input" class="w-full h-11 pl-10 pr-4 bg-white dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 shadow-sm" placeholder="Search clients or dogs..." type="text" oninput="filterClients()"/>
 </div>
 <button class="flex items-center justify-center size-11 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-primary/10">
 <span class="material-symbols-outlined text-primary dark:text-slate-300">tune</span>
 </button>
 </div>
 <div class="flex gap-2 py-2 overflow-x-auto no-scrollbar">
-<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-semibold whitespace-nowrap">All Clients</button>
-<button class="px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5">Active Training</button>
-<button class="px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5">Pending</button>
-<button class="px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5">Completed</button>
+<button class="filter-btn px-4 py-1.5 bg-primary text-white rounded-full text-xs font-semibold whitespace-nowrap" data-filter="all" onclick="setFilter('all', this)">All Clients</button>
+<button class="filter-btn px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5" data-filter="active" onclick="setFilter('active', this)">Active Training</button>
+<button class="filter-btn px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5" data-filter="pending" onclick="setFilter('pending', this)">Pending</button>
+<button class="filter-btn px-4 py-1.5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-xs font-medium whitespace-nowrap border border-primary/5" data-filter="completed" onclick="setFilter('completed', this)">Completed</button>
 </div>
 </header>
-<main class="flex-1 px-4 py-4 space-y-4 pb-24">
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='../detalle_cliente/code.html'">
+<main class="flex-1 px-4 py-4 space-y-4 pb-24" id="clients-container">
+<div class="flex items-center justify-between mb-1" id="results-bar">
+<p class="text-xs text-slate-400 font-semibold"><span id="results-count">4</span> clientes</p>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Juan Pérez" data-pets="Luna Cooper" data-status="active" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -95,7 +98,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Sarah Jenkins" data-pets="Buster" data-status="active" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -127,7 +130,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Michael Chen" data-pets="Snoopy Coco" data-status="pending" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -165,7 +168,7 @@
 </div>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow" onclick="window.location.href='../detalle_cliente/code.html'">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-shadow client-card" data-name="Elena Rodriguez" data-pets="Rex" data-status="completed" onclick="window.location.href='../detalle_cliente/code.html'">
 <div class="flex justify-between items-start mb-4">
 <div class="flex gap-3">
 <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5">
@@ -197,6 +200,12 @@
 </div>
 </div>
 </div>
+<!-- Empty State -->
+<div id="empty-state" class="hidden flex flex-col items-center justify-center py-16 text-center">
+<span class="material-symbols-outlined text-[48px] text-slate-300 mb-3">search_off</span>
+<h3 class="text-base font-bold text-slate-500">Sin resultados</h3>
+<p class="text-xs text-slate-400 mt-1 max-w-[240px]">No se encontraron clientes o mascotas con ese nombre. Intenta con otro término.</p>
+</div>
 </main>
 <button class="fixed bottom-24 right-6 size-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-30 ring-4 ring-white dark:ring-slate-900 active:scale-95 transition-transform" onclick="showToast('New client form opened.', 'add')">
 <span class="material-symbols-outlined text-3xl">add</span>
@@ -227,6 +236,7 @@
 </div>
 <script>
     let toastTimeout;
+    let currentFilter = 'all';
     
     function showToast(message, icon) {
         const toast = document.getElementById('toast');
@@ -246,6 +256,43 @@
             toast.classList.remove('opacity-100', 'translate-y-0');
             toast.classList.add('opacity-0', '-translate-y-4');
         }, 3000);
+    }
+
+    function filterClients() {
+        const query = document.getElementById('search-input').value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.client-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const name = (card.dataset.name || '').toLowerCase();
+            const pets = (card.dataset.pets || '').toLowerCase();
+            const status = card.dataset.status || '';
+
+            const matchesSearch = !query || name.includes(query) || pets.includes(query);
+            const matchesFilter = currentFilter === 'all' || status === currentFilter;
+
+            if (matchesSearch && matchesFilter) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        document.getElementById('results-count').textContent = visibleCount;
+        document.getElementById('empty-state').classList.toggle('hidden', visibleCount > 0);
+    }
+
+    function setFilter(filter, btn) {
+        currentFilter = filter;
+        // Update button styles
+        document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('bg-primary', 'text-white', 'font-semibold');
+            b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-400', 'font-medium', 'border', 'border-primary/5');
+        });
+        btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-400', 'font-medium', 'border', 'border-primary/5');
+        btn.classList.add('bg-primary', 'text-white', 'font-semibold');
+        filterClients();
     }
 </script>
 </body></html>
