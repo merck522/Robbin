@@ -32,7 +32,7 @@
 </div>
 <div class="flex-1 text-center">
 <h2 class="text-base font-bold leading-tight tracking-tight" id="section-title">Información del Dueño</h2>
-<p class="text-[10px] text-slate-400 font-semibold uppercase tracking-widest mt-0.5">Paso <span id="step-num">1</span> de 5</p>
+<p class="text-[10px] text-slate-400 font-semibold uppercase tracking-widest mt-0.5">Paso <span id="step-num">1</span> de 6</p>
 </div>
 <div class="w-10"></div>
 </div>
@@ -47,6 +47,8 @@
 <div class="step-dot w-2.5 h-2.5 rounded-full bg-slate-300" data-step="3"></div>
 <div class="w-6 h-0.5 bg-slate-200 rounded"></div>
 <div class="step-dot w-2.5 h-2.5 rounded-full bg-slate-300" data-step="4"></div>
+<div class="w-6 h-0.5 bg-slate-200 rounded"></div>
+<div class="step-dot w-2.5 h-2.5 rounded-full bg-slate-300" data-step="5"></div>
 </div>
 <!-- Scrollable Content -->
 <div class="flex-1 overflow-y-auto pb-32">
@@ -484,6 +486,161 @@
 </div>
 </div>
 </div>
+
+<!-- ===================== SECTION 6: Plan de Entrenamiento ===================== -->
+<div class="section" id="section-5">
+<div class="px-4 pt-6 space-y-5">
+<!-- Section Icon -->
+<div class="flex justify-center">
+<div class="w-14 h-14 rounded-2xl bg-violet-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-violet-600 text-[28px]">assignment</span>
+</div>
+</div>
+
+<!-- Training Plan Header -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">flag</span> Plan de Entrenamiento
+</h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">Definido por el entrenador después de evaluar al perro y platicarlo con el dueño.</p>
+
+<!-- Objectives -->
+<div class="space-y-3">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Objetivos Específicos del Entrenamiento *</label>
+
+<div class="space-y-2" id="objectives-list">
+<div class="flex items-center gap-2 objective-item">
+<span class="w-6 h-6 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-[10px] font-black flex-shrink-0">1</span>
+<input class="flex-1 px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: Obediencia básica (sit, stay, come)" type="text"/>
+</div>
+<div class="flex items-center gap-2 objective-item">
+<span class="w-6 h-6 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-[10px] font-black flex-shrink-0">2</span>
+<input class="flex-1 px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: Caminar sin tirar de la correa" type="text"/>
+</div>
+<div class="flex items-center gap-2 objective-item">
+<span class="w-6 h-6 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-[10px] font-black flex-shrink-0">3</span>
+<input class="flex-1 px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: Desensibilización a bicicletas" type="text"/>
+</div>
+</div>
+
+<button class="w-full py-2.5 rounded-xl border-2 border-dashed border-violet-200 text-violet-600 text-xs font-bold hover:bg-violet-50 transition-all active:scale-[0.98] flex items-center justify-center gap-1" onclick="addObjective()">
+<span class="material-symbols-outlined text-[16px]">add</span> Agregar Objetivo
+</button>
+</div>
+
+<!-- Notes from Trainer -->
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Notas del Entrenador</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Observaciones de la evaluación inicial, estrategia sugerida, herramientas necesarias…" rows="3"></textarea>
+</div>
+</div>
+
+<!-- Sessions & Cost -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-emerald-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span> Sesiones y Costos
+</h3>
+
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Número de Sesiones *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none text-center" placeholder="8" type="number" min="1" id="session-count"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Frecuencia</label>
+<select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none appearance-none">
+<option value="">Seleccionar…</option>
+<option>1 vez por semana</option>
+<option>2 veces por semana</option>
+<option>3 veces por semana</option>
+<option>Diaria</option>
+</select>
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Costo por Sesión *</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">$</span>
+<input class="w-full pl-7 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="800" type="number" id="session-cost" oninput="calculateTotal()"/>
+</div>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Duración por Sesión</label>
+<select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none appearance-none">
+<option value="">Seleccionar…</option>
+<option>30 min</option>
+<option>45 min</option>
+<option>60 min</option>
+<option>90 min</option>
+</select>
+</div>
+</div>
+
+<!-- Total Summary -->
+<div class="p-4 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-emerald-700 uppercase">Inversión Total Estimada</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-black text-emerald-700" id="total-cost">$0</span>
+<span class="text-xs text-emerald-600">MXN</span>
+</div>
+<p class="text-[10px] text-emerald-600" id="total-desc">0 sesiones × $0 c/u</p>
+</div>
+</div>
+
+<!-- Client Agreement & Signature -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">draw</span> Firma del Cliente
+</h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">El cliente confirma haber revisado y estar de acuerdo con el plan de entrenamiento, objetivos y número de sesiones.</p>
+
+<div class="p-3 rounded-xl bg-primary/5 border border-primary/20 space-y-2">
+<p class="text-[11px] text-primary font-semibold leading-relaxed">"Yo, como dueño/responsable de la(s) mascota(s), confirmo que he revisado y estoy de acuerdo con los objetivos de entrenamiento definidos, el número de sesiones acordadas y el costo total del plan. Entiendo que los resultados dependen de la constancia y la práctica en casa."</p>
+</div>
+
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" class="mt-0.5 rounded border-primary/30 text-primary focus:ring-primary" id="plan-agree-checkbox"/>
+<span class="text-xs font-semibold text-slate-700">Acepto el plan de entrenamiento descrito arriba</span>
+</label>
+
+<!-- Signature Canvas -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Firma aquí ↓</label>
+<div class="relative">
+<canvas class="w-full rounded-xl border-2 border-dashed border-slate-300 bg-white cursor-crosshair" id="signature-canvas" height="150" style="touch-action: none;"></canvas>
+<button class="absolute top-2 right-2 px-2 py-1 rounded-lg bg-slate-100 text-slate-500 text-[10px] font-bold hover:bg-slate-200 transition-all" onclick="clearSignature()">Borrar</button>
+</div>
+</div>
+
+<!-- Signature Status -->
+<div class="flex items-center gap-2 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200" id="signature-status">
+<span class="material-symbols-outlined text-slate-400 text-[18px]" id="sig-icon">pending</span>
+<span class="text-xs font-bold text-slate-400" id="sig-text">Falta la firma del cliente</span>
+</div>
+</div>
+
+<!-- Send for Signature -->
+<div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-5 border border-primary/20 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">send</span>
+</div>
+<div>
+<h3 class="text-sm font-black text-primary">¿El cliente no está presente?</h3>
+<p class="text-[11px] text-slate-500 leading-relaxed">Envía el plan para revisión y firma digital.</p>
+</div>
+</div>
+<button class="w-full py-3.5 bg-white border-2 border-primary/30 text-primary font-bold text-sm rounded-xl hover:bg-primary/5 transition-all active:scale-[0.98] flex items-center justify-center gap-2" onclick="showToast('Plan enviado al cliente por WhatsApp', 'check_circle')">
+<span class="material-symbols-outlined text-[18px]">share</span>
+Enviar Plan para Firma
+</button>
+</div>
+</div>
+</div>
 </div><!-- End scrollable content -->
 <!-- Bottom Action Bar -->
 <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-4 py-3 pb-6 z-50">
@@ -528,13 +685,14 @@
 </div><!-- End main container -->
 <script>
     let currentSection = 0;
-    const totalSections = 5;
+    const totalSections = 6;
     const sectionTitles = [
         'Información del Dueño',
         'Historial de Salud',
         'Perfil de Comportamiento',
         'Estilo de Vida',
-        'Contrato de Expectativas'
+        'Contrato de Expectativas',
+        'Plan de Entrenamiento'
     ];
 
     function changeSection(direction) {
@@ -637,6 +795,107 @@
             text.classList.add('text-slate-400');
         }
     }
+
+    // === Training Plan: Add Objectives ===
+    let objectiveCount = 3;
+    function addObjective() {
+        objectiveCount++;
+        const list = document.getElementById('objectives-list');
+        const item = document.createElement('div');
+        item.className = 'flex items-center gap-2 objective-item';
+        item.innerHTML = `
+            <span class="w-6 h-6 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-[10px] font-black flex-shrink-0">${objectiveCount}</span>
+            <input class="flex-1 px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Nuevo objetivo…" type="text"/>
+            <button class="w-7 h-7 rounded-lg bg-rose-100 text-rose-500 flex items-center justify-center hover:bg-rose-200 transition-all flex-shrink-0" onclick="removeObjective(this)"><span class="material-symbols-outlined text-[14px]">close</span></button>
+        `;
+        list.appendChild(item);
+    }
+    function removeObjective(btn) {
+        btn.closest('.objective-item').remove();
+        objectiveCount--;
+        // Re-number
+        document.querySelectorAll('#objectives-list .objective-item').forEach((item, i) => {
+            item.querySelector('span').textContent = i + 1;
+        });
+    }
+
+    // === Calculate Total Cost ===
+    function calculateTotal() {
+        const count = parseInt(document.getElementById('session-count')?.value) || 0;
+        const cost = parseInt(document.getElementById('session-cost')?.value) || 0;
+        const total = count * cost;
+        document.getElementById('total-cost').textContent = '$' + total.toLocaleString();
+        document.getElementById('total-desc').textContent = `${count} sesiones × $${cost.toLocaleString()} c/u`;
+    }
+    // Listen to session-count changes too
+    document.addEventListener('DOMContentLoaded', () => {
+        const sc = document.getElementById('session-count');
+        if (sc) sc.addEventListener('input', calculateTotal);
+    });
+
+    // === Signature Pad ===
+    const canvas = document.getElementById('signature-canvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let hasSignature = false;
+
+    function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = 150;
+        ctx.strokeStyle = '#1e293b';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+    }
+
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const t = e.touches ? e.touches[0] : e;
+        return { x: t.clientX - rect.left, y: t.clientY - rect.top };
+    }
+
+    canvas.addEventListener('mousedown', (e) => { isDrawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+    canvas.addEventListener('mousemove', (e) => { if (!isDrawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSignature = true; updateSignatureStatus(); });
+    canvas.addEventListener('mouseup', () => { isDrawing = false; });
+    canvas.addEventListener('mouseleave', () => { isDrawing = false; });
+    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); isDrawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+    canvas.addEventListener('touchmove', (e) => { e.preventDefault(); if (!isDrawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSignature = true; updateSignatureStatus(); });
+    canvas.addEventListener('touchend', () => { isDrawing = false; });
+
+    function clearSignature() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hasSignature = false;
+        updateSignatureStatus();
+    }
+
+    function updateSignatureStatus() {
+        const status = document.getElementById('signature-status');
+        const icon = document.getElementById('sig-icon');
+        const text = document.getElementById('sig-text');
+        if (hasSignature) {
+            status.classList.remove('bg-slate-50', 'border-slate-200');
+            status.classList.add('bg-emerald-50', 'border-emerald-200');
+            icon.textContent = 'check_circle';
+            icon.classList.remove('text-slate-400');
+            icon.classList.add('text-emerald-600');
+            text.textContent = 'Firma registrada ✓';
+            text.classList.remove('text-slate-400');
+            text.classList.add('text-emerald-700');
+        } else {
+            status.classList.remove('bg-emerald-50', 'border-emerald-200');
+            status.classList.add('bg-slate-50', 'border-slate-200');
+            icon.textContent = 'pending';
+            icon.classList.remove('text-emerald-600');
+            icon.classList.add('text-slate-400');
+            text.textContent = 'Falta la firma del cliente';
+            text.classList.remove('text-emerald-700');
+            text.classList.add('text-slate-400');
+        }
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    setTimeout(resizeCanvas, 100);
 </script>
 </body>
 </html>
