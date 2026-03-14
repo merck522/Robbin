@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch - Nuevo Cliente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}}}};</script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .fill-icon { font-variation-settings: 'FILL' 1; }
+    .section { display: none; }
+    .section.active { display: block; }
+    .step-dot { transition: all 0.3s ease; }
+    .step-dot.active { background-color: #050062; transform: scale(1.3); }
+    .step-dot.completed { background-color: #22c55e; }
+    .upload-zone { border: 2px dashed #cbd5e1; transition: all 0.2s; }
+    .upload-zone:hover { border-color: #050062; background: rgba(5,0,98,0.03); }
+    input:focus, select:focus, textarea:focus { border-color: #050062 !important; box-shadow: 0 0 0 3px rgba(5,0,98,0.1); }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<div class="sticky top-0 z-20 flex items-center bg-white dark:bg-slate-900 px-4 py-3 justify-between border-b border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer" onclick="window.location.href='../dashboard_del_entrenador_updated_style/code.html'">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex-1 text-center">
+<h2 class="text-base font-bold leading-tight tracking-tight" id="section-title">Información del Dueño</h2>
+<p class="text-[10px] text-slate-400 font-semibold uppercase tracking-widest mt-0.5">Paso <span id="step-num">1</span> de 5</p>
+</div>
+<div class="w-10"></div>
+</div>
+<!-- Progress Stepper -->
+<div class="flex items-center justify-center gap-2 px-6 py-4 bg-white dark:bg-slate-900 border-b border-slate-50 dark:border-slate-800">
+<div class="step-dot active w-2.5 h-2.5 rounded-full bg-slate-300" data-step="0"></div>
+<div class="w-6 h-0.5 bg-slate-200 rounded"></div>
+<div class="step-dot w-2.5 h-2.5 rounded-full bg-slate-300" data-step="1"></div>
+<div class="w-6 h-0.5 bg-slate-200 rounded"></div>
+<div class="step-dot w-2.5 h-2.5 rounded-full bg-slate-300" data-step="2"></div>
+<div class="w-6 h-0.5 bg-slate-200 rounded"></div>
+<div class="step-dot w-2.5 h-2.5 rounded-full bg-slate-300" data-step="3"></div>
+<div class="w-6 h-0.5 bg-slate-200 rounded"></div>
+<div class="step-dot w-2.5 h-2.5 rounded-full bg-slate-300" data-step="4"></div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto pb-32">
+<!-- ===================== SECTION 1: Información del Dueño y Veterinario ===================== -->
+<div class="section active" id="section-0">
+<div class="px-4 pt-6 space-y-5">
+<!-- Section Icon -->
+<div class="flex justify-center">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[28px]">person_add</span>
+</div>
+</div>
+<!-- Owner Info -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">badge</span> Datos del Dueño
+        </h3>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Nombre Completo *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: María García López" type="text"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Teléfono de Emergencia *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="+52 55 1234 5678" type="tel"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Dirección</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Calle, número, colonia, CP" type="text"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Cómo Entrar a la Casa</label>
+<select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none appearance-none">
+<option value="">Seleccionar método de acceso…</option>
+<option>Código de teclado</option>
+<option>Llave escondida</option>
+<option>Portero / Conserje</option>
+<option>Alguien abre la puerta</option>
+<option>Otro</option>
+</select>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Instrucciones de Acceso</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Código 4589#, puerta gris al fondo del pasillo" rows="2"></textarea>
+</div>
+</div>
+<!-- Vet Info -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-emerald-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">local_hospital</span> Información del Veterinario
+        </h3>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Clínica Veterinaria</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Nombre de la clínica" type="text"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Teléfono del Veterinario</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="+52 55 9876 5432" type="tel"/>
+</div>
+<div class="bg-rose-50 dark:bg-rose-900/20 rounded-xl p-4 border border-rose-200 dark:border-rose-800">
+<label class="text-xs font-black text-rose-600 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+<span class="material-symbols-outlined text-[16px]">emergency</span> Techo de Gasto Médico *
+            </label>
+<p class="text-[11px] text-rose-500 mb-3 leading-relaxed">¿Cuánto autoriza gastar en una emergencia si no responde al teléfono?</p>
+<div class="flex items-center gap-2">
+<span class="text-lg font-black text-rose-600">$</span>
+<input class="flex-1 px-4 py-3 rounded-xl border border-rose-200 dark:border-rose-700 bg-white dark:bg-slate-800 text-sm font-bold focus:outline-none text-rose-700" placeholder="5,000" type="number"/>
+<span class="text-sm font-bold text-rose-500">MXN</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== SECTION 2: Historial de Salud ===================== -->
+<div class="section" id="section-1">
+<div class="px-4 pt-6 space-y-5">
+<div class="flex justify-center">
+<div class="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600 text-[28px]">vaccines</span>
+</div>
+</div>
+<!-- Vaccination Cards -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-emerald-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified</span> Cartilla de Vacunación
+        </h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">Sube fotos de los comprobantes de cada vacuna.</p>
+<div class="grid grid-cols-2 gap-3">
+<div class="upload-zone rounded-xl p-3 text-center cursor-pointer flex flex-col items-center justify-center gap-1.5 min-h-[90px]" onclick="showToast('Subir foto de vacuna Rabia', 'photo_camera')">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">add_photo_alternate</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Rabia</span>
+</div>
+<div class="upload-zone rounded-xl p-3 text-center cursor-pointer flex flex-col items-center justify-center gap-1.5 min-h-[90px]" onclick="showToast('Subir foto de vacuna Distemper', 'photo_camera')">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">add_photo_alternate</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Distemper</span>
+</div>
+<div class="upload-zone rounded-xl p-3 text-center cursor-pointer flex flex-col items-center justify-center gap-1.5 min-h-[90px]" onclick="showToast('Subir foto de vacuna Parvo', 'photo_camera')">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">add_photo_alternate</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Parvo</span>
+</div>
+<div class="upload-zone rounded-xl p-3 text-center cursor-pointer flex flex-col items-center justify-center gap-1.5 min-h-[90px]" onclick="showToast('Subir foto de vacuna Bordetella', 'photo_camera')">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">add_photo_alternate</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Bordetella</span>
+</div>
+</div>
+</div>
+<!-- Allergies -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-amber-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">warning</span> Alergias y Restricciones
+        </h3>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Alergias Alimentarias</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Alergia al pollo, no puede comer premios con trigo…" rows="2"></textarea>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Condiciones Físicas</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Displasia de cadera, cirugía reciente de rodilla…" rows="2"></textarea>
+</div>
+</div>
+<!-- Sterilization -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">pets</span> Estatus de Esterilización
+        </h3>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-primary hover:text-primary transition-all active:scale-95" onclick="selectOption(this, 'sterilized')">✅ Esterilizado</button>
+<button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-primary hover:text-primary transition-all active:scale-95" onclick="selectOption(this, 'not-sterilized')">❌ No Esterilizado</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== SECTION 3: Perfil de Comportamiento ===================== -->
+<div class="section" id="section-2">
+<div class="px-4 pt-6 space-y-5">
+<div class="flex justify-center">
+<div class="w-14 h-14 rounded-2xl bg-rose-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-rose-600 text-[28px]">psychology</span>
+</div>
+</div>
+<!-- Reactivity -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-rose-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">pets</span> Nivel de Reactividad
+        </h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">¿Cómo reacciona ante estos estímulos?</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
+<span class="text-sm font-semibold">🐕 Otros perros</span>
+<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
+</select>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
+<span class="text-sm font-semibold">👤 Personas desconocidas</span>
+<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
+</select>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
+<span class="text-sm font-semibold">🚲 Bicicletas / Patinetas</span>
+<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
+</select>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
+<span class="text-sm font-semibold">👶 Niños</span>
+<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Fears -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-amber-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">thunderstorm</span> Miedos y Fobias
+        </h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">⛈️ Truenos</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🎆 Cohetes</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">📢 Ruidos fuertes</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🚗 Coches</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🪜 Escaleras</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🏊 Agua</button>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Otras fobias</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Describir otras fobias…" type="text"/>
+</div>
+</div>
+<!-- Bite History -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-rose-200 dark:border-rose-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-rose-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">gavel</span> Historial de Mordidas
+        </h3>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-emerald-400 transition-all active:scale-95" onclick="selectOption(this, 'no-bites'); document.getElementById('bite-details').classList.add('hidden')">No ha mordido</button>
+<button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-rose-400 transition-all active:scale-95" onclick="selectOption(this, 'has-bitten'); document.getElementById('bite-details').classList.remove('hidden')">Sí ha mordido</button>
+</div>
+<div class="hidden space-y-3" id="bite-details">
+<textarea class="w-full px-4 py-3 rounded-xl border border-rose-200 dark:border-rose-700 bg-rose-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="¿A quién mordió? ¿En qué contexto? Describe la situación…" rows="3"></textarea>
+</div>
+</div>
+<!-- Prey Drive -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-orange-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">target</span> Instinto de Caza (Prey Drive)
+        </h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-1">¿Persigue alguno de estos?</p>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-orange-400 hover:bg-orange-50 transition-all active:scale-95" onclick="toggleChip(this)">🐱 Gatos</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-orange-400 hover:bg-orange-50 transition-all active:scale-95" onclick="toggleChip(this)">🐿️ Ardillas</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-orange-400 hover:bg-orange-50 transition-all active:scale-95" onclick="toggleChip(this)">🐦 Pájaros</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-orange-400 hover:bg-orange-50 transition-all active:scale-95" onclick="toggleChip(this)">🏃 Corredores</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== SECTION 4: Estilo de Vida y Motivación ===================== -->
+<div class="section" id="section-3">
+<div class="px-4 pt-6 space-y-5">
+<div class="flex justify-center">
+<div class="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-[28px]">favorite</span>
+</div>
+</div>
+<!-- Diet -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-blue-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">restaurant</span> Dieta y Horarios
+        </h3>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">¿Qué come?</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: Royal Canin Medium Adult, 2 tazas" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Cantidad</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: 2 tazas" type="text"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Horario</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: 8am y 6pm" type="text"/>
+</div>
+</div>
+</div>
+<!-- Energy Level -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bolt</span> Nivel de Energía
+        </h3>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-3 rounded-xl border-2 border-slate-200 text-center text-xs font-bold text-slate-600 hover:border-violet-400 transition-all active:scale-95" onclick="selectOption(this, 'low')">
+<span class="block text-xl mb-1">🛋️</span> Bajo
+            </button>
+<button class="py-3 rounded-xl border-2 border-slate-200 text-center text-xs font-bold text-slate-600 hover:border-violet-400 transition-all active:scale-95" onclick="selectOption(this, 'medium')">
+<span class="block text-xl mb-1">🏃</span> Medio
+            </button>
+<button class="py-3 rounded-xl border-2 border-slate-200 text-center text-xs font-bold text-slate-600 hover:border-violet-400 transition-all active:scale-95" onclick="selectOption(this, 'high')">
+<span class="block text-xl mb-1">🚀</span> Alto
+            </button>
+</div>
+</div>
+<!-- Favorite Treats -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-amber-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">star</span> Premios Favoritos
+        </h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">¿Qué lo motiva más?</p>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🥩 Comida</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🧸 Juguetes</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🤗 Caricias</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-amber-400 hover:bg-amber-50 transition-all active:scale-95" onclick="toggleChip(this)">🎾 Pelotas</button>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Premios específicos</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: Tiras de pollo deshidratado, bolitas de hígado…" type="text"/>
+</div>
+</div>
+<!-- Known Commands -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">record_voice_over</span> Comandos Conocidos
+        </h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">¿Qué palabras usa el dueño? (para no confundir al perro)</p>
+<div class="space-y-3">
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Sentado</label>
+<input class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Sit / Siéntate" type="text"/>
+</div>
+<div>
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Quieto</label>
+<input class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Stay / Quieto" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Ven</label>
+<input class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Come / Ven aquí" type="text"/>
+</div>
+<div>
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Suelta</label>
+<input class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Drop / Suelta" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================== SECTION 5: Contrato de Expectativas ===================== -->
+<div class="section" id="section-4">
+<div class="px-4 pt-6 space-y-5">
+<div class="flex justify-center">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[28px]">handshake</span>
+</div>
+</div>
+<!-- Owner Goals -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">flag</span> Objetivos del Dueño
+        </h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">¿Qué quiere lograr con el entrenamiento?</p>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-primary hover:bg-primary/5 transition-all active:scale-95" onclick="toggleChip(this)">🚶 Caminar sin tirar</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-primary hover:bg-primary/5 transition-all active:scale-95" onclick="toggleChip(this)">🔇 No ladrar a visitas</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-primary hover:bg-primary/5 transition-all active:scale-95" onclick="toggleChip(this)">🐕 Socialización</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-primary hover:bg-primary/5 transition-all active:scale-95" onclick="toggleChip(this)">🏠 Obediencia básica</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-primary hover:bg-primary/5 transition-all active:scale-95" onclick="toggleChip(this)">😰 Ansiedad por separación</button>
+<button class="px-3 py-2 rounded-xl border-2 border-slate-200 text-xs font-bold text-slate-600 hover:border-primary hover:bg-primary/5 transition-all active:scale-95" onclick="toggleChip(this)">🍽️ Protección de recursos</button>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Otros objetivos</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Describe cualquier otro objetivo específico…" rows="2"></textarea>
+</div>
+</div>
+<!-- Media Consent -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span> Consentimiento de Medios
+        </h3>
+<p class="text-xs text-slate-500 leading-relaxed -mt-2">¿Puede usar fotos/videos del perro en redes sociales?</p>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-emerald-400 hover:bg-emerald-50 transition-all active:scale-95" onclick="selectOption(this, 'consent-yes')">
+                ✅ Sí, autorizo
+            </button>
+<button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-rose-400 hover:bg-rose-50 transition-all active:scale-95" onclick="selectOption(this, 'consent-no')">
+                ❌ No autorizo
+            </button>
+</div>
+</div>
+<!-- Summary / Send to Owner -->
+<div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-5 border border-primary/20 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">send</span>
+</div>
+<div>
+<h3 class="text-sm font-black text-primary">¿Campos incompletos?</h3>
+<p class="text-[11px] text-slate-500 leading-relaxed">Envía al dueño para que complete y firme.</p>
+</div>
+</div>
+<button class="w-full py-3.5 bg-white border-2 border-primary/30 text-primary font-bold text-sm rounded-xl hover:bg-primary/5 transition-all active:scale-[0.98] flex items-center justify-center gap-2" onclick="showToast('Enlace enviado al dueño por WhatsApp', 'check_circle')">
+<span class="material-symbols-outlined text-[18px]">share</span>
+            Enviar al Dueño para Completar
+        </button>
+</div>
+</div>
+</div>
+</div><!-- End scrollable content -->
+<!-- Bottom Action Bar -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../dashboard_del_entrenador_updated_style/code.html">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../lista_clientes/code.html">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Clientes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../planificador_de_manadas/code.html">
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Calendario</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16" href="../seguimiento_de_paseo_gps/code.html">
+<span class="material-symbols-outlined text-[24px]">navigation</span>
+<span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Paseo</span>
+</a>
+</nav>
+<!-- Success Modal -->
+<div class="fixed inset-0 z-[200] hidden" id="success-modal">
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+<div class="absolute inset-0 flex items-center justify-center p-6">
+<div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl space-y-4 transform scale-95 animate-[scaleIn_0.3s_ease_forwards]">
+<div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-emerald-600 text-[32px] fill-icon">check_circle</span>
+</div>
+<h3 class="text-xl font-black text-slate-900 dark:text-white">¡Cliente Registrado!</h3>
+<p class="text-sm text-slate-500 leading-relaxed">El perfil ha sido creado exitosamente. Puedes enviar los campos pendientes al dueño para que los complete.</p>
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full py-3 bg-primary text-white font-bold text-sm rounded-xl hover:bg-primary/90 transition-all active:scale-95" onclick="window.location.href='../lista_clientes/code.html'">
+                    Ver Lista de Clientes
+                </button>
+<button class="w-full py-3 border-2 border-slate-200 text-slate-600 font-bold text-sm rounded-xl hover:bg-slate-50 transition-all active:scale-95" onclick="window.location.href='../dashboard_del_entrenador_updated_style/code.html'">
+                    Volver al Dashboard
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast">
+<span class="material-symbols-outlined text-emerald-400 text-[18px]" id="toast-icon">check_circle</span>
+<span class="text-sm font-semibold truncate max-w-[220px]" id="toast-message">Acción realizada</span>
+</div>
+</div><!-- End main container -->
+<script>
+    let currentSection = 0;
+    const totalSections = 5;
+    const sectionTitles = [
+        'Información del Dueño',
+        'Historial de Salud',
+        'Perfil de Comportamiento',
+        'Estilo de Vida',
+        'Contrato de Expectativas'
+    ];
+
+    function changeSection(direction) {
+        const newSection = currentSection + direction;
+        if (newSection < 0 || newSection >= totalSections) return;
+        
+        document.getElementById(`section-${currentSection}`).classList.remove('active');
+        document.getElementById(`section-${newSection}`).classList.add('active');
+        currentSection = newSection;
+        updateUI();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateUI() {
+        document.getElementById('section-title').textContent = sectionTitles[currentSection];
+        document.getElementById('step-num').textContent = currentSection + 1;
+
+        // Stepper dots
+        document.querySelectorAll('.step-dot').forEach((dot, i) => {
+            dot.classList.remove('active', 'completed');
+            if (i === currentSection) dot.classList.add('active');
+            else if (i < currentSection) dot.classList.add('completed');
+        });
+
+        // Buttons
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnSave = document.getElementById('btn-save');
+        
+        btnPrev.classList.toggle('hidden', currentSection === 0);
+        
+        if (currentSection === totalSections - 1) {
+            btnNext.classList.add('hidden');
+            btnSave.classList.remove('hidden');
+            btnSave.style.display = 'flex';
+        } else {
+            btnNext.classList.remove('hidden');
+            btnSave.classList.add('hidden');
+        }
+    }
+
+    function toggleChip(btn) {
+        btn.classList.toggle('border-primary');
+        btn.classList.toggle('bg-primary/10');
+        btn.classList.toggle('text-primary');
+        btn.classList.toggle('border-slate-200');
+    }
+
+    function selectOption(btn, value) {
+        const parent = btn.parentElement;
+        parent.querySelectorAll('button').forEach(b => {
+            b.classList.remove('border-primary', 'bg-primary/10', 'text-primary', 'border-emerald-400', 'bg-emerald-50', 'text-emerald-700', 'border-rose-400', 'bg-rose-50', 'text-rose-700');
+            b.classList.add('border-slate-200', 'text-slate-600');
+        });
+        btn.classList.remove('border-slate-200', 'text-slate-600');
+        btn.classList.add('border-primary', 'bg-primary/10', 'text-primary');
+    }
+
+    function showSuccessModal() {
+        document.getElementById('success-modal').classList.remove('hidden');
+    }
+
+    let toastTimeout;
+    function showToast(message, icon) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toast-message').textContent = message;
+        document.getElementById('toast-icon').textContent = icon || 'check_circle';
+        clearTimeout(toastTimeout);
+        toast.classList.remove('opacity-0', '-translate-y-4');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', '-translate-y-4');
+        }, 3000);
+    }
+</script>
+</body>
+</html>

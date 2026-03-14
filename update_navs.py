@@ -110,6 +110,7 @@ mapping = {
     'dashboard_del_entrenador_updated_style': trainer_template,
     'inicio_entrenador': trainer_template,
     'crear_nuevo_contrato': trainer_template,
+    'nuevo_cliente': trainer_template,
     
     # Walker Tier (Inicio links to Walker Dashboard)
     'dashboard_del_paseador': walker_template,
