@@ -31,146 +31,198 @@
 <div class="text-primary flex size-10 shrink-0 items-center justify-center">
 <span class="material-symbols-outlined text-3xl">menu</span>
 </div>
-<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Planificador de Manadas</h1>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Calendario</h1>
 <div class="flex w-10 items-center justify-end">
 <button class="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
 <span class="material-symbols-outlined">account_circle</span>
 </button>
 </div>
 </div>
-<!-- Tabs -->
-<div class="flex border-b border-primary/10 px-4 gap-8 max-w-2xl mx-auto overflow-x-auto no-scrollbar">
-<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-3 pt-4 whitespace-nowrap" href="../selector.html">
-<span class="text-sm font-bold tracking-wide">Compatibles</span>
-</a>
-<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="../selector.html">
-<span class="text-sm font-bold tracking-wide">Cerca de mí</span>
-</a>
-<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="../selector.html">
-<div class="flex items-center gap-1">
-<span class="text-sm font-bold tracking-wide">Alertas</span>
-<span class="size-2 bg-red-500 rounded-full"></span>
+
+<!-- Calendar Controls -->
+<div class="flex items-center justify-between border-b mx-[-16px] px-4 border-slate-100 dark:border-slate-800 pb-3 mb-4">
+    <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+        <button class="bg-white dark:bg-slate-700 shadow-sm text-primary dark:text-white px-3 py-1.5 rounded-md text-sm font-semibold transition-all">Día</button>
+        <button class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-3 py-1.5 rounded-md text-sm font-medium transition-all" onclick="showToast('Vista semanal próximamente', 'calendar_view_week')">Semana</button>
+        <button class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-3 py-1.5 rounded-md text-sm font-medium transition-all" onclick="showToast('Vista mensual próximamente', 'calendar_view_month')">Mes</button>
+    </div>
+    <div class="flex items-center gap-3">
+        <button class="size-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors">
+            <span class="material-symbols-outlined text-xl">chevron_left</span>
+        </button>
+        <span class="text-sm font-bold text-slate-700 dark:text-slate-200 min-w-24 text-center">Hoy, Oct 24</span>
+        <button class="size-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors">
+            <span class="material-symbols-outlined text-xl">chevron_right</span>
+        </button>
+    </div>
 </div>
+
 </a>
 </div>
 </header>
 <main class="max-w-2xl mx-auto px-4 py-6 space-y-8">
-<!-- Search -->
-<div class="relative">
-<label class="flex items-center w-full h-12 bg-white dark:bg-slate-800 rounded-xl px-4 shadow-sm border border-primary/5">
-<span class="material-symbols-outlined text-primary mr-3">search</span>
-<input class="flex-1 bg-transparent border-none focus:ring-0 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 text-sm" placeholder="Buscar grupos o zonas de paseo" type="text"/>
-</label>
+
+<!-- Calendar Timeline Grid -->
+<div class="relative mt-2" style="height: 800px; min-height: 800px;">
+    <!-- Time slots (Background Grid) -->
+    <div class="absolute inset-0 flex flex-col">
+        <!-- 08:00 AM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">08:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+        <!-- 09:00 AM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">09:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+        <!-- 10:00 AM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">10:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+        <!-- 11:00 AM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">11:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+        <!-- 12:00 PM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">12:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+        <!-- 13:00 PM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">13:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+        <!-- 14:00 PM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">14:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+        <!-- 15:00 PM -->
+        <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">15:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+         <!-- 16:00 PM -->
+         <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">16:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+         <!-- 17:00 PM -->
+         <div class="flex-1 border-t border-slate-100 dark:border-slate-800/50 flex border-b">
+            <div class="w-16 shrink-0 py-2 pr-4 text-right">
+                <span class="text-xs font-medium text-slate-400">17:00</span>
+            </div>
+            <div class="flex-1 relative border-l border-slate-100 dark:border-slate-800/50"></div>
+        </div>
+    </div>
+
+    <!-- Current Time Line indicator (Example at 10:30 AM) -->
+    <div class="absolute left-16 right-0 flex items-center z-20" style="top: 25%; transform: translateY(-50%); pointer-events: none;">
+         <div class="size-2.5 bg-red-500 rounded-full -ml-1.5"></div>
+         <div class="h-[2px] bg-red-500 w-full shadow-[0_1px_3px_rgba(239,68,68,0.5)]"></div>
+    </div>
+
+    <!-- Events Layer -->
+    <div class="absolute inset-0 left-16 pl-2 pr-2 overflow-hidden pointer-events-none">
+        <!-- Event 1: 08:30 - 09:30 -->
+        <div class="absolute right-2 left-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-2 overflow-hidden shadow-sm pointer-events-auto cursor-pointer hover:shadow-md transition-shadow group pl-3" style="top: 5%; height: 10%;" onclick="window.location.href='../detalle_cliente/code.html'">
+            <div class="flex justify-between items-start mb-1 gap-2">
+                <div class="min-w-0 flex-1">
+                    <h4 class="font-bold text-sm text-blue-900 dark:text-blue-100 leading-tight truncate">Sarah Jenkins</h4>
+                    <p class="text-[11px] font-medium text-blue-700/80 dark:text-blue-300/80 flex items-center gap-1 mt-0.5 truncate">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span>08:30 - 09:30 · Entrenamiento Básico
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5 mt-1.5 overflow-hidden">
+                <div class="size-5 rounded-full bg-blue-200/50 overflow-hidden shrink-0">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZfUxjdZQ4C92jc9uAV73ZIBIfPbafPSfW5xo-QDjNSkJjivudPGdUcD7O6B1FUF53tZlhhMahul8PBG30qimZjvf-sAwOej7EwaDDyMlmI3XmRYlx39kiqw-VOEbgOYtxJhwBYNlpKixz_2nctEmBI_C7ls6Qn4hg3Cch1cnkDIU_H8LS3GnUK0wbd5Enf8PHwOJtnf8ZY10Ia7Hs4bCvliOVAagJaqCCWq71dhsVujEDqkcBiv7yiqUsUkAvlc-c3xvXM-E6BC2M" class="w-full h-full object-cover"/>
+                </div>
+                <span class="text-xs font-semibold text-blue-800 dark:text-blue-200 truncate">Buster</span>
+                <span class="text-blue-300 mx-0.5 text-xs">•</span>
+                <p class="text-[11px] text-blue-700 dark:text-blue-300 flex items-center gap-0.5 truncate">
+                    <span class="material-symbols-outlined text-[14px]">location_on</span>123 Colima, Roma Nte
+                </p>
+            </div>
+        </div>
+
+        <!-- Event 2: 12:00 - 13:30 -->
+        <div class="absolute right-2 left-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 p-2 overflow-hidden shadow-sm pointer-events-auto cursor-pointer hover:shadow-md transition-shadow group pl-3 flex flex-col justify-center" style="top: 40%; height: 15%;" onclick="window.location.href='../detalle_cliente/code.html'">
+            <div class="flex justify-between items-start mb-1 gap-2">
+                <div class="min-w-0 flex-1">
+                    <h4 class="font-bold text-base text-emerald-900 dark:text-emerald-100 leading-tight truncate">Juan Pérez</h4>
+                    <p class="text-[12px] font-medium text-emerald-700/80 dark:text-emerald-300/80 flex items-center gap-1 mt-0.5 truncate">
+                        <span class="material-symbols-outlined text-[14px]">schedule</span>12:00 - 13:30 · Modificación de Conducta
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5 mt-2 overflow-hidden">
+                <div class="flex -space-x-1.5 shrink-0">
+                    <div class="size-6 rounded-full border border-emerald-100 dark:border-emerald-800 bg-emerald-200/50 overflow-hidden relative z-10">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb" class="w-full h-full object-cover"/>
+                    </div>
+                    <div class="size-6 rounded-full border border-emerald-100 dark:border-emerald-800 bg-emerald-200/50 overflow-hidden relative z-0">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeA5uw_w7X5qOwcTOlEnHHqA2DIDR3m0gUiImTYmXo0pWjaPxE9oa3QISPy8kPTATFkQW8_J9jzfswV_LTfZKr9xz6B4myViy86om1fLkg0NzKBCFfAn6AGkZyqxkVimDzO9enZXQIfwrHsck1NSY7_x7N5EL1POycTSskro0wUZtHfd_3gOfQiwFI3pqDOe4vyFH4tdmQJFTP3v5m9w-rFcKfHZ-AofLD_VcPHMesZo0SmxMBtMj3i7yePSnLWtfHp0sL00A3g1SY" class="w-full h-full object-cover"/>
+                    </div>
+                </div>
+                <span class="text-xs font-bold text-emerald-800 dark:text-emerald-200 shrink-0">Luna & Cooper</span>
+                <span class="text-emerald-300 mx-1 text-xs shrink-0">•</span>
+                <p class="text-[12px] text-emerald-700 dark:text-emerald-300 flex items-center gap-0.5 truncate">
+                    <span class="material-symbols-outlined text-[14px] shrink-0">location_on</span>Parque España, Condesa
+                </p>
+            </div>
+            <!-- Extra info fits in taller blocks -->
+            <p class="text-[11px] text-emerald-600 dark:text-emerald-400 mt-2 line-clamp-1 border-t border-emerald-500/10 pt-1 flex items-center gap-1">
+               <span class="material-symbols-outlined text-[12px]">info</span> Llevar premios de alto valor (pollo).
+            </p>
+        </div>
+
+        <!-- Event 3: 15:30 - 16:30 -->
+        <div class="absolute right-2 left-2 rounded-lg bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-2 overflow-hidden shadow-sm pointer-events-auto cursor-pointer hover:shadow-md transition-shadow group pl-3 flex flex-col justify-center gap-0.5" style="top: 75%; height: 10%;" onclick="window.location.href='../detalle_cliente/code.html'">
+             <div class="flex justify-between items-start mb-0.5">
+                <div class="min-w-0 flex-1 flex items-center gap-2">
+                    <h4 class="font-bold text-sm text-purple-900 dark:text-purple-100 leading-tight truncate">Elena Rodriguez</h4>
+                    <p class="text-[11px] font-medium text-purple-700/80 dark:text-purple-300/80 flex items-center gap-0.5 shrink-0">
+                        <span class="material-symbols-outlined text-[12px]">schedule</span>15:30-16:30
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5 mt-0.5 overflow-hidden">
+                <div class="size-4 rounded-full bg-purple-200/50 overflow-hidden shrink-0">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkkGixy07-9W3Amk9lZ6sDnI7_vrFq-3_H2L_8Oy8RIMUp15P_8iqZRsWsdrUQnImQ6DKN0OvEDwXthNVerxaI2HZRaCYgYNtvo-uDhNkPvM1ahyROHWRNS3XUI94TdwCPhdPc3jebtR5tH-DPtmZuS_Bf4RIYwjZCJOiTzpkxP_RUvu21R4Q443NCyuzeCZ7kDCo14Y9ZNoLcXQV67OsMB2bxyiFdJDpbxdjEsEOZpxm7pu0Ym8cR7cj33v2SZKmBocXbPZuaefh2" class="w-full h-full object-cover"/>
+                </div>
+                <span class="text-[11px] font-semibold text-purple-800 dark:text-purple-200 truncate">Rex</span>
+                <span class="text-purple-300 mx-0.5 text-xs">•</span>
+                <p class="text-[11px] text-purple-700 dark:text-purple-300 flex items-center gap-0.5 truncate">
+                    <span class="material-symbols-outlined text-[14px]">location_on</span>Av. Reforma 222
+                </p>
+            </div>
+        </div>
+
+    </div>
 </div>
-<!-- Alerts Section -->
-<section class="space-y-3">
-<div class="flex items-center justify-between">
-<h2 class="text-lg font-bold tracking-tight">Alertas de Reactividad</h2>
-<span class="text-xs text-primary font-semibold px-2 py-1 bg-primary/10 rounded-full">En vivo</span>
-</div>
-<div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-4 flex gap-4">
-<div class="size-10 bg-amber-500 rounded-full flex items-center justify-center text-white shrink-0">
-<span class="material-symbols-outlined">warning</span>
-</div>
-<div>
-<h3 class="font-bold text-amber-900 dark:text-amber-200 text-sm">Perro reactivo en Parque Central</h3>
-<p class="text-xs text-amber-800 dark:text-amber-300 mt-1">Usuario reportó un Pastor Alemán sin correa hace 15 min. Precaución en la zona norte.</p>
-</div>
-</div>
-</section>
-<!-- Suggested Groups -->
-<section class="space-y-4">
-<h2 class="text-lg font-bold tracking-tight">Sugerencias por Temperamento</h2>
-<!-- Group Card 1 -->
-<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-primary/5 space-y-4">
-<div class="flex justify-between items-start">
-<div class="flex gap-3">
-<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center overflow-hidden">
-<img class="w-full h-full object-crop" data-alt="Golden Retriever playing happily" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT1XC2CB9DvRTjch3SIOgHS8mTHcniKxK3KgHwH1W3bdF_jzZZBLbDj8H30aMMUn3DzwbCLNEFcTP4VRzgnOVlr2ye4TzB4w7CN6htjwvQ9SKdpGh9Uq9DQoBSAccA2z-G_Lcf0lBeWY2GnTg93DUm6eRGU9nXbeVwGvW1RLvpgoCOdqwo_Xo_6CKpWekM2TDkTcaZoPDRGF9t_MXHgSQMTIUuRVV__wFsi20K2Znlh49lVa-wVDsVb5ArtdOl8B_YuKDA_eqjvTtk"/>
-</div>
-<div>
-<h3 class="font-bold text-base">Manada Zen (Baja Energía)</h3>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-sm">verified</span>
-<span class="text-xs font-medium">98% Compatibilidad</span>
-</div>
-</div>
-</div>
-<button class="text-primary bg-primary/10 rounded-lg px-3 py-1.5 text-xs font-bold active:scale-95 transition-transform" onclick="showToast('Solicitud enviada a Manada Zen', 'group_add')">Unirse</button>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Sumisos</span>
-<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Senior</span>
-<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Paseo Lento</span>
-</div>
-<div class="pt-2 border-t border-slate-50 dark:border-slate-700 flex items-center justify-between">
-<div class="flex -space-x-2">
-<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Profile of a small dog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmM8albtrSVGeOggtJi9qf-eKjH4sxr_EMlPlnTKvitz0z1VySwTkjHNj5Ubv8FKMCPm_Yzu5g6Twf8TBMb848VjcsYitt9jaMa52cwJR6K0EUmh0MTzPJSAon9hrXOg3siMbVRO9rJJUdJWDvVW0Fjvde94DM0g9OAt63C8wUpk9wiWuNl7S_ZLgfm6uJCCCxJF98ofDpk6KzOQeAvimUH6WQsCuYtPh2XMFFw2ioMAYadkfPGzoo6yudubJRBfdWX-PFOuQPUwFl"/>
-</div>
-<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Profile of a beagle dog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxxC-suugIPN_3qnu5lUtAsHPgXA4O60uGGNRv6elGQgLyDTbhJk7JNYGMvOfW8nhnOUuys81OaRKsvfawrTIpeItIqQ9ZwJWgZPC_8akqLe3sYb_z4-2NImyDv7hVTHbPbE40PCpPZ68tAyvte4ml7hvhP27x7pd71Nzyz2da0UGFWi67c00ARccci5i5wWsCFidWwzLor9NmkNL7rsJsdX82oyq5selzPDz_8bWfxpHj_Mtzn0SzUOZ5ihSwlEdoHIjFL7sV_HBN"/>
-</div>
-<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300 flex items-center justify-center text-[8px] font-bold">+12</div>
-</div>
-<p class="text-xs text-slate-500"><span class="material-symbols-outlined text-xs align-middle">location_on</span> a 0.5km de ti</p>
-</div>
-</div>
-<!-- Group Card 2 -->
-<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-primary/5 space-y-4">
-<div class="flex justify-between items-start">
-<div class="flex gap-3">
-<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center overflow-hidden">
-<img class="w-full h-full object-crop" data-alt="Active Border Collie jumping" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbEA_66xPNtKgkhqkWCPvo2cCDeKdM6PH8dbGjkY5ZkzTGovS9MFgpX9DsAnhPXV9-j0o-BbxuVOcJ1VzhdKh89QWzegkoaVFkPKWWATN4zEzhkCH5GNoZf7cEq9CWrfcdA28_20ixod9YYZkvLst7yzhHrlc-z2uaEy2XzDxJyYGxCDSjYactjinxDiK4p6k4B-nHIh9kbntjdxgK-D6iqJ0_J_Qi0jRpSOk3W0TJk0Hcfi_tYl1v-ysvcUc_XSTfgt680TbnrF1C"/>
-</div>
-<div>
-<h3 class="font-bold text-base">Exploradores (Alta Energía)</h3>
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-sm">verified</span>
-<span class="text-xs font-medium">85% Compatibilidad</span>
-</div>
-</div>
-</div>
-<button class="text-primary bg-primary/10 rounded-lg px-3 py-1.5 text-xs font-bold active:scale-95 transition-transform" onclick="showToast('Solicitud enviada a Exploradores', 'group_add')">Unirse</button>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Juego rudo</span>
-<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Cachorros</span>
-<span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-600 dark:text-slate-300">Sin correa</span>
-</div>
-<div class="pt-2 border-t border-slate-50 dark:border-slate-700 flex items-center justify-between">
-<div class="flex -space-x-2">
-<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-200 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Dog running in field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTOUQIAdL3ST4gBhHze7s-ASiXBfR9E4NVujbWjVMYw0SF8gxjEbMrGdHLDxixNpFYFB-yGbIgFQv779TxVLg0AeHt_7VBzeB1WDbgXhISZ9kHol3dR1Tnks4YjB2Nz8BRdLfg-6kpdHvNsQPqzsN_g47DEk0riaSqRCXZQI7hyoIB7GNB-EB3w4_-IIU5Ka5hEkzgBYDGYluHkb3YsxRKsZj6g-p9ol8CoNqor4Vf7vVUulP0jSiaHEVWPtQN1KmX8lLCdYS-Cpco"/>
-</div>
-<div class="size-6 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300 flex items-center justify-center text-[8px] font-bold">+8</div>
-</div>
-<p class="text-xs text-slate-500"><span class="material-symbols-outlined text-xs align-middle">location_on</span> a 2.1km de ti</p>
-</div>
-</div>
-</section>
-<!-- Map Quick Access -->
-<section class="space-y-4">
-<h2 class="text-lg font-bold tracking-tight">Geometría de Paseo</h2>
-<div class="relative w-full h-48 rounded-xl overflow-hidden border border-primary/10 shadow-inner">
-<div class="absolute inset-0 bg-slate-200 dark:bg-slate-700 flex items-center justify-center" data-location="Madrid, Spain">
-<!-- Placeholder for Map -->
-<div class="flex flex-col items-center">
-<span class="material-symbols-outlined text-4xl text-primary animate-pulse">location_on</span>
-<span class="text-xs font-bold text-slate-500 dark:text-slate-400 mt-2">Calculando rutas seguras...</span>
-</div>
-<img class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-multiply" data-alt="Stylized topographic map for outdoor planning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnEFZeN7GlkM2v-y0oXn6l9FTANpFgSrv91db2ADGFzQj4GV3xdFoOmSMyiFeh8a8Y2pagRKvWKEPt900yQOFeaxr07EmKhbp2NSNequEvl-VnhvBpQYKlvno0RyRnUyjI8Rs49wtpejKAOTZU1T06A_tnKzYU_f6lrqUwS7Q3WXktmOMvYxy79UxREw70A8gvTCt3Bi2oXh0A1ohhc68t9X-9UdAPwhJpEYRHKKzrVBXNdnHSWhS3MnmLq4Rep2fYvpvJRaLO5txs"/>
-</div>
-<div class="absolute bottom-4 right-4 flex flex-col gap-2">
-<button class="size-10 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">layers</span>
-</button>
-<button class="size-10 bg-primary text-white rounded-full shadow-lg flex items-center justify-center">
-<span class="material-symbols-outlined">my_location</span>
-</button>
-</div>
-</div>
-</section>
 </main>
 <!-- Toast Notification -->
 <div class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast">
