@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch - Ayuda y Soporte</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}}}};</script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.fill-icon { font-variation-settings: 'FILL' 1; }
+input:focus, textarea:focus { border-color: #050062 !important; box-shadow: 0 0 0 3px rgba(5,0,98,0.1); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-answer.open { max-height: 200px; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark">
+<div class="sticky top-0 z-20 flex items-center bg-white dark:bg-slate-900 px-4 py-3 justify-between border-b border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 cursor-pointer" onclick="window.location.href='../perfil_entrenador/code.html'"><span class="material-symbols-outlined">arrow_back</span></div>
+<h2 class="text-base font-bold leading-tight tracking-tight">Ayuda y Soporte</h2>
+<div class="w-10"></div>
+</div>
+<div class="flex-1 overflow-y-auto pb-8">
+<div class="px-4 pt-6 space-y-5">
+
+<!-- Contact Options -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">support_agent</span> Contáctanos</h3>
+<button class="w-full flex items-center gap-3 p-3 rounded-xl bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition-all active:scale-[0.98]" onclick="showToast('Abriendo WhatsApp…', 'chat')">
+<div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center"><span class="material-symbols-outlined text-white text-[20px]">chat</span></div>
+<div class="text-left"><p class="text-sm font-bold text-emerald-700">WhatsApp</p><p class="text-[10px] text-emerald-600">Respuesta en menos de 1 hora</p></div>
+<span class="material-symbols-outlined text-emerald-400 ml-auto">chevron_right</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 rounded-xl bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all active:scale-[0.98]" onclick="showToast('Abriendo correo…', 'mail')">
+<div class="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center"><span class="material-symbols-outlined text-white text-[20px]">mail</span></div>
+<div class="text-left"><p class="text-sm font-bold text-blue-700">Correo Electrónico</p><p class="text-[10px] text-blue-600">soporte@stitch.pet</p></div>
+<span class="material-symbols-outlined text-blue-400 ml-auto">chevron_right</span>
+</button>
+</div>
+
+<!-- FAQ -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-2 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-amber-600 flex items-center gap-2 mb-2"><span class="material-symbols-outlined text-[18px]">quiz</span> Preguntas Frecuentes</h3>
+
+<div class="border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-3 text-left hover:bg-slate-50 transition-colors" onclick="toggleFaq(this)">
+<span class="text-sm font-semibold pr-4">¿Cómo crear un contrato para un nuevo cliente?</span>
+<span class="material-symbols-outlined text-slate-400 text-[20px] faq-icon transition-transform">expand_more</span>
+</button>
+<div class="faq-answer px-3 pb-3"><p class="text-xs text-slate-500 leading-relaxed">Ve a tu Dashboard → Acciones Rápidas → "Nuevo Cliente". Llena el formulario de 5 pasos y envía al dueño los campos que necesite completar.</p></div>
+</div>
+
+<div class="border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-3 text-left hover:bg-slate-50 transition-colors" onclick="toggleFaq(this)">
+<span class="text-sm font-semibold pr-4">¿Cómo configuro mis métodos de pago?</span>
+<span class="material-symbols-outlined text-slate-400 text-[20px] faq-icon transition-transform">expand_more</span>
+</button>
+<div class="faq-answer px-3 pb-3"><p class="text-xs text-slate-500 leading-relaxed">En Mi Perfil → Métodos de Pago puedes agregar tu cuenta bancaria (CLABE), habilitar efectivo, o conectar Stripe para aceptar tarjetas.</p></div>
+</div>
+
+<div class="border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-3 text-left hover:bg-slate-50 transition-colors" onclick="toggleFaq(this)">
+<span class="text-sm font-semibold pr-4">¿Qué pasa si las vacunas de un perro se vencen?</span>
+<span class="material-symbols-outlined text-slate-400 text-[20px] faq-icon transition-transform">expand_more</span>
+</button>
+<div class="faq-answer px-3 pb-3"><p class="text-xs text-slate-500 leading-relaxed">El sistema bloquea automáticamente futuros agendamientos y notifica al dueño para que renueve la vacuna. Puedes activar alertas 30 días antes en Notificaciones.</p></div>
+</div>
+
+<div class="border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-3 text-left hover:bg-slate-50 transition-colors" onclick="toggleFaq(this)">
+<span class="text-sm font-semibold pr-4">¿Cómo cancelo una cita?</span>
+<span class="material-symbols-outlined text-slate-400 text-[20px] faq-icon transition-transform">expand_more</span>
+</button>
+<div class="faq-answer px-3 pb-3"><p class="text-xs text-slate-500 leading-relaxed">Ve a Calendario, selecciona la cita y presiona "Cancelar". El cliente recibirá una notificación automática.</p></div>
+</div>
+</div>
+
+<!-- Send us a message -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-4 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">edit_note</span> Envíanos un Mensaje</h3>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Asunto</label>
+<input type="text" placeholder="¿En qué podemos ayudarte?" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Mensaje</label>
+<textarea rows="4" placeholder="Describe tu problema o pregunta con detalle…" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none"></textarea>
+</div>
+<button class="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-2" onclick="showToast('Mensaje enviado. Te responderemos pronto.', 'check_circle')"><span class="material-symbols-outlined text-[18px]">send</span> Enviar Mensaje</button>
+</div>
+
+<!-- Legal -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-black uppercase tracking-wider text-slate-600 flex items-center gap-2 px-4 pt-4 pb-2"><span class="material-symbols-outlined text-[18px]">gavel</span> Legal</h3>
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors border-t border-slate-50" onclick="showToast('Abriendo Términos', 'description')"><span class="text-sm font-semibold">Términos y Condiciones</span><span class="material-symbols-outlined text-slate-400 text-[20px]">chevron_right</span></button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors border-t border-slate-50" onclick="showToast('Abriendo Política', 'policy')"><span class="text-sm font-semibold">Política de Privacidad</span><span class="material-symbols-outlined text-slate-400 text-[20px]">chevron_right</span></button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors border-t border-slate-50" onclick="showToast('Licencias', 'source')"><span class="text-sm font-semibold">Licencias de Software</span><span class="material-symbols-outlined text-slate-400 text-[20px]">chevron_right</span></button>
+</div>
+
+<p class="text-center text-[10px] text-slate-400 font-medium pb-4">Stitch v1.0.0 · Hecho con 🐾 en CDMX</p>
+
+</div></div>
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl z-[100] transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none" id="toast"><span class="material-symbols-outlined text-emerald-400 text-[18px]" id="toast-icon">check_circle</span><span class="text-sm font-semibold truncate max-w-[220px]" id="toast-message">OK</span></div>
+</div>
+<script>
+function toggleFaq(btn){const a=btn.nextElementSibling;const i=btn.querySelector('.faq-icon');a.classList.toggle('open');i.style.transform=a.classList.contains('open')?'rotate(180deg)':'';}
+let toastTimeout;
+function showToast(m,i){const t=document.getElementById('toast');document.getElementById('toast-message').textContent=m;document.getElementById('toast-icon').textContent=i||'check_circle';clearTimeout(toastTimeout);t.classList.remove('opacity-0','-translate-y-4');t.classList.add('opacity-100','translate-y-0');toastTimeout=setTimeout(()=>{t.classList.remove('opacity-100','translate-y-0');t.classList.add('opacity-0','-translate-y-4');},3000);}
+</script>
+</body></html>
