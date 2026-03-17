@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -30,19 +30,24 @@
         .fill-icon { font-variation-settings: 'FILL' 1; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Fix overlaps */
+        header .title-container {
+            padding-left: 0.5rem;
+        }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
     <div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl">
         
         <!-- Header -->
-        <header class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md px-6 py-6 flex items-center gap-4">
-            <button class="size-10 flex items-center justify-center rounded-2xl bg-slate-50 dark:bg-slate-800 text-primary transition-colors" onclick="history.back()">
+        <header class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md px-6 py-6 flex items-center gap-2">
+            <button class="size-10 flex items-center justify-center rounded-2xl bg-slate-50 dark:bg-slate-800 text-primary transition-colors shrink-0" onclick="history.back()">
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
-            <div>
-                <h1 class="text-xl font-black">Agendar Cita</h1>
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest" id="header-subtitle">Nueva Sesión</p>
+            <div class="title-container truncate">
+                <h1 class="text-xl font-black truncate">Agendar Cita</h1>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest truncate" id="header-subtitle">Nueva Sesión</p>
             </div>
         </header>
 
@@ -66,7 +71,7 @@
 
                 <div class="bg-primary/5 dark:bg-primary/20 border border-primary/10 rounded-3xl p-5 flex items-start gap-4">
                     <div class="size-12 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
-                        <span class="material-symbols-outlined">info</span>
+                        <span class="material-symbols-outlined fill-icon">info</span>
                     </div>
                     <div class="space-y-1">
                         <p class="text-xs font-black text-primary uppercase tracking-wider">Sugerencia inteligente</p>
@@ -80,7 +85,7 @@
                 </div>
             </section>
 
-            <!-- Step 2: Time Selection (Hidden initially) -->
+            <!-- Step 2: Time Selection -->
             <section id="step-2" class="hidden space-y-6">
                 <div class="space-y-4">
                     <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Selecciona un horario disponible</label>
@@ -112,46 +117,74 @@
                                 <span class="material-symbols-outlined text-primary">schedule</span>
                                 <span class="text-sm font-bold italic">09:00 AM - 10:00 AM</span>
                             </div>
-                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all">check_circle</span>
+                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all fill-icon">check_circle</span>
                         </button>
                         <button class="w-full p-4 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group" onclick="selectSlot(this)">
                             <div class="flex items-center gap-3">
                                 <span class="material-symbols-outlined text-primary">schedule</span>
                                 <span class="text-sm font-bold italic">11:30 AM - 12:30 PM</span>
                             </div>
-                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all">check_circle</span>
+                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all fill-icon">check_circle</span>
                         </button>
                         <button class="w-full p-4 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group" onclick="selectSlot(this)">
                             <div class="flex items-center gap-3">
                                 <span class="material-symbols-outlined text-primary">schedule</span>
                                 <span class="text-sm font-bold italic">04:00 PM - 05:00 PM</span>
                             </div>
-                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all">check_circle</span>
+                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all fill-icon">check_circle</span>
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- Step 3: Payment Check (Hidden initially) -->
+            <!-- Step 3: Payment Handling -->
             <section id="step-3" class="hidden space-y-6">
-                <div class="text-center py-8 space-y-4">
-                    <div class="size-24 rounded-full bg-rose-50 dark:bg-rose-900/20 text-rose-500 mx-auto flex items-center justify-center shadow-xl shadow-rose-500/10">
-                        <span class="material-symbols-outlined text-[48px] fill-icon">payments</span>
+                <!-- Status Toggle Header -->
+                <div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl">
+                    <button id="status-due" class="flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all bg-white dark:bg-slate-700 shadow-sm text-rose-500" onclick="setPaymentStatus('due')">Saldo Pendiente</button>
+                    <button id="status-none" class="flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all text-slate-400" onclick="setPaymentStatus('none')">Sin Adeudo</button>
+                </div>
+
+                <div id="payment-needed-view" class="space-y-6">
+                    <div class="text-center py-4 space-y-4">
+                        <div class="size-20 rounded-full bg-rose-50 dark:bg-rose-900/20 text-rose-500 mx-auto flex items-center justify-center shadow-xl shadow-rose-500/10">
+                            <span class="material-symbols-outlined text-[40px] fill-icon">payments</span>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-black">Revisar Cobro</h2>
+                            <p class="text-[11px] font-medium text-slate-500 max-w-[240px] mx-auto mt-1">El cliente tiene un saldo pendiente de la sesión anterior.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 class="text-xl font-black">Pendiente de Pago</h2>
-                        <p class="text-sm font-medium text-slate-500 max-w-[240px] mx-auto mt-2 text-balance">Para confirmar esta cita, es necesario saldar una deuda pendiente de la sesión anterior.</p>
+
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 border-2 border-slate-100 dark:border-slate-700 space-y-6 shadow-sm">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase text-slate-400 tracking-widest">Monto a cobrar (MXN)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 font-black text-rose-500 text-lg">$</span>
+                                <input type="number" id="editable-amount" class="w-full h-16 pl-10 pr-4 bg-rose-50/50 dark:bg-rose-900/10 border-2 border-transparent focus:border-rose-500/20 focus:ring-0 rounded-2xl text-2xl font-black text-rose-500 transition-all" value="350">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary">send_money</span>
+                                <span class="text-xs font-bold">Solicitar cobro ahora</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="request-charge-toggle" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700 space-y-4">
-                    <div class="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-700">
-                        <span class="text-xs font-bold text-slate-400 uppercase">Sesión #3</span>
-                        <span class="text-base font-black text-rose-500">$350.00 MXN</span>
+                <div id="no-payment-view" class="hidden text-center py-12 space-y-4">
+                    <div class="size-20 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-500 mx-auto flex items-center justify-center shadow-xl shadow-emerald-500/10">
+                        <span class="material-symbols-outlined text-[40px] fill-icon">check_circle</span>
                     </div>
-                    <div class="space-y-2">
-                        <p class="text-[10px] font-black uppercase text-slate-400">Concepto</p>
-                        <p class="text-sm font-bold italic text-slate-700 dark:text-slate-300">Entrenamiento personalizado (Llamado y Obediencia)</p>
+                    <div>
+                        <h2 class="text-lg font-black">¡Todo en Orden!</h2>
+                        <p class="text-[11px] font-medium text-slate-500 max-w-[240px] mx-auto mt-1">No hay pagos pendientes registrados para este cliente actualmente.</p>
                     </div>
                 </div>
             </section>
@@ -174,6 +207,7 @@
 
     <script>
         let currentStep = 1;
+        let paymentStatus = 'due';
 
         // Extract query params
         const urlParams = new URLSearchParams(window.location.search);
@@ -184,6 +218,38 @@
         // Prefill title
         document.getElementById('apt-title').value = `${sessionCount}ª Sesión de entrenamiento para ${petsName}`;
         document.getElementById('header-subtitle').textContent = `Agendando para ${clientName}`;
+
+        function setPaymentStatus(status) {
+            paymentStatus = status;
+            const dueBtn = document.getElementById('status-due');
+            const noneBtn = document.getElementById('status-none');
+            const dueView = document.getElementById('payment-needed-view');
+            const noneView = document.getElementById('no-payment-view');
+            const nextBtnText = document.getElementById('next-btn-text');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (status === 'due') {
+                dueBtn.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-rose-500');
+                dueBtn.classList.remove('text-slate-400');
+                noneBtn.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-emerald-500');
+                noneBtn.classList.add('text-slate-400');
+                dueView.classList.remove('hidden');
+                noneView.classList.add('hidden');
+                nextBtnText.textContent = 'SOLICITAR COBRO';
+                nextBtn.classList.remove('bg-emerald-500', 'shadow-emerald-500/20');
+                nextBtn.classList.add('bg-rose-500', 'shadow-rose-500/20');
+            } else {
+                noneBtn.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-emerald-500');
+                noneBtn.classList.remove('text-slate-400');
+                dueBtn.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-rose-500');
+                dueBtn.classList.add('text-slate-400');
+                dueView.classList.add('hidden');
+                noneView.classList.remove('hidden');
+                nextBtnText.textContent = 'FINALIZAR CITA';
+                nextBtn.classList.remove('bg-rose-500', 'shadow-rose-500/20');
+                nextBtn.classList.add('bg-emerald-500', 'shadow-emerald-500/20');
+            }
+        }
 
         function nextStep() {
             if (currentStep === 1) {
@@ -199,11 +265,19 @@
                 document.getElementById('step-3-bar').classList.add('bg-primary');
                 document.getElementById('step-3-bar').classList.remove('bg-slate-100', 'dark:bg-slate-800');
                 currentStep = 3;
-                document.getElementById('next-btn-text').textContent = 'SOLICITAR COBRO';
-                document.getElementById('next-btn').classList.remove('bg-primary');
-                document.getElementById('next-btn').classList.add('bg-rose-500', 'shadow-rose-500/20');
+                setPaymentStatus('due'); // Reset to default view for step 3
             } else {
-                window.location.href = '../cobro_sesion/code.html?amount=350&client=' + encodeURIComponent(clientName);
+                const amount = document.getElementById('editable-amount').value;
+                const shouldCharge = document.getElementById('request-charge-toggle').checked;
+                
+                if (paymentStatus === 'due' && shouldCharge) {
+                    window.location.href = `../cobro_sesion/code.html?amount=${amount}&client=${encodeURIComponent(clientName)}`;
+                } else {
+                    showToast('Cita agendada con éxito', 'verified');
+                    setTimeout(() => {
+                        window.location.href = '../lista_clientes/code.html';
+                    }, 1500);
+                }
             }
         }
 
