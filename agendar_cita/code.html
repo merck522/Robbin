@@ -31,7 +31,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Fix overlaps and responsiveness */
         .title-clamp {
             display: -webkit-box;
             -webkit-line-clamp: 1;
@@ -40,37 +39,47 @@
             overflow: hidden;
         }
 
-        /* Responsive stacking for payment toggle */
         @media (max-width: 360px) {
             .payment-toggle-wrapper {
                 flex-direction: column;
                 gap: 0.5rem;
             }
         }
+
+        .step-segment { cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .step-segment:hover { opacity: 0.8; transform: scaleY(1.5); }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
     <div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl">
         
         <!-- Header -->
-        <header class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md px-6 py-6 flex items-center gap-4 border-b border-slate-100 dark:border-slate-800">
-            <button class="size-10 flex items-center justify-center rounded-2xl bg-slate-50 dark:bg-slate-800 text-primary transition-all shrink-0 active:scale-90 hover:bg-slate-100" onclick="history.back()">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <div class="min-w-0 flex-1">
-                <h1 class="text-xl font-black truncate tracking-tight">Agendar Cita</h1>
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest truncate opacity-80" id="header-subtitle">Nueva Sesión</p>
+        <header class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md px-6 pt-6 pb-2 border-b border-slate-100 dark:border-slate-800 space-y-4">
+            <div class="flex items-center gap-4">
+                <button class="size-10 flex items-center justify-center rounded-2xl bg-slate-50 dark:bg-slate-800 text-primary transition-all shrink-0 active:scale-90 hover:bg-slate-100" id="back-btn" onclick="prevStep()">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <div class="min-w-0 flex-1">
+                    <h1 class="text-xl font-black truncate tracking-tight">Agendar Cita</h1>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest truncate opacity-80" id="header-subtitle">Nueva Sesión</p>
+                </div>
+            </div>
+            
+            <!-- Client Address Bar -->
+            <div class="flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                <span class="material-symbols-outlined text-sm text-primary">location_on</span>
+                <span class="text-[10px] font-bold text-slate-500 truncate" id="client-address">Calle Newton 42, Polanco</span>
+            </div>
+
+            <!-- Progress Bar (Interactive) -->
+            <div class="flex gap-2" id="steps-indicator">
+                <div class="h-1.5 flex-1 bg-primary rounded-full step-segment" id="step-1-bar" onclick="goToStep(1)"></div>
+                <div class="h-1.5 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full step-segment" id="step-2-bar" onclick="goToStep(2)"></div>
+                <div class="h-1.5 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full step-segment" id="step-3-bar" onclick="goToStep(3)"></div>
             </div>
         </header>
 
-        <main class="flex-1 px-6 pb-32">
-            <!-- Progress Bar -->
-            <div class="flex gap-2 mb-8" id="steps-indicator">
-                <div class="h-1.5 flex-1 bg-primary rounded-full" id="step-1-bar"></div>
-                <div class="h-1.5 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full" id="step-2-bar"></div>
-                <div class="h-1.5 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full" id="step-3-bar"></div>
-            </div>
-
+        <main class="flex-1 px-6 pb-32 pt-8">
             <!-- Step 1: Appointment Info -->
             <section id="step-1" class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div class="space-y-2">
@@ -83,76 +92,51 @@
                     </div>
                 </div>
 
-                <div class="bg-primary/5 dark:bg-primary/20 border border-primary/10 rounded-3xl p-5 flex items-start gap-4">
-                    <div class="size-12 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
-                        <span class="material-symbols-outlined fill-icon">info</span>
-                    </div>
-                    <div class="space-y-1">
-                        <p class="text-xs font-black text-primary uppercase tracking-wider">Sugerencia inteligente</p>
-                        <p class="text-[11px] text-primary/70 font-medium leading-relaxed">Hemos pre-rellenado el título basándonos en el historial de sesiones de este cliente.</p>
+                <!-- Training Goals Bubbles -->
+                <div class="space-y-3">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-primary ml-1">Objetivos del contrato</label>
+                    <div class="flex flex-wrap gap-2" id="goal-bubbles">
+                        <button class="px-4 py-2 bg-primary/5 dark:bg-primary/20 border-2 border-primary/10 rounded-full text-[11px] font-black italic text-primary hover:bg-primary/10 transition-all active:scale-95" onclick="appendGoal('Llamado a distancia')">+ Llamado</button>
+                        <button class="px-4 py-2 bg-primary/5 dark:bg-primary/20 border-2 border-primary/10 rounded-full text-[11px] font-black italic text-primary hover:bg-primary/10 transition-all active:scale-95" onclick="appendGoal('Caminar junto')">+ Caminar junto</button>
+                        <button class="px-4 py-2 bg-primary/5 dark:bg-primary/20 border-2 border-primary/10 rounded-full text-[11px] font-black italic text-primary hover:bg-primary/10 transition-all active:scale-95" onclick="appendGoal('Control de impulsos')">+ Impulsos</button>
+                        <button class="px-4 py-2 bg-primary/5 dark:bg-primary/20 border-2 border-primary/10 rounded-full text-[11px] font-black italic text-primary hover:bg-primary/10 transition-all active:scale-95" onclick="appendGoal('Socialización')">+ Socializar</button>
                     </div>
                 </div>
 
                 <div class="space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Notas para la sesión</label>
-                    <textarea class="w-full p-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-primary/20 focus:ring-0 rounded-2xl text-sm font-medium transition-all h-32" placeholder="Ej: Refuerzo de caminar junto a otros perros..."></textarea>
+                    <textarea id="session-notes" class="w-full p-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-primary/20 focus:ring-0 rounded-2xl text-sm font-medium transition-all h-32" placeholder="Describe lo que trabajarás en esta sesión..."></textarea>
                 </div>
             </section>
 
             <!-- Step 2: Time Selection -->
             <section id="step-2" class="hidden space-y-6">
                 <div class="space-y-4">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Selecciona un horario disponible</label>
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Selecciona una o varias opciones</label>
                     
-                    <!-- Date Selector (Mock) -->
-                    <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
-                        <button class="shrink-0 size-16 rounded-2xl bg-primary text-white flex flex-col items-center justify-center shadow-lg shadow-primary/20">
+                    <!-- Date Selector (Mock Calendar Day Navigation) -->
+                    <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2" id="calendar-days">
+                        <button class="shrink-0 size-16 rounded-2xl bg-primary text-white flex flex-col items-center justify-center shadow-lg shadow-primary/20 calendar-day" data-day="Lun 27" onclick="changeDay(this)">
                             <span class="text-[10px] font-bold uppercase">Lun</span>
                             <span class="text-lg font-black italic">27</span>
                         </button>
-                        <button class="shrink-0 size-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center">
+                        <button class="shrink-0 size-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center calendar-day" data-day="Mar 28" onclick="changeDay(this)">
                             <span class="text-[10px] font-bold uppercase opacity-40">Mar</span>
                             <span class="text-lg font-black opacity-80">28</span>
                         </button>
-                        <button class="shrink-0 size-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center">
+                        <button class="shrink-0 size-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center calendar-day" data-day="Mie 29" onclick="changeDay(this)">
                             <span class="text-[10px] font-bold uppercase opacity-40">Mie</span>
                             <span class="text-lg font-black opacity-80">29</span>
                         </button>
-                        <button class="shrink-0 size-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center">
+                        <button class="shrink-0 size-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center calendar-day" data-day="Jue 30" onclick="changeDay(this)">
                             <span class="text-[10px] font-bold uppercase opacity-40">Jue</span>
                             <span class="text-lg font-black opacity-80">30</span>
                         </button>
                     </div>
 
-                    <!-- Availability Slots -->
-                    <div class="space-y-3">
-                        <button class="w-full p-5 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group relative overflow-hidden" onclick="selectSlot(this)">
-                            <div class="flex items-center gap-4">
-                                <span class="material-symbols-outlined text-primary text-xl">schedule</span>
-                                <span class="text-sm font-bold italic">09:00 AM - 10:00 AM</span>
-                            </div>
-                            <div class="flex items-center shrink-0 ml-4">
-                                <span class="material-symbols-outlined text-primary hidden group-[.selected]:block fill-icon text-2xl transition-all scale-110">check_circle</span>
-                            </div>
-                        </button>
-                        <button class="w-full p-5 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group relative overflow-hidden" onclick="selectSlot(this)">
-                            <div class="flex items-center gap-4">
-                                <span class="material-symbols-outlined text-primary text-xl">schedule</span>
-                                <span class="text-sm font-bold italic">11:30 AM - 12:30 PM</span>
-                            </div>
-                            <div class="flex items-center shrink-0 ml-4">
-                                <span class="material-symbols-outlined text-primary hidden group-[.selected]:block fill-icon text-2xl transition-all scale-110">check_circle</span>
-                            </div>
-                        </button>
-                        <button class="w-full p-5 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group relative overflow-hidden" onclick="selectSlot(this)">
-                            <div class="flex items-center gap-4">
-                                <span class="material-symbols-outlined text-primary text-xl">schedule</span>
-                                <span class="text-sm font-bold italic">04:00 PM - 05:00 PM</span>
-                            </div>
-                            <div class="flex items-center shrink-0 ml-4">
-                                <span class="material-symbols-outlined text-primary hidden group-[.selected]:block fill-icon text-2xl transition-all scale-110">check_circle</span>
-                            </div>
-                        </button>
+                    <!-- Availability Slots (Multi-select) -->
+                    <div class="space-y-3" id="slots-container">
+                        <!-- Slots will be rendered here dynamically based on the day -->
                     </div>
                 </div>
             </section>
@@ -212,9 +196,9 @@
 
         <!-- Footer Actions -->
         <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-6 pb-10 flex gap-3 z-50">
-            <button class="flex-1 py-4 px-6 rounded-2xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-2" id="next-btn" onclick="nextStep()">
+            <button class="flex-1 py-4 px-6 rounded-2xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-2 uppercase tracking-wide" id="next-btn" onclick="nextStep()">
                 <span id="next-btn-text">CONTINUAR</span>
-                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                <span class="material-symbols-outlined text-lg" id="next-icon">arrow_forward</span>
             </button>
         </div>
 
@@ -228,16 +212,89 @@
     <script>
         let currentStep = 1;
         let paymentStatus = 'due';
+        const selectedSlots = new Set();
+        let currentDayLabel = 'Lun 27';
+
+        // Mock slots data
+        const slotsData = {
+            'Lun 27': ['09:00 AM - 10:00 AM', '11:30 AM - 12:30 PM', '04:00 PM - 05:00 PM'],
+            'Mar 28': ['10:00 AM - 11:00 AM', '01:00 PM - 02:00 PM', '05:30 PM - 06:30 PM'],
+            'Mie 29': ['09:00 AM - 10:00 AM', '12:00 PM - 01:00 PM', '03:00 PM - 04:00 PM'],
+            'Jue 30': ['11:00 AM - 12:00 PM', '02:00 PM - 03:00 PM', '06:00 PM - 07:00 PM']
+        };
 
         // Extract query params
         const urlParams = new URLSearchParams(window.location.search);
-        const clientName = urlParams.get('client') || 'Cliente';
-        const petsName = urlParams.get('pets') || 'Mascota';
-        const sessionCount = urlParams.get('sessions') || '1';
+        const clientName = urlParams.get('client') || 'Juan Pérez';
+        const petsName = urlParams.get('pets') || 'Luna';
+        const sessionCount = urlParams.get('sessions') || '4';
 
-        // Prefill title
+        // Initial setup
         document.getElementById('apt-title').value = `${sessionCount}ª Sesión de entrenamiento para ${petsName}`;
         document.getElementById('header-subtitle').textContent = `Agendando para ${clientName}`;
+        renderSlots();
+
+        function goToStep(step) {
+            if (step === currentStep) return;
+            
+            // Hide all
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            
+            // Update indicator colors
+            for (let i = 1; i <= 3; i++) {
+                const bar = document.getElementById(`step-${i}-bar`);
+                if (i <= step) {
+                    bar.classList.add('bg-primary');
+                    bar.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+                } else {
+                    bar.classList.remove('bg-primary');
+                    bar.classList.add('bg-slate-100', 'dark:bg-slate-800');
+                }
+            }
+
+            // Show selected step
+            currentStep = step;
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            
+            // Update footer button
+            updateFooterButton();
+        }
+
+        function nextStep() {
+            if (currentStep < 3) {
+                goToStep(currentStep + 1);
+            } else {
+                handleFinalAction();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                goToStep(currentStep - 1);
+            } else {
+                history.back();
+            }
+        }
+
+        function updateFooterButton() {
+            const nextBtnText = document.getElementById('next-btn-text');
+            const nextBtn = document.getElementById('next-btn');
+            const nextIcon = document.getElementById('next-icon');
+
+            if (currentStep === 1) {
+                nextBtnText.textContent = 'CONTINUAR';
+                nextIcon.textContent = 'arrow_forward';
+                nextBtn.className = "flex-1 py-4 px-6 rounded-2xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-2 uppercase tracking-wide";
+            } else if (currentStep === 2) {
+                nextBtnText.textContent = 'ENVIAR OPCIONES DE HORARIOS';
+                nextIcon.textContent = 'send';
+                nextBtn.className = "flex-1 py-4 px-6 rounded-2xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-2 uppercase tracking-wide";
+            } else if (currentStep === 3) {
+                setPaymentStatus(paymentStatus); // This handles the color and text for step 3
+            }
+        }
 
         function setPaymentStatus(status) {
             paymentStatus = status;
@@ -271,41 +328,73 @@
             }
         }
 
-        function nextStep() {
-            if (currentStep === 1) {
-                document.getElementById('step-1').classList.add('hidden');
-                document.getElementById('step-2').classList.remove('hidden');
-                document.getElementById('step-2-bar').classList.add('bg-primary');
-                document.getElementById('step-2-bar').classList.remove('bg-slate-100', 'dark:bg-slate-800');
-                currentStep = 2;
-                document.getElementById('next-btn-text').textContent = 'VERIFICAR PAGO';
-            } else if (currentStep === 2) {
-                document.getElementById('step-2').classList.add('hidden');
-                document.getElementById('step-3').classList.remove('hidden');
-                document.getElementById('step-3-bar').classList.add('bg-primary');
-                document.getElementById('step-3-bar').classList.remove('bg-slate-100', 'dark:bg-slate-800');
-                currentStep = 3;
-                setPaymentStatus('due'); // Reset to default view for step 3
+        function handleFinalAction() {
+            const amount = document.getElementById('editable-amount').value;
+            const shouldCharge = document.getElementById('request-charge-toggle').checked;
+            
+            if (paymentStatus === 'due' && shouldCharge) {
+                window.location.href = `../cobro_sesion/code.html?amount=${amount}&client=${encodeURIComponent(clientName)}`;
             } else {
-                const amount = document.getElementById('editable-amount').value;
-                const shouldCharge = document.getElementById('request-charge-toggle').checked;
-                
-                if (paymentStatus === 'due' && shouldCharge) {
-                    window.location.href = `../cobro_sesion/code.html?amount=${amount}&client=${encodeURIComponent(clientName)}`;
-                } else {
-                    showToast('Cita agendada con éxito', 'verified');
-                    setTimeout(() => {
-                        window.location.href = '../lista_clientes/code.html';
-                    }, 1500);
-                }
+                showToast('Cita agendada con éxito', 'verified');
+                setTimeout(() => {
+                    window.location.href = '../lista_clientes/code.html';
+                }, 1500);
             }
         }
 
-        function selectSlot(btn) {
-            document.querySelectorAll('#step-2 button').forEach(b => {
-                b.classList.remove('bg-primary/5', 'bg-primary/10', 'border-primary', 'selected');
+        function appendGoal(goal) {
+            const notes = document.getElementById('session-notes');
+            const prefix = notes.value.length > 0 ? '\n' : '';
+            notes.value += `${prefix}• ${goal}: `;
+            notes.focus();
+            showToast('Objetivo añadido', 'add_task');
+        }
+
+        function changeDay(btn) {
+            document.querySelectorAll('.calendar-day').forEach(b => {
+                b.classList.remove('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                b.classList.add('bg-slate-50', 'dark:bg-slate-800', 'border', 'border-slate-100', 'dark:border-slate-700');
+                b.querySelectorAll('span').forEach(s => s.classList.add('opacity-40', 'opacity-80'));
             });
-            btn.classList.add('bg-primary/5', 'border-primary', 'selected');
+            btn.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+            btn.classList.remove('bg-slate-50', 'dark:bg-slate-800', 'border', 'border-slate-100', 'dark:border-slate-700');
+            btn.querySelectorAll('span').forEach(s => s.classList.remove('opacity-40', 'opacity-80'));
+            
+            currentDayLabel = btn.getAttribute('data-day');
+            renderSlots();
+        }
+
+        function renderSlots() {
+            const container = document.getElementById('slots-container');
+            const daySlots = slotsData[currentDayLabel] || [];
+            
+            container.innerHTML = daySlots.map(time => {
+                const id = `${currentDayLabel}|${time}`;
+                const isSelected = selectedSlots.has(id);
+                return `
+                    <button class="w-full p-5 rounded-2xl border-2 ${isSelected ? 'border-primary bg-primary/5 selected' : 'border-primary/10 hover:bg-primary/5'} flex items-center justify-between transition-all group relative overflow-hidden" onclick="toggleSlot('${id}', this)">
+                        <div class="flex items-center gap-4">
+                            <span class="material-symbols-outlined text-primary text-xl">schedule</span>
+                            <span class="text-sm font-bold italic">${time}</span>
+                        </div>
+                        <div class="flex items-center shrink-0 ml-4">
+                            <span class="material-symbols-outlined text-primary ${isSelected ? 'block' : 'hidden'} group-[.selected]:block fill-icon text-2xl transition-all scale-110">check_circle</span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function toggleSlot(id, btn) {
+            if (selectedSlots.has(id)) {
+                selectedSlots.delete(id);
+                btn.classList.remove('border-primary', 'bg-primary/5', 'selected');
+                btn.querySelector('span.fill-icon').classList.add('hidden');
+            } else {
+                selectedSlots.add(id);
+                btn.classList.add('border-primary', 'bg-primary/5', 'selected');
+                btn.querySelector('span.fill-icon').classList.remove('hidden');
+            }
         }
 
         let toastTimeout;
