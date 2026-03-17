@@ -25,15 +25,27 @@
     </script>
     <title>Agendar Siguiente Cita</title>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; vertical-align: middle; }
         .fill-icon { font-variation-settings: 'FILL' 1; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Fix overlaps */
-        header .title-container {
-            padding-left: 0.5rem;
+        /* Fix overlaps and responsiveness */
+        .title-clamp {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Responsive stacking for payment toggle */
+        @media (max-width: 360px) {
+            .payment-toggle-wrapper {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -41,13 +53,13 @@
     <div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl">
         
         <!-- Header -->
-        <header class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md px-6 py-6 flex items-center gap-2">
-            <button class="size-10 flex items-center justify-center rounded-2xl bg-slate-50 dark:bg-slate-800 text-primary transition-colors shrink-0" onclick="history.back()">
+        <header class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md px-6 py-6 flex items-center gap-4 border-b border-slate-100 dark:border-slate-800">
+            <button class="size-10 flex items-center justify-center rounded-2xl bg-slate-50 dark:bg-slate-800 text-primary transition-all shrink-0 active:scale-90 hover:bg-slate-100" onclick="history.back()">
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
-            <div class="title-container truncate">
-                <h1 class="text-xl font-black truncate">Agendar Cita</h1>
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest truncate" id="header-subtitle">Nueva Sesión</p>
+            <div class="min-w-0 flex-1">
+                <h1 class="text-xl font-black truncate tracking-tight">Agendar Cita</h1>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest truncate opacity-80" id="header-subtitle">Nueva Sesión</p>
             </div>
         </header>
 
@@ -63,9 +75,11 @@
             <section id="step-1" class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div class="space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Título de la Cita</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40">edit_calendar</span>
-                        <input type="text" id="apt-title" class="w-full h-14 pl-12 pr-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-primary/20 focus:ring-0 rounded-2xl text-sm font-bold transition-all" placeholder="Ej: 4ª Sesión de entrenamiento para Luna">
+                    <div class="relative group">
+                        <div class="absolute left-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-primary/40 group-focus-within:text-primary transition-colors">edit_calendar</span>
+                        </div>
+                        <input type="text" id="apt-title" class="w-full h-14 pl-14 pr-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-primary/20 focus:ring-0 rounded-2xl text-sm font-bold transition-all" placeholder="Ej: 4ª Sesión de entrenamiento para Luna">
                     </div>
                 </div>
 
@@ -112,26 +126,32 @@
 
                     <!-- Availability Slots -->
                     <div class="space-y-3">
-                        <button class="w-full p-4 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group" onclick="selectSlot(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">schedule</span>
+                        <button class="w-full p-5 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group relative overflow-hidden" onclick="selectSlot(this)">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-xl">schedule</span>
                                 <span class="text-sm font-bold italic">09:00 AM - 10:00 AM</span>
                             </div>
-                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all fill-icon">check_circle</span>
+                            <div class="flex items-center shrink-0 ml-4">
+                                <span class="material-symbols-outlined text-primary hidden group-[.selected]:block fill-icon text-2xl transition-all scale-110">check_circle</span>
+                            </div>
                         </button>
-                        <button class="w-full p-4 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group" onclick="selectSlot(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">schedule</span>
+                        <button class="w-full p-5 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group relative overflow-hidden" onclick="selectSlot(this)">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-xl">schedule</span>
                                 <span class="text-sm font-bold italic">11:30 AM - 12:30 PM</span>
                             </div>
-                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all fill-icon">check_circle</span>
+                            <div class="flex items-center shrink-0 ml-4">
+                                <span class="material-symbols-outlined text-primary hidden group-[.selected]:block fill-icon text-2xl transition-all scale-110">check_circle</span>
+                            </div>
                         </button>
-                        <button class="w-full p-4 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group" onclick="selectSlot(this)">
-                            <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary">schedule</span>
+                        <button class="w-full p-5 rounded-2xl border-2 border-primary/10 flex items-center justify-between hover:bg-primary/5 transition-all group relative overflow-hidden" onclick="selectSlot(this)">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-xl">schedule</span>
                                 <span class="text-sm font-bold italic">04:00 PM - 05:00 PM</span>
                             </div>
-                            <span class="material-symbols-outlined text-primary/0 group-hover:text-primary transition-all fill-icon">check_circle</span>
+                            <div class="flex items-center shrink-0 ml-4">
+                                <span class="material-symbols-outlined text-primary hidden group-[.selected]:block fill-icon text-2xl transition-all scale-110">check_circle</span>
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -140,9 +160,9 @@
             <!-- Step 3: Payment Handling -->
             <section id="step-3" class="hidden space-y-6">
                 <!-- Status Toggle Header -->
-                <div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl">
-                    <button id="status-due" class="flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all bg-white dark:bg-slate-700 shadow-sm text-rose-500" onclick="setPaymentStatus('due')">Saldo Pendiente</button>
-                    <button id="status-none" class="flex-1 py-3 px-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all text-slate-400" onclick="setPaymentStatus('none')">Sin Adeudo</button>
+                <div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl payment-toggle-wrapper">
+                    <button id="status-due" class="flex-1 py-3 px-2 rounded-xl text-[9px] sm:text-[10px] font-black uppercase tracking-widest transition-all bg-white dark:bg-slate-700 shadow-sm text-rose-500 whitespace-nowrap" onclick="setPaymentStatus('due')">Saldo Pendiente</button>
+                    <button id="status-none" class="flex-1 py-3 px-2 rounded-xl text-[9px] sm:text-[10px] font-black uppercase tracking-widest transition-all text-slate-400 whitespace-nowrap" onclick="setPaymentStatus('none')">Sin Adeudo</button>
                 </div>
 
                 <div id="payment-needed-view" class="space-y-6">
@@ -283,12 +303,9 @@
 
         function selectSlot(btn) {
             document.querySelectorAll('#step-2 button').forEach(b => {
-                b.classList.remove('bg-primary/5', 'bg-primary/10', 'border-primary');
-                b.querySelector('span:last-child').classList.add('text-primary/0');
+                b.classList.remove('bg-primary/5', 'bg-primary/10', 'border-primary', 'selected');
             });
-            btn.classList.add('bg-primary/5', 'border-primary');
-            btn.querySelector('span:last-child').classList.remove('text-primary/0');
-            btn.querySelector('span:last-child').classList.add('text-primary');
+            btn.classList.add('bg-primary/5', 'border-primary', 'selected');
         }
 
         let toastTimeout;
