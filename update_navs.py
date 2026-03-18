@@ -59,10 +59,10 @@ trainer_template = """
 </nav>
 """
 
-# WALKER navigation: Inicio, Clientes, Explorar, Paseo
+# WALKER navigation: Redirecting to Trainer Dashboard to avoid confusion as requested
 walker_template = """
 <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50">
-    <a href="../dashboard_del_paseador/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
+    <a href="../dashboard_del_entrenador_updated_style/code.html" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors w-16">
         <span class="material-symbols-outlined text-[24px]">home</span>
         <span class="text-[9px] font-bold uppercase tracking-wider text-center line-clamp-1 truncate w-full">Inicio</span>
     </a>
@@ -111,11 +111,11 @@ mapping = {
     'crear_nuevo_contrato': trainer_template,
     'planificador_de_manadas': trainer_template,
     
-    # Walker Tier
+    # Walker Tier - Now using trainer template to avoid user confusion
     'dashboard_del_paseador': walker_template,
-    'contrato_paseo': walker_template,
-    'buscador_de_manadas': walker_template,
-    'seguimiento_de_paseo_gps': walker_template,
+    'contrato_paseo': trainer_template,
+    'buscador_de_manadas': trainer_template,
+    'seguimiento_de_paseo_gps': trainer_template,
 
     # Shared screens (use trainer template for now as requested)
     'lista_clientes': trainer_template,
