@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Stitch - Detalles de la Sesión</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#050062",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#100f23"
+                    },
+                    fontFamily: {
+                        display: "Inter"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl transition-all duration-300">
+        <!-- Header -->
+        <header class="flex items-center p-4 bg-white dark:bg-background-dark sticky top-0 z-20 border-b border-primary/5 shadow-sm">
+            <button class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors" onclick="history.back()">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="text-lg font-bold ml-2">Preparar Sesión</h1>
+        </header>
+
+        <main class="flex-1 p-4 pb-32">
+            <!-- Pet Header -->
+            <div class="flex items-center gap-4 mb-8">
+                <div class="size-20 rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800">
+                    <img id="pet-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKbZADSI0Z5HxbX84jPlRowBd_coxi3Zikb_Qh2pDE3am1jOgb-GXhsWs_0Mfol4JqGPhRXAoplIVC6GWybpk6l2Ho80xoE9Xnd_VewLwbVPVbIRuo2unENbCfzy_UqxUukbvBV0kTtyEpZEVN1jZiwEHP_8Pn-cX6dkeqR-KVgbCO_8kRFYFovr7CBtHZHrsre90mlp7nfHeApzMbL8oM7Y9tM-lQFgPE3z3o2N24MwxJkMpPl9Z-zlUEiAqVLF6USAEyrVDcXLJI" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="text-2xl font-black tracking-tight" id="pet-name">Toby</h2>
+                    <p class="text-slate-500 font-medium">Dueño: <span class="text-slate-900 dark:text-slate-200" id="owner-name">Juan Pérez</span></p>
+                    <div class="flex gap-2 mt-1">
+                        <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Nivel 2</span>
+                        <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Pagado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contract Goals -->
+            <section class="mb-6 space-y-4">
+                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-3 opacity-10">
+                        <span class="material-symbols-outlined text-4xl">verified_user</span>
+                    </div>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Metas del Contrato</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-emerald-500 text-[20px]">check_circle</span>
+                            <p class="text-sm font-medium">Caminar sin tirar de la correa (fase 1)</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-emerald-500 text-[20px]">check_circle</span>
+                            <p class="text-sm font-medium">Llamada confiable en distracción media</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-amber-500 text-[20px]">pending</span>
+                            <p class="text-sm font-medium text-slate-500">Permanecer sentado mientras saludan (próximo paso)</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Session Context -->
+                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Notas de la última sesión</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 italic">"Toby mostró mucha mejoría con el clicker en entornos controlados, hoy intentaremos en el parque."</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Fixed Bottom CTA -->
+        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto p-4 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark pb-8 z-30">
+            <button class="w-full bg-primary hover:bg-primary/95 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 transition-all shadow-xl shadow-primary/30 active:scale-[0.98]" onclick="window.location.href='en_sesion.html?dog=Toby'">
+                <span class="material-symbols-outlined">play_arrow</span>
+                COMENZAR ENTRENAMIENTO
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Simple URL param handling
+        const params = new URLSearchParams(window.location.search);
+        const dog = params.get('dog');
+        if (dog) {
+            document.getElementById('pet-name').textContent = dog;
+            if (dog === 'Luna') {
+                document.getElementById('pet-img').src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNjDbetg8qwUR9VALAoHg77aVrRhiCJD98L5Lz10-_4mVy0jZHCoRZWvEkGs1VZLbxobwjY6UuSLXPIbSZf8Uh-MIiCzdgXu9LRCwK0GS3Oai7t2n50TUVV-DXGOj2ptu1oraDKcoCM5WYC4fCWr7OIAMAeEeeFR5B2jYNwVOks83xnR4nOsKV0A7go-vwLnYVA6scfMoZ0QHsoUkFiHhHXb8sUeGyHphZ9M2cjygKMggfBB5QhiO58x1sXbpfxgedYh8BG_AH7iR6';
+            } else if (dog === 'Cooper') {
+                document.getElementById('pet-img').src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCGT_waihVl03Gbca2Egovt5hfBc4ZmkVsu2HjS8GKJ_uPWHbsAWJ1uLrO7fN-c577BFZfDmQhrv8IH_rHk5BR__hW18wuSTxlm8k0Vqq1_bKax4u5ZnMeVnmSRV1y01PiB7QUmR9ftv3IOf6GP5zSdtqmMugULvpqhnYG4kPqjeMkMlKlSVzrdk9oNYyhRlw1Oum8FP4AFw0KgXZZwfc6kIbYZaTGg3PnaeE8uP_RFcbI27eihrU0wbH6T8VopG94v7GtJFc47HV6N';
+            }
+        }
+    </script>
+</body>
+</html>

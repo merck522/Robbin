@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Stitch - Seleccionar Perro</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#050062",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#100f23"
+                    },
+                    fontFamily: {
+                        display: "Inter"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100dvh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex min-h-screen flex-col overflow-x-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl transition-all duration-300">
+        <!-- Header -->
+        <header class="flex items-center p-4 bg-white dark:bg-background-dark sticky top-0 z-20 border-b border-primary/5 shadow-sm">
+            <button class="flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors" onclick="window.location.href='../dashboard_del_entrenador_updated_style/code.html'">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="text-lg font-bold ml-2">Seleccionar Perro</h1>
+        </header>
+
+        <main class="flex-1 p-4 pb-24">
+            <!-- Search -->
+            <div class="relative mb-6">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                <input type="text" placeholder="Buscar por nombre o dueño..." class="w-full pl-11 pr-4 py-3 bg-white dark:bg-slate-800 border-none rounded-2xl shadow-sm focus:ring-2 focus:ring-primary text-sm transition-all shadow-primary/5">
+            </div>
+
+            <!-- Suggested Section -->
+            <section class="mb-8">
+                <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Sugerencia para ahora</h2>
+                <div class="p-4 rounded-2xl bg-primary text-white shadow-xl shadow-primary/20 flex items-center justify-between cursor-pointer active:scale-95 transition-transform" onclick="window.location.href='detalle_contrato_sesion.html?dog=Toby'">
+                    <div class="flex items-center gap-3">
+                        <div class="size-14 rounded-full border-2 border-white/20 overflow-hidden bg-white/10">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKbZADSI0Z5HxbX84jPlRowBd_coxi3Zikb_Qh2pDE3am1jOgb-GXhsWs_0Mfol4JqGPhRXAoplIVC6GWybpk6l2Ho80xoE9Xnd_VewLwbVPVbIRuo2unENbCfzy_UqxUukbvBV0kTtyEpZEVN1jZiwEHP_8Pn-cX6dkeqR-KVgbCO_8kRFYFovr7CBtHZHrsre90mlp7nfHeApzMbL8oM7Y9tM-lQFgPE3z3o2N24MwxJkMpPl9Z-zlUEiAqVLF6USAEyrVDcXLJI" class="w-full h-full object-cover" alt="Toby">
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bold">Toby</h3>
+                                <span class="bg-white/20 px-2 py-0.5 rounded-full text-[10px] uppercase font-black">Tu cita actual</span>
+                            </div>
+                            <p class="text-sm opacity-80">10:00 AM • Parque Central</p>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined opacity-60">chevron_right</span>
+                </div>
+            </section>
+
+            <!-- All Dogs Section -->
+            <section>
+                <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Todos tus alumnos</h2>
+                <div class="space-y-3">
+                    <!-- Dog Choice -->
+                    <div class="p-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-between cursor-pointer active:scale-[0.98] transition-all hover:border-primary/20" onclick="window.location.href='detalle_contrato_sesion.html?dog=Luna'">
+                        <div class="flex items-center gap-3">
+                            <div class="size-12 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNjDbetg8qwUR9VALAoHg77aVrRhiCJD98L5Lz10-_4mVy0jZHCoRZWvEkGs1VZLbxobwjY6UuSLXPIbSZf8Uh-MIiCzdgXu9LRCwK0GS3Oai7t2n50TUVV-DXGOj2ptu1oraDKcoCM5WYC4fCWr7OIAMAeEeeFR5B2jYNwVOks83xnR4nOsKV0A7go-vwLnYVA6scfMoZ0QHsoUkFiHhHXb8sUeGyHphZ9M2cjygKMggfBB5QhiO58x1sXbpfxgedYh8BG_AH7iR6" class="w-full h-full object-cover" alt="Luna">
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold">Luna</h3>
+                                <p class="text-xs text-slate-500">Juan Pérez • Golden Retriever</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">chevron_right</span>
+                    </div>
+
+                    <div class="p-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-between cursor-pointer active:scale-[0.98] transition-all hover:border-primary/20" onclick="window.location.href='detalle_contrato_sesion.html?dog=Cooper'">
+                        <div class="flex items-center gap-3">
+                            <div class="size-12 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGT_waihVl03Gbca2Egovt5hfBc4ZmkVsu2HjS8GKJ_uPWHbsAWJ1uLrO7fN-c577BFZfDmQhrv8IH_rHk5BR__hW18wuSTxlm8k0Vqq1_bKax4u5ZnMeVnmSRV1y01PiB7QUmR9ftv3IOf6GP5zSdtqmMugULvpqhnYG4kPqjeMkMlKlSVzrdk9oNYyhRlw1Oum8FP4AFw0KgXZZwfc6kIbYZaTGg3PnaeE8uP_RFcbI27eihrU0wbH6T8VopG94v7GtJFc47HV6N" class="w-full h-full object-cover" alt="Cooper">
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold">Cooper</h3>
+                                <p class="text-xs text-slate-500">Juan Pérez • Border Collie</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">chevron_right</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-100 dark:border-slate-800 px-6 py-3 pb-6 flex justify-between items-center z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+            <a class="flex flex-col items-center gap-1 text-slate-400 w-16" href="../dashboard_del_entrenador_updated_style/code.html">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-[9px] font-bold uppercase tracking-wider">Inicio</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-primary w-16" href="../lista_clientes/code.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">group</span>
+                <span class="text-[9px] font-bold uppercase tracking-wider">Clientes</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 w-16" href="../planificador_de_manadas/code.html">
+                <span class="material-symbols-outlined">calendar_today</span>
+                <span class="text-[9px] font-bold uppercase tracking-wider">Calendario</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400 w-16" href="../seguimiento_de_paseo_gps/code.html">
+                <span class="material-symbols-outlined">navigation</span>
+                <span class="text-[9px] font-bold uppercase tracking-wider">Paseo</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>
