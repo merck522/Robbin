@@ -1,0 +1,12 @@
+#!/bin/sh
+echo "🔍 Running pre-push verification tests..."
+
+npm test
+
+if [ $? -ne 0 ]; then
+  echo "\n❌ [ERROR] Pre-push verification failed. Please fix the failing tests before pushing."
+  exit 1
+fi
+
+echo "\n✅ All tests passed. Proceeding with push."
+exit 0
