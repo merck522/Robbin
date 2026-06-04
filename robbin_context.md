@@ -125,5 +125,16 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
     - **Client**: Home, Pets, Docs, Health.
   - Ran the script to inject the correct nav into all 15 active screens.
 
+### Phase 12: Testing Strategy & Environment Setup
+- **Goal**: Implement a testing strategy including Unit, Integration, and E2E tests for the vanilla JS app.
+- **Actions**:
+  - Reconfigured the codebase with `package.json` to manage scripts and dependencies.
+  - Setup **Vitest** for unit/integration testing, using `happy-dom` to mock DOM environments.
+  - Setup **Playwright** for End-to-End browser testing, running automated checks on Chromium, Firefox, and WebKit.
+  - Created a modular directory structure under `/tests` separating tests (`/tests/unit`, `/tests/integration`, `/tests/e2e`) from application logic.
+  - Created baseline tests for pure logic, DOM integration, and visual E2E redirects.
+  - Verified all tests execute and pass successfully.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
+

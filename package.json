@@ -1,0 +1,16 @@
+{
+  "name": "stitch-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test:unit": "vitest run --dir tests/unit",
+    "test:integration": "vitest run --dir tests/integration",
+    "test:e2e": "playwright test",
+    "test": "vitest run --dir tests/unit --dir tests/integration && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "happy-dom": "^14.12.0",
+    "vitest": "^1.6.0"
+  }
+}
