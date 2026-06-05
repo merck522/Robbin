@@ -135,6 +135,15 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Created baseline tests for pure logic, DOM integration, and visual E2E redirects.
   - Verified all tests execute and pass successfully.
 
+### Phase 13: Git Pre-Push Hooks & GitHub Actions CI Setup
+- **Goal**: Implement git-level and cloud-level gates to prevent broken code from being pushed to main or merged in pull requests.
+- **Actions**:
+  - Installed and configured **Husky** devDependency to manage local git hooks.
+  - Configured a local `.husky/pre-push` shell script that executes the full test suite (`npm test`) on push attempts.
+  - Verified local blocking behavior where failing tests abort the push command with a clear terminal error message.
+  - Created `.github/workflows/ci.yml` containing a GitHub Actions workflow to run npm installations, install Playwright engines, and execute all tests on pull requests and pushes targeting `main`.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
+
 
