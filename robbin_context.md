@@ -143,7 +143,19 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Verified local blocking behavior where failing tests abort the push command with a clear terminal error message.
   - Created `.github/workflows/ci.yml` containing a GitHub Actions workflow to run npm installations, install Playwright engines, and execute all tests on pull requests and pushes targeting `main`.
 
+### Phase 14: Supabase Database Auth & Stripe Paywall Integration
+- **Goal**: Integrate user signup/login storage with Supabase database profiles and block access with a Stripe paywall after a 7-day free trial.
+- **Actions**:
+  - Created `config.js` to manage the Supabase client connection (targeted to user project `roeyyandbucmuktgckms`) and Stripe payment links.
+  - Created `supabase_setup.sql` containing tables, triggers, and Row Level Security (RLS) policies for user trial tracking.
+  - Built a client-side library `trial_paywall.js` that checks trial expiration status (calculated as 7 days from registration).
+  - Designed and implemented a glassmorphic modal overlay paywall blocking UI that interrupts trial-expired users and guides them to subscribe via Stripe.
+  - Loaded Supabase CDN scripts and wired signup/login page forms to authenticate live users in Supabase, with automatic robust mock/local fallbacks if anon keys are not defined.
+  - Integrated the paywall engine guard script across Trainer, Walker, and Client dashboards.
+  - Created new E2E automated test scenarios in Playwright covering signup, trial badges, expired trial locks, and simulated payment success unlocks, passing across all browser engines.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
+
 
 

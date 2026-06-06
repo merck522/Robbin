@@ -64,7 +64,7 @@
 <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold px-1">Email</label>
 <div class="relative group">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">mail</span>
-<input class="w-full pl-12 pr-4 h-14 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary focus:ring-0 rounded-full text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all duration-200" placeholder="example@email.com" type="email"/>
+<input id="email" class="w-full pl-12 pr-4 h-14 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary focus:ring-0 rounded-full text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all duration-200" placeholder="example@email.com" type="email"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
@@ -74,15 +74,15 @@
 </div>
 <div class="relative group">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">lock</span>
-<input class="w-full pl-12 pr-12 h-14 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary focus:ring-0 rounded-full text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all duration-200" placeholder="••••••••" type="password"/>
+<input id="password" class="w-full pl-12 pr-12 h-14 bg-slate-50 dark:bg-slate-800 border-2 border-transparent focus:border-primary focus:ring-0 rounded-full text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all duration-200" placeholder="••••••••" type="password"/>
 <button class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">visibility</button>
 </div>
 </div>
 </div>
 <!-- Login Button -->
 <div class="px-6 pt-8">
-<button onclick="window.location.href='../selector.html'" class="w-full h-14 bg-primary hover:opacity-90 text-white font-bold text-lg rounded-full shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
-                Login
+<button id="loginBtn" class="w-full h-14 bg-primary hover:opacity-90 text-white font-bold text-lg rounded-full shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                <span>Login</span>
                 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
 </div>
@@ -118,4 +118,66 @@
 <!-- iOS Safe Area Spacer -->
 <div class="h-8 w-full"></div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module">
+    import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../config.js';
+
+    const { createClient } = window.supabase || {};
+    let supabase = null;
+    let isLive = false;
+
+    if (SUPABASE_ANON_KEY && SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY") {
+        supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        isLive = true;
+    }
+
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        if (!email || !password) {
+            alert("Please enter both email and password.");
+            return;
+        }
+
+        if (isLive) {
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+
+                if (error) {
+                    alert(error.message);
+                } else {
+                    window.location.href = '../selector.html';
+                }
+            } catch (err) {
+                alert("Auth error: " + err.message);
+            }
+        } else {
+            // Mock Mode: check if user matches in mock storage (or register mock user automatically on correct entries)
+            let mockUser = JSON.parse(localStorage.getItem('stitch_mock_user'));
+            
+            // For testing convenience, we auto-create mock user if none exists
+            if (!mockUser || mockUser.email !== email) {
+                const now = new Date();
+                const trialEnd = new Date();
+                trialEnd.setDate(now.getDate() + 7);
+
+                mockUser = {
+                    email,
+                    fullName: email.split('@')[0],
+                    subscription_status: 'trial',
+                    created_at: now.toISOString(),
+                    trial_ends_at: trialEnd.toISOString()
+                };
+                localStorage.setItem('stitch_mock_user', JSON.stringify(mockUser));
+            }
+            
+            window.location.href = '../selector.html';
+        }
+    });
+</script>
 </body></html>
