@@ -154,8 +154,18 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Integrated the paywall engine guard script across Trainer, Walker, and Client dashboards.
   - Created new E2E automated test scenarios in Playwright covering signup, trial badges, expired trial locks, and simulated payment success unlocks, passing across all browser engines.
 
+### Phase 15: Client List Dog Navigation & Dynamic Profiles
+- **Goal**: Enable clicking on individual dogs in the Client List and dynamically render their corresponding information in the Pet Profile view.
+- **Actions**:
+  - Modified `lista_clientes/code.html` to add cursor-pointer hover styles and `onclick` navigation handlers to all listed dog avatars/names, passing the name as a query parameter (e.g. `?pet=Cooper`).
+  - Implemented `event.stopPropagation()` on the dog clicks to prevent bubbling up to the client card click.
+  - Added specific layout element IDs to `detalle_mascota/code.html` to support targeted DOM updates.
+  - Wrote a dynamic client-side data binding engine in `detalle_mascota/code.html` that parses the `?pet=` parameter, retrieves matching data from a dictionary (Luna, Cooper, Snoopy, Coco, Buster, Rex), and updates the profile image, badges, breed, gender, owner, headings, and quick toast action triggers dynamically.
+  - Confirmed all existing unit, integration, and E2E browser tests pass successfully.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
+
 
 
 

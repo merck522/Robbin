@@ -31,16 +31,16 @@ body { font-family: 'Inter', sans-serif; }
 <!-- Pet Hero Card -->
 <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm text-center">
 <div class="w-24 h-24 rounded-full mx-auto border-4 border-amber-200 overflow-hidden shadow-lg">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb" alt="Luna"/>
+<img id="petImage" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb" alt="Luna"/>
 </div>
-<h3 class="text-xl font-black mt-3">Luna</h3>
-<p class="text-sm text-slate-500">Border Collie · Hembra</p>
-<div class="flex items-center justify-center gap-2 mt-2">
+<h3 id="petName" class="text-xl font-black mt-3">Luna</h3>
+<p id="petBreedGender" class="text-sm text-slate-500">Border Collie · Hembra</p>
+<div id="petBadges" class="flex items-center justify-center gap-2 mt-2">
 <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">ESTERILIZADA</span>
 <span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">3 AÑOS</span>
 <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold">18 KG</span>
 </div>
-<div class="flex items-center justify-center gap-2 mt-3 text-xs text-slate-500">
+<div id="petOwner" class="flex items-center justify-center gap-2 mt-3 text-xs text-slate-500">
 <span class="material-symbols-outlined text-[16px]">person</span>
 <span class="font-semibold">Dueño: Juan Pérez</span>
 </div>
@@ -215,7 +215,7 @@ body { font-family: 'Inter', sans-serif; }
 <!-- Trainer Notes for this pet -->
 <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
 <div class="flex items-center justify-between">
-<h3 class="text-sm font-black uppercase tracking-wider text-blue-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">edit_note</span> Notas sobre Luna</h3>
+<h3 class="text-sm font-black uppercase tracking-wider text-blue-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">edit_note</span> <span id="petNotesHeading">Notas sobre Luna</span></h3>
 <button class="text-[10px] font-bold text-primary hover:underline" onclick="showToast('Nueva nota añadida', 'add')">+ Añadir</button>
 </div>
 <div class="space-y-2">
@@ -241,7 +241,7 @@ body { font-family: 'Inter', sans-serif; }
 <!-- Session History for this pet -->
 <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 space-y-3 border border-slate-100 dark:border-slate-800 shadow-sm">
 <div class="flex items-center justify-between">
-<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">history</span> Sesiones de Luna</h3>
+<h3 class="text-sm font-black uppercase tracking-wider text-violet-600 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">history</span> <span id="petSessionsHeading">Sesiones de Luna</span></h3>
 <span class="text-[10px] font-bold text-slate-400">4 sesiones</span>
 </div>
 <div class="space-y-2">
@@ -284,7 +284,7 @@ body { font-family: 'Inter', sans-serif; }
 <div class="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-4 space-y-3 border border-primary/20">
 <h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">bolt</span> Acciones Rápidas</h3>
 <div class="grid grid-cols-2 gap-2">
-<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Agendando sesión para Luna', 'calendar_month')">
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="triggerAgendar()">
 <span class="material-symbols-outlined text-primary text-[22px]">calendar_add_on</span>
 <p class="text-[10px] font-bold text-primary mt-1">Agendar Sesión</p>
 </button>
@@ -292,11 +292,11 @@ body { font-family: 'Inter', sans-serif; }
 <span class="material-symbols-outlined text-primary text-[22px]">vaccines</span>
 <p class="text-[10px] font-bold text-primary mt-1">Pedir Vacuna</p>
 </button>
-<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Generando reporte de Luna', 'summarize')">
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="triggerReporte()">
 <span class="material-symbols-outlined text-primary text-[22px]">summarize</span>
 <p class="text-[10px] font-bold text-primary mt-1">Reporte Progreso</p>
 </button>
-<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="showToast('Iniciando paseo con Luna', 'directions_walk')">
+<button class="p-3 rounded-xl bg-white border border-primary/20 text-center hover:bg-primary/5 transition-all active:scale-[0.98]" onclick="triggerPaseo()">
 <span class="material-symbols-outlined text-primary text-[22px]">directions_walk</span>
 <p class="text-[10px] font-bold text-primary mt-1">Iniciar Paseo</p>
 </button>
@@ -310,5 +310,102 @@ body { font-family: 'Inter', sans-serif; }
 <script>
 let toastTimeout;
 function showToast(m,i){const t=document.getElementById('toast');document.getElementById('toast-message').textContent=m;document.getElementById('toast-icon').textContent=i||'check_circle';clearTimeout(toastTimeout);t.classList.remove('opacity-0','-translate-y-4');t.classList.add('opacity-100','translate-y-0');toastTimeout=setTimeout(()=>{t.classList.remove('opacity-100','translate-y-0');t.classList.add('opacity-0','-translate-y-4');},3000);}
+
+const petsData = {
+    "Luna": {
+        name: "Luna",
+        breedGender: "Border Collie · Hembra",
+        badges: ["ESTERILIZADA", "3 AÑOS", "18 KG"],
+        owner: "Juan Pérez",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb"
+    },
+    "Cooper": {
+        name: "Cooper",
+        breedGender: "Golden Retriever · Macho",
+        badges: ["NEUTRADO", "1 AÑO", "30 KG"],
+        owner: "Juan Pérez",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBeA5uw_w7X5qOwcTOlEnHHqA2DIDR3m0gUiImTYmXo0pWjaPxE9oa3QISPy8kPTATFkQW8_J9jzfswV_LTfZKr9xz6B4myViy86om1fLkg0NzKBCFfAn6AGkZyqxkVimDzO9enZXQIfwrHsck1NSY7_x7N5EL1POycTSskro0wUZtHfd_3gOfQiwFI3pqDOe4vyFH4tdmQJFTP3v5m9w-rFcKfHZ-AofLD_VcPHMesZo0SmxMBtMj3i7yePSnLWtfHp0sL00A3g1SY"
+    },
+    "Snoopy": {
+        name: "Snoopy",
+        breedGender: "Beagle · Macho",
+        badges: ["NEUTRADO", "4 AÑOS", "12 KG"],
+        owner: "Michael Chen",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAzwMjuxvlO8SKm-bhbYJu087NMU2zSiNYGs2rqpzYcW6KOATsZ0w8pGQmxC9s7BVdFiyfadkT3d-JiK0xBozzydQQEzJkavjBIhB44rFg98BeM1-GyNWDg2YnySqnQHzQx6pxPsbpNGzr6_Rrqph3lrjkgzHkU8W4JXxDA7R2gQjXA2C86v2ksRsn6Jz8oUjsJONH1Emwxk3DyghSqgDsSCw1PH2AmR2ZOyCFIFKl_LZKddwuNYA8q6pm1mKqVOucdRuU5CrxxucW1"
+    },
+    "Coco": {
+        name: "Coco",
+        breedGender: "Caniche · Hembra",
+        badges: ["ESTERILIZADA", "2 AÑOS", "6 KG"],
+        owner: "Michael Chen",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB1P4-5c3q2lCAdEEbczwTHtRw8_25a-3NIvuZ47nNGmLs1pTOftT7bcZIQMGW6S38OWieSSW5DkNl0Y_290qlVXDC1HwmhGAimp48R77mPpEmVxniqRWu3tlVeXG9AtPf0xsYlP1tONS08aO8dcBrINI_RAfrNTFJnhgewO_eb0EMA2ZhZ4LixD6jMEtICHmrY0A6OCq4_ezGcIQblsYfamKwvA3CHR3xyk3417Bvdx0Rb04Liq5lK2_FBtURxHWoip4KBkURwC1c3"
+    },
+    "Buster": {
+        name: "Buster",
+        breedGender: "Boxer · Macho",
+        badges: ["NEUTRADO", "5 AÑOS", "28 KG"],
+        owner: "Sarah Jenkins",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDZfUxjdZQ4C92jc9uAV73ZIBIfPbafPSfW5xo-QDjNSkJjivudPGdUcD7O6B1FUF53tZlhhMahul8PBG30qimZjvf-sAwOej7EwaDDyMlmI3XmRYlx39kiqw-VOEbgOYtxJhwBYNlpKixz_2nctEmBI_C7ls6Qn4hg3Cch1cnkDIU_H8LS3GnUK0wbd5Enf8PHwOJtnf8ZY10Ia7Hs4bCvliOVAagJaqCCWq71dhsVujEDqkcBiv7yiqUsUkAvlc-c3xvXM-E6BC2M"
+    },
+    "Rex": {
+        name: "Rex",
+        breedGender: "Pastor Alemán · Macho",
+        badges: ["NEUTRADO", "6 AÑOS", "35 KG"],
+        owner: "Elena Rodriguez",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDkkGixy07-9W3Amk9lZ6sDnI7_vrFq-3_H2L_8Oy8RIMUp15P_8iqZRsWsdrUQnImQ6DKN0OvEDwXthNVerxaI2HZRaCYgYNtvo-uDhNkPvM1ahyROHWRNS3XUI94TdwCPhdPc3jebtR5tH-DPtmZuS_Bf4RIYwjZCJOiTzpkxP_RUvu21R4Q443NCyuzeCZ7kDCo14Y9ZNoLcXQV67OsMB2bxyiFdJDpbxdjEsEOZpxm7pu0Ym8cR7cj33v2SZKmBocXbPZuaefh2"
+    }
+};
+
+let currentPetName = "Luna";
+
+function initDynamicPet() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const petParam = urlParams.get('pet');
+    
+    if (petParam === 'Thor') {
+        window.location.href = '../perfil_del_perro_updated_style/code.html';
+        return;
+    }
+    
+    if (petParam && petsData[petParam]) {
+        const pet = petsData[petParam];
+        currentPetName = pet.name;
+        
+        document.title = "Stitch - Perfil de " + pet.name;
+        
+        document.getElementById('petName').textContent = pet.name;
+        document.getElementById('petImage').src = pet.img;
+        document.getElementById('petBreedGender').textContent = pet.breedGender;
+        
+        const badgesContainer = document.getElementById('petBadges');
+        badgesContainer.innerHTML = '';
+        pet.badges.forEach((badge, idx) => {
+            let colorClass = "bg-primary/10 text-primary";
+            if (idx === 0) colorClass = "bg-emerald-100 text-emerald-700";
+            if (idx === 1) colorClass = "bg-blue-100 text-blue-700";
+            badgesContainer.innerHTML += `<span class="px-2.5 py-0.5 rounded-full ${colorClass} text-[10px] font-bold">${badge}</span>`;
+        });
+        
+        document.getElementById('petOwner').innerHTML = `
+            <span class="material-symbols-outlined text-[16px]">person</span>
+            <span class="font-semibold">Dueño: ${pet.owner}</span>
+        `;
+        
+        document.getElementById('petNotesHeading').textContent = "Notas sobre " + pet.name;
+        document.getElementById('petSessionsHeading').textContent = "Sesiones de " + pet.name;
+    }
+}
+
+window.triggerAgendar = () => {
+    showToast(`Agendando sesión para ${currentPetName}`, 'calendar_month');
+};
+window.triggerReporte = () => {
+    showToast(`Generando reporte de ${currentPetName}`, 'summarize');
+};
+window.triggerPaseo = () => {
+    showToast(`Iniciando paseo con ${currentPetName}`, 'directions_walk');
+};
+
+document.addEventListener("DOMContentLoaded", initDynamicPet);
 </script>
 </body></html>
