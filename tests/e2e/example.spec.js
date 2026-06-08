@@ -2,6 +2,12 @@ import { test, expect } from '@playwright/test';
 
 test.describe('End-to-End Tests', () => {
   
+  test.beforeEach(async ({ context }) => {
+    await context.addInitScript(() => {
+      localStorage.setItem('stitch_use_mock', 'true');
+    });
+  });
+  
   test('should load splash screen and redirect to login page', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/.*splash\/code.html/);

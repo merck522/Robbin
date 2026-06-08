@@ -163,6 +163,15 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Wrote a dynamic client-side data binding engine in `detalle_mascota/code.html` that parses the `?pet=` parameter, retrieves matching data from a dictionary (Luna, Cooper, Snoopy, Coco, Buster, Rex), and updates the profile image, badges, breed, gender, owner, headings, and quick toast action triggers dynamically.
   - Confirmed all existing unit, integration, and E2E browser tests pass successfully.
 
+### Phase 16: Live Supabase Database Setup & Configuration
+- **Goal**: Apply the profiles database schema to the live remote Supabase instance and enable live backend integration.
+- **Actions**:
+  - Executed database DDL from `supabase_setup.sql` on the remote Supabase project `roeyyandbucmuktgckms` using the Supabase MCP tool, establishing the `profiles` table, cascade delete triggers, and Row Level Security (RLS) policies.
+  - Updated `config.js` with the live publishable anon key retrieved from the remote Supabase project.
+  - Extended the client-side authentication engine (`login/code.html`, `signup/code.html`, and `trial_paywall.js`) to support a `stitch_use_mock` query/storage override to keep E2E tests fully sandboxed and functional in mock mode without triggering real database calls.
+  - Implemented a Playwright initialization script in `tests/e2e/example.spec.js` that automatically enforces mock mode during automated test runs.
+  - Confirmed all existing unit, integration, and E2E browser tests pass successfully.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
 

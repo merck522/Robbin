@@ -6,7 +6,7 @@ let supabase = null;
 let isLive = false;
 
 // Initialize Supabase if keys are configured
-if (SUPABASE_ANON_KEY && SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY") {
+if (SUPABASE_ANON_KEY && SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY" && localStorage.getItem('stitch_use_mock') !== 'true') {
     supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     isLive = true;
 }
