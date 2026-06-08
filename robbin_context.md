@@ -180,6 +180,17 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Configured `config.js` with the live Stripe Payment Link to replace the mock link.
   - Confirmed all existing unit, integration, and E2E browser tests pass successfully.
 
+### Phase 18: Client & Pet Database Integration & Onboarding Setup
+- **Goal**: Transition from static mock objects to a live dynamic Supabase schema for creating and listing clients/pets, while detailing requirements for live messaging.
+- **Actions**:
+  - Deployed SQL migrations establishing `public.clients` and `public.pets` tables in Supabase with cascading deletion triggers and Row Level Security (RLS) policies.
+  - Added a "Nombre de la Mascota *" input field to the Onboarding wizard (`nuevo_cliente/code.html`) to support dog registration.
+  - Integrated dynamic Supabase/localStorage saving in `nuevo_cliente/code.html` upon click of "Guardar Cliente".
+  - Refactored `lista_clientes/code.html` to dynamically fetch live clients and pets from Supabase on load, prepending them to the list.
+  - Updated `detalle_mascota/code.html` to query pet profile info from Supabase if a record ID is supplied.
+  - Provided detailed documentation on live transactional Email/WhatsApp APIs integration requirements.
+  - Confirmed all existing unit, integration, and E2E browser tests pass successfully.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
 

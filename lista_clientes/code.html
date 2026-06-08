@@ -6,6 +6,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -410,7 +411,145 @@
         }
     });
 
-    // Initial check
-    filterClients();
+    const { createClient } = window.supabase || {};
+    let supabase = null;
+    let isLive = false;
+
+    async function loadLiveClients() {
+        if (!isLive || !supabase) {
+            // Load mock clients from localStorage
+            const mockClients = JSON.parse(localStorage.getItem('stitch_mock_clients')) || [];
+            renderClientsList(mockClients, true);
+            return;
+        }
+
+        try {
+            // Fetch clients and their pets
+            const { data: clientsData, error: clientsErr } = await supabase
+                .from('clients')
+                .select(`
+                    id,
+                    name,
+                    phone,
+                    address,
+                    created_at,
+                    pets (
+                        id,
+                        name
+                    )
+                `);
+
+            if (clientsErr) throw clientsErr;
+
+            const formattedClients = clientsData.map(c => ({
+                name: c.name,
+                phone: c.phone,
+                petName: c.pets?.[0]?.name || 'Mascota',
+                date: c.created_at,
+                allPets: c.pets || []
+            }));
+
+            renderClientsList(formattedClients, false);
+        } catch (err) {
+            console.error("Error loading live clients:", err);
+            const mockClients = JSON.parse(localStorage.getItem('stitch_mock_clients')) || [];
+            renderClientsList(mockClients, true);
+        }
+    }
+
+    function renderClientsList(clients, isMock) {
+        const container = document.getElementById('clients-container');
+        const emptyState = document.getElementById('empty-state');
+        
+        clients.forEach(c => {
+            const card = document.createElement('div');
+            card.className = "bg-white dark:bg-slate-800 rounded-3xl p-5 shadow-sm border border-primary/5 cursor-pointer hover:shadow-md transition-all client-card dynamic-card";
+            card.dataset.date = c.date ? c.date.split('T')[0] : new Date().toISOString().split('T')[0];
+            card.dataset.hasDogs = "true";
+            card.dataset.name = c.name;
+            
+            const petNames = c.allPets ? c.allPets.map(p => p.name).join(' ') : c.petName;
+            card.dataset.pets = petNames;
+            card.dataset.status = "active";
+
+            let petsHTML = '';
+            if (c.allPets && c.allPets.length > 0) {
+                c.allPets.forEach(p => {
+                    petsHTML += `
+                        <div class="flex items-center gap-2 shrink-0 cursor-pointer hover:opacity-80 transition-opacity" onclick="event.stopPropagation(); window.location.href='../detalle_mascota/code.html?pet=${encodeURIComponent(p.name)}&id=${p.id}'">
+                            <div class="size-8 rounded-full border-2 border-primary/10 p-0.5 bg-primary/5 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm text-primary">pets</span>
+                            </div>
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-400">${p.name}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                petsHTML = `
+                    <div class="flex items-center gap-2 shrink-0 cursor-pointer hover:opacity-80 transition-opacity" onclick="event.stopPropagation(); window.location.href='../detalle_mascota/code.html?pet=${encodeURIComponent(c.petName)}'">
+                        <div class="size-8 rounded-full border-2 border-primary/10 p-0.5 bg-primary/5 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-sm text-primary">pets</span>
+                        </div>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">${c.petName}</span>
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div class="flex justify-between items-start mb-4 owner-section" onclick="window.location.href='../detalle_cliente/code.html'">
+                    <div class="flex gap-4">
+                        <div class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/5 shadow-inner">
+                            <span class="material-symbols-outlined text-2xl text-primary">person</span>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-black text-slate-900 dark:text-white">${c.name}</h3>
+                            <div class="flex flex-col gap-0.5 mt-1">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Registrado ${isMock ? '(Local)' : '(DB)'}</p>
+                                <p class="text-[10px] font-bold text-rose-500 uppercase tracking-widest flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[10px]">warning</span> Sin próxima cita
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="size-9 rounded-xl bg-slate-50 dark:bg-slate-700/50 flex items-center justify-center text-primary dark:text-slate-300" onclick="event.stopPropagation(); window.location.href='tel:${c.phone || ''}'">
+                            <span class="material-symbols-outlined text-xl">call</span>
+                        </button>
+                        <button class="size-9 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400" onclick="event.stopPropagation(); window.location.href='https://wa.me/${c.phone || ''}'">
+                            <span class="material-symbols-outlined text-xl">chat</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="w-full py-3 mb-4 rounded-2xl bg-primary/5 dark:bg-primary/20 border border-primary/10 text-primary dark:text-primary-light text-xs font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2 group" onclick="window.location.href='../agendar_cita/code.html?client=${encodeURIComponent(c.name)}&pets=${encodeURIComponent(c.petName)}&sessions=4'">
+                    <span class="material-symbols-outlined text-sm group-hover:scale-110 transition-transform">calendar_add_on</span>
+                    Agendar siguiente cita
+                </button>
+                <div class="pt-4 border-t border-slate-50 dark:border-slate-700 pets-section">
+                    <div class="flex gap-4 pets-container overflow-x-auto no-scrollbar">
+                        ${petsHTML}
+                    </div>
+                </div>
+            `;
+
+            container.insertBefore(card, emptyState);
+        });
+
+        const totalCards = document.querySelectorAll('.client-card').length;
+        document.getElementById('results-count').textContent = totalCards;
+        filterClients();
+    }
+
+    import('../config.js').then(config => {
+        const url = config.SUPABASE_URL;
+        const key = config.SUPABASE_ANON_KEY;
+        if (key && key !== "YOUR_SUPABASE_ANON_KEY" && localStorage.getItem('stitch_use_mock') !== 'true') {
+            supabase = createClient(url, key);
+            isLive = true;
+        }
+        loadLiveClients();
+    }).catch(err => {
+        console.error("Error loading config:", err);
+        loadLiveClients();
+    });
 </script>
 </body></html>

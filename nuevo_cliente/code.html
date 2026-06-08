@@ -22,6 +22,7 @@
     .upload-zone:hover { border-color: #050062; background: rgba(5,0,98,0.03); }
     input:focus, select:focus, textarea:focus { border-color: #050062 !important; box-shadow: 0 0 0 3px rgba(5,0,98,0.1); }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
 <div class="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark shadow-2xl">
@@ -68,19 +69,23 @@
         </h3>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Nombre Completo *</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: María García López" type="text"/>
+<input id="owner-name" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: María García López" type="text"/>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Nombre de la Mascota *</label>
+<input id="pet-name" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Ej: Luna / Cooper" type="text"/>
 </div>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Teléfono de Emergencia *</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="+52 55 1234 5678" type="tel"/>
+<input id="owner-phone" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="+52 55 1234 5678" type="tel"/>
 </div>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Dirección</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Calle, número, colonia, CP" type="text"/>
+<input id="owner-address" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Calle, número, colonia, CP" type="text"/>
 </div>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Cómo Entrar a la Casa</label>
-<select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none appearance-none">
+<select id="access-method" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none appearance-none">
 <option value="">Seleccionar método de acceso…</option>
 <option>Código de teclado</option>
 <option>Llave escondida</option>
@@ -91,7 +96,7 @@
 </div>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Instrucciones de Acceso</label>
-<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Código 4589#, puerta gris al fondo del pasillo" rows="2"></textarea>
+<textarea id="access-instructions" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Código 4589#, puerta gris al fondo del pasillo" rows="2"></textarea>
 </div>
 </div>
 <!-- Vet Info -->
@@ -101,11 +106,11 @@
         </h3>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Clínica Veterinaria</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Nombre de la clínica" type="text"/>
+<input id="vet-clinic" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="Nombre de la clínica" type="text"/>
 </div>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Teléfono del Veterinario</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="+52 55 9876 5432" type="tel"/>
+<input id="vet-phone" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none" placeholder="+52 55 9876 5432" type="tel"/>
 </div>
 <div class="bg-rose-50 dark:bg-rose-900/20 rounded-xl p-4 border border-rose-200 dark:border-rose-800">
 <label class="text-xs font-black text-rose-600 uppercase tracking-wider flex items-center gap-1.5 mb-2">
@@ -114,8 +119,10 @@
 <p class="text-[11px] text-rose-500 mb-3 leading-relaxed">¿Cuánto autoriza gastar en una emergencia si no responde al teléfono?</p>
 <div class="flex items-center gap-2">
 <span class="text-lg font-black text-rose-600">$</span>
-<input class="flex-1 px-4 py-3 rounded-xl border border-rose-200 dark:border-rose-700 bg-white dark:bg-slate-800 text-sm font-bold focus:outline-none text-rose-700" placeholder="5,000" type="number"/>
+<input id="medical-ceiling" class="flex-1 px-4 py-3 rounded-xl border border-rose-200 dark:border-rose-700 bg-white dark:bg-slate-800 text-sm font-bold focus:outline-none text-rose-700" placeholder="5,000" type="number"/>
 <span class="text-sm font-bold text-rose-500">MXN</span>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -161,11 +168,11 @@
         </h3>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Alergias Alimentarias</label>
-<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Alergia al pollo, no puede comer premios con trigo…" rows="2"></textarea>
+<textarea id="pet-allergies" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Alergia al pollo, no puede comer premios con trigo…" rows="2"></textarea>
 </div>
 <div>
 <label class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Condiciones Físicas</label>
-<textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Displasia de cadera, cirugía reciente de rodilla…" rows="2"></textarea>
+<textarea id="pet-conditions" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-medium focus:outline-none resize-none" placeholder="Ej: Displasia de cadera, cirugía reciente de rodilla…" rows="2"></textarea>
 </div>
 </div>
 <!-- Sterilization -->
@@ -173,7 +180,7 @@
 <h3 class="text-sm font-black uppercase tracking-wider text-primary flex items-center gap-2">
 <span class="material-symbols-outlined text-[18px]">pets</span> Estatus de Esterilización
         </h3>
-<div class="flex gap-3">
+<div class="flex gap-3" id="sterilization-container">
 <button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-primary hover:text-primary transition-all active:scale-95" onclick="selectOption(this, 'sterilized')">✅ Esterilizado</button>
 <button class="flex-1 py-3 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-600 hover:border-primary hover:text-primary transition-all active:scale-95" onclick="selectOption(this, 'not-sterilized')">❌ No Esterilizado</button>
 </div>
@@ -197,25 +204,25 @@
 <div class="space-y-3">
 <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
 <span class="text-sm font-semibold">🐕 Otros perros</span>
-<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<select id="reactivity-dogs" class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
 <option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
 </select>
 </div>
 <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
 <span class="text-sm font-semibold">👤 Personas desconocidas</span>
-<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<select id="reactivity-strangers" class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
 <option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
 </select>
 </div>
 <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
 <span class="text-sm font-semibold">🚲 Bicicletas / Patinetas</span>
-<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<select id="reactivity-bikes" class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
 <option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
 </select>
 </div>
 <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
 <span class="text-sm font-semibold">👶 Niños</span>
-<select class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
+<select id="reactivity-kids" class="text-xs font-bold rounded-lg border border-slate-200 px-2 py-1.5 bg-white dark:bg-slate-700 focus:outline-none">
 <option>Sin reacción</option><option>Alerta</option><option>Reactivo</option><option>Agresivo</option>
 </select>
 </div>
@@ -751,7 +758,125 @@ Enviar Plan para Firma
         btn.classList.add('border-primary', 'bg-primary/10', 'text-primary');
     }
 
-    function showSuccessModal() {
+    const { createClient } = window.supabase || {};
+    let supabase = null;
+    let isLive = false;
+
+    import('../config.js').then(config => {
+        const url = config.SUPABASE_URL;
+        const key = config.SUPABASE_ANON_KEY;
+        if (key && key !== "YOUR_SUPABASE_ANON_KEY" && localStorage.getItem('stitch_use_mock') !== 'true') {
+            supabase = createClient(url, key);
+            isLive = true;
+        }
+    }).catch(err => console.error("Error loading config:", err));
+
+    async function showSuccessModal() {
+        // Collect form data
+        const ownerName = document.getElementById('owner-name')?.value.trim();
+        const petName = document.getElementById('pet-name')?.value.trim() || 'Mascota';
+        const ownerPhone = document.getElementById('owner-phone')?.value.trim();
+        const ownerAddress = document.getElementById('owner-address')?.value.trim();
+        const accessMethod = document.getElementById('access-method')?.value;
+        const accessInstructions = document.getElementById('access-instructions')?.value.trim();
+        
+        const vetClinic = document.getElementById('vet-clinic')?.value.trim();
+        const vetPhone = document.getElementById('vet-phone')?.value.trim();
+        const medicalCeiling = parseFloat(document.getElementById('medical-ceiling')?.value) || 0;
+
+        const allergies = document.getElementById('pet-allergies')?.value.trim();
+        const conditions = document.getElementById('pet-conditions')?.value.trim();
+        
+        const sterilizedBtn = document.querySelector('#sterilization-container button.border-primary');
+        const sterilizedVal = sterilizedBtn ? (sterilizedBtn.textContent.includes('Esterilizado') ? 'sterilized' : 'not-sterilized') : 'not-sterilized';
+
+        const reactivityDogs = document.getElementById('reactivity-dogs')?.value;
+        const reactivityStrangers = document.getElementById('reactivity-strangers')?.value;
+        const reactivityBikes = document.getElementById('reactivity-bikes')?.value;
+        const reactivityKids = document.getElementById('reactivity-kids')?.value;
+
+        if (!ownerName || !ownerPhone) {
+            alert("Por favor complete los campos obligatorios del dueño (Nombre y Teléfono).");
+            return;
+        }
+
+        if (isLive && supabase) {
+            try {
+                // Get active session user
+                const { data: { session } } = await supabase.auth.getSession();
+                const ownerId = session?.user?.id || null;
+
+                // Insert into clients
+                const { data: clientData, error: clientErr } = await supabase
+                    .from('clients')
+                    .insert({
+                        owner_id: ownerId,
+                        name: ownerName,
+                        phone: ownerPhone,
+                        address: ownerAddress,
+                        access_method: accessMethod,
+                        access_instructions: accessInstructions,
+                        vet_name: vetClinic,
+                        vet_phone: vetPhone,
+                        medical_ceiling: medicalCeiling
+                    })
+                    .select()
+                    .single();
+
+                if (clientErr) throw clientErr;
+
+                // Insert into pets
+                const { error: petErr } = await supabase
+                    .from('pets')
+                    .insert({
+                        client_id: clientData.id,
+                        name: petName,
+                        allergies: allergies,
+                        physical_conditions: conditions,
+                        sterilized: sterilizedVal,
+                        reactivity: {
+                            dogs: reactivityDogs,
+                            strangers: reactivityStrangers,
+                            bikes: reactivityBikes,
+                            kids: reactivityKids
+                        }
+                    });
+
+                if (petErr) throw petErr;
+                
+                showToast("Datos sincronizados en la base de datos", "check_circle");
+            } catch (err) {
+                console.error("Error saving to Supabase:", err);
+                alert("Error al guardar en la base de datos: " + err.message);
+                return;
+            }
+        } else {
+            // Mock mode fallback
+            let mockClients = JSON.parse(localStorage.getItem('stitch_mock_clients')) || [];
+            mockClients.push({
+                name: ownerName,
+                phone: ownerPhone,
+                petName: petName,
+                address: ownerAddress,
+                access_method: accessMethod,
+                access_instructions: accessInstructions,
+                vet_name: vetClinic,
+                vet_phone: vetPhone,
+                medical_ceiling: medicalCeiling,
+                allergies: allergies,
+                physical_conditions: conditions,
+                sterilized: sterilizedVal,
+                reactivity: {
+                    dogs: reactivityDogs,
+                    strangers: reactivityStrangers,
+                    bikes: reactivityBikes,
+                    kids: reactivityKids
+                }
+            });
+            localStorage.setItem('stitch_mock_clients', JSON.stringify(mockClients));
+            showToast("Guardado en almacenamiento local (Mock)", "check_circle");
+        }
+
         document.getElementById('success-modal').classList.remove('hidden');
     }
 

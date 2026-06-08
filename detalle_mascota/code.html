@@ -7,6 +7,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#050062", "background-light": "#f5f5f8", "background-dark": "#100f23"}, fontFamily: {display: "Inter"}}}};</script>
 <style>
 body { font-family: 'Inter', sans-serif; }
@@ -358,41 +359,146 @@ const petsData = {
 
 let currentPetName = "Luna";
 
-function initDynamicPet() {
+const { createClient } = window.supabase || {};
+let supabase = null;
+let isLive = false;
+
+import('../config.js').then(config => {
+    const url = config.SUPABASE_URL;
+    const key = config.SUPABASE_ANON_KEY;
+    if (key && key !== "YOUR_SUPABASE_ANON_KEY" && localStorage.getItem('stitch_use_mock') !== 'true') {
+        supabase = createClient(url, key);
+        isLive = true;
+    }
+    initDynamicPet();
+}).catch(err => {
+    console.error("Error loading config:", err);
+    initDynamicPet();
+});
+
+async function initDynamicPet() {
     const urlParams = new URLSearchParams(window.location.search);
     const petParam = urlParams.get('pet');
+    const petId = urlParams.get('id');
     
     if (petParam === 'Thor') {
         window.location.href = '../perfil_del_perro_updated_style/code.html';
         return;
     }
     
+    // Try to load from Supabase if we have petId and isLive
+    if (petId && isLive && supabase) {
+        try {
+            const { data: petData, error: petErr } = await supabase
+                .from('pets')
+                .select(`
+                    id,
+                    name,
+                    breed,
+                    gender,
+                    sterilized,
+                    allergies,
+                    physical_conditions,
+                    reactivity,
+                    clients (
+                        name
+                    )
+                `)
+                .eq('id', petId)
+                .single();
+
+            if (petErr) throw petErr;
+
+            if (petData) {
+                renderPetProfile({
+                    name: petData.name,
+                    breedGender: `${petData.breed || 'Perro'} · ${petData.gender === 'Macho' ? 'Macho' : 'Hembra'}`,
+                    badges: [
+                        petData.sterilized === 'sterilized' ? "ESTERILIZADO" : "NO ESTERILIZADO",
+                        "3 AÑOS",
+                        "DB RECORD"
+                    ],
+                    owner: petData.clients?.name || 'Desconocido',
+                    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb",
+                    allergies: petData.allergies || 'Sin alergias reportadas.',
+                    conditions: petData.physical_conditions || 'Sin condiciones reportadas.',
+                    reactivity: petData.reactivity || {}
+                });
+                return;
+            }
+        } catch (err) {
+            console.error("Error loading pet from DB:", err);
+        }
+    }
+
+    // Try to load from localStorage (Mock)
+    const mockClients = JSON.parse(localStorage.getItem('stitch_mock_clients')) || [];
+    const matchedMock = mockClients.find(c => c.petName === petParam);
+    if (matchedMock) {
+        renderPetProfile({
+            name: matchedMock.petName,
+            breedGender: "Perro · Desconocido",
+            badges: [
+                matchedMock.sterilized === 'sterilized' ? "ESTERILIZADO" : "NO ESTERILIZADO",
+                "LOCAL RECORD"
+            ],
+            owner: matchedMock.name,
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0lJgb3eTDVtEmK9Cvd6EqUZ8b8kf-_HQi78cWdoxnvAV8qitJoLUd5cSVtcDRSMmWKJUHHcMCMxy-69WepbWWZ_oWCWBcxIUcJ_F8AAYA_9s3vtTvhaxVWTpdf3ZKLCTfllgzFsjlb9WIgkASwSZKEKiMWOOteiI2x48gpVwARuyL_nze6CLXfQ_UfjoaykFK5UYW2Ruq4kw4-zL1Cs0Hp5gmJ0SebybxBlWSF9aNsKPqItPK66397HZB0gQirhFcDgbPjbQF6zSb",
+            allergies: matchedMock.allergies || 'Sin alergias reportadas.',
+            conditions: matchedMock.physical_conditions || 'Sin condiciones reportadas.',
+            reactivity: matchedMock.reactivity || {}
+        });
+        return;
+    }
+
     if (petParam && petsData[petParam]) {
         const pet = petsData[petParam];
-        currentPetName = pet.name;
-        
-        document.title = "Stitch - Perfil de " + pet.name;
-        
-        document.getElementById('petName').textContent = pet.name;
-        document.getElementById('petImage').src = pet.img;
-        document.getElementById('petBreedGender').textContent = pet.breedGender;
-        
-        const badgesContainer = document.getElementById('petBadges');
-        badgesContainer.innerHTML = '';
-        pet.badges.forEach((badge, idx) => {
-            let colorClass = "bg-primary/10 text-primary";
-            if (idx === 0) colorClass = "bg-emerald-100 text-emerald-700";
-            if (idx === 1) colorClass = "bg-blue-100 text-blue-700";
-            badgesContainer.innerHTML += `<span class="px-2.5 py-0.5 rounded-full ${colorClass} text-[10px] font-bold">${badge}</span>`;
+        renderPetProfile({
+            name: pet.name,
+            breedGender: pet.breedGender,
+            badges: pet.badges,
+            owner: pet.owner,
+            img: pet.img,
+            allergies: "Alergia al pollo. NO dar treats/premios de pollo.",
+            conditions: "Sin condiciones reportadas. Articulaciones sanas.",
+            reactivity: { dogs: "ALERTA", strangers: "SIN REACCIÓN", bikes: "REACTIVA", kids: "SIN REACCIÓN" }
         });
-        
-        document.getElementById('petOwner').innerHTML = `
-            <span class="material-symbols-outlined text-[16px]">person</span>
-            <span class="font-semibold">Dueño: ${pet.owner}</span>
-        `;
-        
-        document.getElementById('petNotesHeading').textContent = "Notas sobre " + pet.name;
-        document.getElementById('petSessionsHeading').textContent = "Sesiones de " + pet.name;
+    }
+}
+
+function renderPetProfile(pet) {
+    currentPetName = pet.name;
+    
+    document.title = "Stitch - Perfil de " + pet.name;
+    
+    document.getElementById('petName').textContent = pet.name;
+    document.getElementById('petImage').src = pet.img;
+    document.getElementById('petBreedGender').textContent = pet.breedGender;
+    
+    const badgesContainer = document.getElementById('petBadges');
+    badgesContainer.innerHTML = '';
+    pet.badges.forEach((badge, idx) => {
+        let colorClass = "bg-primary/10 text-primary";
+        if (idx === 0) colorClass = "bg-emerald-100 text-emerald-700";
+        if (idx === 1) colorClass = "bg-blue-100 text-blue-700";
+        badgesContainer.innerHTML += `<span class="px-2.5 py-0.5 rounded-full ${colorClass} text-[10px] font-bold">${badge}</span>`;
+    });
+    
+    document.getElementById('petOwner').innerHTML = `
+        <span class="material-symbols-outlined text-[16px]">person</span>
+        <span class="font-semibold">Dueño: ${pet.owner}</span>
+    `;
+    
+    document.getElementById('petNotesHeading').textContent = "Notas sobre " + pet.name;
+    document.getElementById('petSessionsHeading').textContent = "Sesiones de " + pet.name;
+
+    const allergiesEl = document.querySelector('.bg-rose-50 p.text-rose-600');
+    if (allergiesEl) {
+        allergiesEl.textContent = pet.allergies;
+    }
+    const conditionsEl = document.querySelector('.bg-slate-50 p.text-slate-500');
+    if (conditionsEl) {
+        conditionsEl.textContent = pet.conditions;
     }
 }
 
