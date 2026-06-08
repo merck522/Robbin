@@ -172,6 +172,14 @@ The app consists of static HTML/Tailwind CSS screens representing a 4-level hier
   - Implemented a Playwright initialization script in `tests/e2e/example.spec.js` that automatically enforces mock mode during automated test runs.
   - Confirmed all existing unit, integration, and E2E browser tests pass successfully.
 
+### Phase 17: Live Stripe Paywall Integration
+- **Goal**: Integrate a live Stripe payment link for premium subscriptions after the 7-day trial.
+- **Actions**:
+  - Created a monthly subscription product **Stitch Premium Plan** and a corresponding recurring price of **$19.99/mo** in Stripe using Stripe MCP tools.
+  - Generated a live Stripe payment link using the created price ID.
+  - Configured `config.js` with the live Stripe Payment Link to replace the mock link.
+  - Confirmed all existing unit, integration, and E2E browser tests pass successfully.
+
 ---
 *Note: This file will be updated after any future changes to keep track of the application state.*
 
